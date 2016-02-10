@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<vxml version = "2.0" xmlns="http://www.w3.org/2001/vxml">
+<form>
+  <block>
+   <prompt xml:lang="text">
+Hello world !
+Test...
+   </prompt>
+   <prompt xml:lang="en-UK">
+Hello world !
+This is a test...
+   </prompt>  
+  </block>
+ </form>
+</vxml>
