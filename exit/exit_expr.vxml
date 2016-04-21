@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-UK">
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-US">
  <form>
   <block>
    Hello and good bye !
