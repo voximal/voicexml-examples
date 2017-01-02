@@ -1,0 +1,40 @@
+<?xml version = "1.0"?>
+<vxml version = "2.1" xmlns="http://www.w3.org/2001/vxml" xml:lang="fr-FR">
+  <property name="inputmodes" value="dtmf voice"/>
+  <form>
+    <var name="phone" expr="session.connection.remote.uri" />
+    <var name="action" />
+    <var name="id" />
+    <var name="ask" expr="'Bonjour'" />
+    <var name="answer" expr="'Bonjour, je suis l\'assistant téléphonique de la ville de la Charité-sur-Loire... Je peux vous donner les informations importantes sur la ville : les adresses utiles, les informations touristiques et pratiques.'" />
+    <block name="init">
+      <assign name="action" expr="'auth'"/>
+      <data name="auth" src="api/index.php" method="post" namelist="action" fetchtimeout="15s"/>
+      <assign name="id" expr = "auth.documentElement.getElementsByTagNameNS('', 'resultat').item(0).firstChild.data;" />
+    </block>
+    <block cond="false" name="hello">
+      <assign name="action" expr="'sendText'"/>
+      <data name="sendtext" src="api/index.php" method="post" namelist="action id ask" fetchtimeout="15s"/>
+      <assign name="answer" expr = "sendtext.documentElement.getElementsByTagNameNS('', 'resultat').item(0).firstChild.data;" />
+    </block>
+    <field cond="true" type = "text" name = "text">
+      <property name="timeout" value="5s"/>
+      <property name="interdigittimeout" value="1500ms"/>
+      <prompt><value expr="answer"/></prompt>
+      <prompt bargein="false"><audio src="audio/siri_start.wav">Je vous écoute.</audio></prompt>
+      <noinput>
+        <prompt>Désolé, mais je ne vous ai pas compris. Pouvez vous répéter?</prompt>
+        <prompt bargein="false"><audio src="audio/siri_start.wav"/></prompt>
+      </noinput>
+    </field>
+    <block name="block">
+      <prompt bargein="false"><audio src="audio/siri_end.wav"></audio></prompt>
+      <prompt cond="false" bargein="false">J'ai compris : <value expr="text" /></prompt>
+      <assign name="action" expr="'sendText'"/>
+      <assign name="ask" expr="text"/>
+      <data name="sendtext" src="api/index.php" method="post" namelist="action id ask" fetchtimeout="15s"/>
+      <assign name="answer" expr="sendtext.documentElement.getElementsByTagNameNS('', 'resultat').item(0).firstChild.data;"/>
+      <clear namelist="block text"/>
+    </block>
+  </form>
+</vxml>
