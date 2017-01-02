@@ -1,0 +1,32 @@
+<?xml version = "1.0"?>
+<vxml version = "2.1" xmlns="http://www.w3.org/2001/vxml" xml:lang="fr-FR">
+  <property name="inputmodes" value="voice"/>
+  <form>
+    <var name="phone" expr="session.connection.remote.uri" />
+    <var name="answer" expr="'Bonjour, je suis l\'assistant téléphonique.'"/>
+    <var name="convo_id" expr="telephone.id"/>
+    <var name="bot_id" expr="1"/>
+    <var name="format" expr="'xml'"/>
+    <var name="name" expr="telephone.ani"/>
+    <field cond="true" type = "text" name = "say">
+      <property name="timeout" value="5s"/>
+      <property name="interdigittimeout" value="1500ms"/>
+      <prompt><value expr="answer"/></prompt>
+      <prompt bargein="false"><audio src="audio/siri_start.wav">Je vous écoute.</audio></prompt>
+      <noinput>
+        <prompt>Désolé, mais je ne vous ai pas compris. Pouvez vous répéter?</prompt>
+        <prompt bargein="false"><audio src="audio/siri_start.wav"/></prompt>
+      </noinput>
+    </field>
+    <block name="block">
+      <prompt cond="true" bargein="false">J'ai compris : <value expr="say" /></prompt>
+      <data name="sendtext" src="http://lab.ulex.fr:84/Program-O/gui/data/index.php" method="post" namelist="convo_id bot_id say format name" fetchtimeout="15s"/>
+      <if cond="sendtext.documentElement.getElementsByTagNameNS('', 'response') != null">
+          <assign name="answer" expr="sendtext.documentElement.getElementsByTagNameNS('', 'response').item(0).firstChild.data;"/>
+          <else/>
+          <assign name="answer" expr="'Je n\'ai rien compris.'"/>
+      </if>
+      <clear namelist="say block"/>
+    </block>
+  </form>
+</vxml>
