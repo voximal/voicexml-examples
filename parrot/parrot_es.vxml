@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+  <property name="inputmodes" value="dtmf voice"/>
+  <property name="interdigittimeout" value="1700ms"/>
+  <property name="confidencelevel" value="0.3"/>
+  <form id="main">
+    <field name="text" type="text">
+      <prompt bargein="true">Dime algo :</prompt>
+      <prompt bargein="true">bla bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla bla</prompt>
+      <filled>
+        <prompt>Me has dicho:
+          <value expr="text"/>
+        </prompt>
+        <clear namelist="text"/>
+      </filled>
+    </field>
+  </form>
+</vxml>
