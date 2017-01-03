@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+
+<property name="inputmodes" value="dtmf"/>
+
+<var name="cards"/> <!-- array of cards -->
+<var name="currCard" expr="0"/> <!-- current card -->
+<var name="userCards"/> <!-- cards of the user -->
+<var name="compCards"/> <!-- cards of computer -->
+
+<script> <![CDATA[
+  function shuffle() {
+    for (var i = 0; i < 52; i++) {
+      cards[i] = i;
+    }
+    for (var i = 0; i < 51; i++) {
+      var j = Math.floor(Math.random()*(52-i))+i;
+      var k = cards[i];
+      cards[i] = cards[j];
+      cards[j] = k;
+    }
+  }
+  function cardDescription (cardNum) {
+    var suit = Math.floor (cardNum / 13);
+    var rank = cardNum % 13;
+    var cardDesc;
+    switch (rank) {
+      case 0: cardDesc = "2 of "; break;
+      case 1: cardDesc = "3 of "; break;
+      case 2: cardDesc = "4 of "; break;
+      case 3: cardDesc = "5 of "; break;
+      case 4: cardDesc = "6 of "; break;
+      case 5: cardDesc = "7 of "; break;
+      case 6: cardDesc = "8 of "; break;
+      case 7: cardDesc = "9 of "; break;
+      case 8: cardDesc = "10 of "; break;
+      case 9: cardDesc = "jack of "; break;
+      case 10: cardDesc = "queen of "; break;
+      case 11: cardDesc = "king of "; break;
+      case 12: cardDesc = "ace of "; break;
+    }
+    switch (suit) {
+      case 0: cardDesc += "clubs"; break;
+      case 1: cardDesc += "hearts"; break;
+      case 2: cardDesc += "diamonds"; break;
+      case 3: cardDesc += "spades"; break;
+    }
+    return cardDesc;
+  }
+  function newCardForUser() {
+    userCards[userCards.length] = cards[currCard];
+    currCard++;
+  }
+  function lastUserCardDesc() {
+    return cardDescription(userCards[userCards.length-1]);
+  }
+  function newCardForComp() {
+    compCards[compCards.length] = cards[currCard];
+    currCard++;
+  }
+  function lastCompCardDesc() {
+    return cardDescription(compCards[compCards.length-1]);
+  }
+  function valOfCard (cardNum) {
+    var rank = cardNum % 13;
+    switch (rank) {
+      case 9:  return 10;
+      case 10: return 10;
+      case 11: return 10;
+      case 12: return 11;
+      default: return rank+2;
+    }
+  }
+  function valOfCards (c) {
+    var val = 0;
+    var i;
+    var aceNum = 0;
+    for (var i = 0; i < c.length; i++) {
+      var v = valOfCard(c[i]);
+      if (v == 11) aceNum++;
+      val += v;
+    }
+    while (val > 21 && aceNum > 0) {
+      val -= 10; // ace can be counted as 1 instead of 11 if needed
+      aceNum--;
+    }
+    return val;
+  }
+  function softHand (c) { // are all aces counted as 11?
+    var val = 0;
+    var i;
+    var aceNum = 0;
+    for (var i = 0; i < c.length; i++) {
+      var v = valOfCard(c[i]);
+      if (v == 11) aceNum++;
+      val += v;
+    }
+    while (val > 21 && aceNum > 0) {
+      val -= 10; // ace can be counted as 1 instead of 11 if needed
+      aceNum--;
+    }
+    return aceNum > 0;
+  }
+  function valOfUserCards() {
+    return valOfCards (userCards);
+  }
+  function valOfCompCards() {
+    return valOfCards (compCards);
+  }
+  function shouldCompTakeCard() { // strategy of the computer
+    if (softHand (compCards)) return true;
+    var val = valOfCompCards();
+    if (val <= 11) return true;
+    if (Math.random() < 0.25) return true; // risk
+    if (Math.random() < 1/(val-11)) return true;
+    return false;
+  }
+]]> </script>
+
+<form id="start">
+  <block>
+    <prompt>Welcome to blackjack</prompt>
+    <script>
+      cards = new Array(52);
+    </script>
+    <goto next="#new_game"/>
+  </block>
+</form>
+
+<form id="new_game">
+  <field name="yesno" type = "boolean">
+    <noinput> Hey, don't sleep and say something! </noinput>
+    <nomatch> I didn't understand you.</nomatch>
+    <prompt>Do you want to play a new game?</prompt>
+    <filled>
+      <if cond="yesno == 'true'">
+        <goto next="#start_game"/>
+      <else/>
+        <goto next="#end"/>
+      </if>
+    </filled>
+  </field>
+</form>
+
+<form id="start_game">
+  <block>
+    <prompt>
+      I am shuffeling the cards. We start with two cards for each.
+    </prompt>
+    <script>
+      userCards = new Array;
+      compCards = new Array;
+      shuffle();
+      newCardForUser();
+      newCardForUser();
+      newCardForComp();
+      newCardForComp();
+    </script>
+    <prompt>
+      You got <value expr="cardDescription(userCards[0])"/>
+      and <value expr="cardDescription(userCards[1])"/>.
+    </prompt>
+    <goto next="#game_eval"/>
+  </block>
+</form>
+
+<form id="game_eval">
+  <block>
+    <var name="userVal" expr="valOfUserCards()"/>
+    <var name="compVal" expr="valOfCompCards()"/>
+    <prompt>Value of your cards is <value expr="userVal"/></prompt>
+    <if cond="userVal &gt; 21">
+      <prompt>You lost the game.</prompt>
+      <goto next="#new_game"/>
+    </if>
+    <if cond="userVal == 21 || compVal &gt; 21">
+      <prompt>Value of my cards is <value expr="compVal"/></prompt>
+      <prompt>You won the game!</prompt>
+      <goto next="#new_game"/>
+    </if>
+    <if cond="compVal == 21">
+      <prompt>Value of my cards is <value expr="compVal"/></prompt>
+      <prompt>You lost the game.</prompt>
+      <goto next="#new_game"/>
+    </if>
+    <goto next="#decision"/>
+  </block>
+</form>
+
+<form id="decision">
+  <field name="userDecision" type = "boolean">
+    <noinput> Hey, don't sleep and say something!</noinput>
+    <nomatch> I didn't understand you. </nomatch>
+
+    <prompt>Do you want one more card?</prompt>
+
+    <filled>
+      <if cond="userDecision">
+        <script>newCardForUser();</script>
+        <if cond="valOfUserCards() &gt;= 21">
+          <prompt>
+            You got <value expr="lastUserCardDesc()"/>
+          </prompt>
+          <goto next="#game_eval"/>
+        </if>
+      </if>
+      <var name="compDecision" expr="shouldCompTakeCard()"/>
+      <if cond="compDecision == 'true'">
+        <script>newCardForComp();</script>
+      </if>
+      <if cond="userDecision &amp;&amp; compDecision == 'true'">
+        <prompt>
+          I am giving you <value expr="lastUserCardDesc()"/> and I also take
+          a card.
+        </prompt>
+      <elseif cond="userDecision &amp;&amp; compDecision == 'false'"/>
+        <prompt>
+          I am giving you <value expr="lastUserCardDesc()"/>. I will take
+          no card.
+        </prompt>
+      <elseif cond="userDecision == 'false' &amp;&amp; compDecision == 'true'"/>
+        <prompt>OK, you don't want a card, but I will take one.</prompt>
+      <else/>
+        <prompt>I also don't want more cards. The game is finished.</prompt>
+        <goto next="#game_finished"/>
+      </if>
+      <goto next="#game_eval"/>
+    </filled>
+
+  </field>
+</form>
+
+<form id="game_finished">
+  <block>
+    <var name="userVal" expr="valOfUserCards()"/>
+    <var name="compVal" expr="valOfCompCards()"/>
+    <prompt>Value of your cards is <value expr="userVal"/></prompt>
+    <prompt>Value of my cards is <value expr="compVal"/></prompt>
+    <if cond="userVal &gt;= compVal">
+      <prompt>You won the game!</prompt>
+    <else/>
+      <prompt>You lost the game.</prompt>
+    </if>
+    <goto next="#new_game"/>
+  </block>
+</form>
+
+<form id="end">
+  <block>
+    I hope you enjoyed the game. Goodbye.
+  </block>
+</form>
+
+</vxml>
