@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+  <var name="caller" expr="session.connection.remote.uri"/>
+  <var name="called" expr="session.connection.local.uri"/>
+  <form id="main">
+    <block>
+      <prompt>Your are calling from</prompt>
+      <prompt>
+        <value expr="caller"/>!</prompt>
+      <prompt>Your are calling to</prompt>
+      <prompt>
+        <value expr="called"/>!</prompt>
+      <prompt>Have a nice day.</prompt>
+    </block>
+  </form>
+</vxml>
