@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-GB">
+  <property name="confidencelevel" value="0.3"/>
+  <property name="inputmodes" value="voice dtmf"/>
+  <form id="menu">
+    <field name="food">
+      <grammar xml:lang="en-US" root="food">
+        <rule id="food">
+          <one-of>
+            <item>!pizza
+              <tag>pizza</tag>
+            </item>
+            <item>!cupcake
+              <tag>cupcake</tag>
+            </item>
+            <item>!hamburger
+              <tag>hamburger</tag>
+            </item>
+          </one-of>
+        </rule>
+      </grammar>
+      <grammar mode="dtmf" root="food">
+        <rule id="food2">
+          <one-of>
+            <item>1</item>
+            <item>2</item>
+            <item>3</item>
+          </one-of>
+        </rule>
+      </grammar>
+      <prompt bargein="false">
+        What do you want?
+        Say pizza or press 1,
+        Say cupcake or press 2,
+        Say hamburger or press 3.
+      </prompt>
+    </field>
+    <filled>
+      <log label="Section: " expr="food" />
+      <script>
+        <![CDATA[ var ordered = "";
+        switch (food){
+        case "pizza" : ordered = "#pizza"; break;
+        case "1" : ordered = "#pizza"; break;
+        case "cupcake" : ordered = "#cupcake"; break;
+        case "2" : ordered = "#cupcake"; break;
+        case "hamburger" : ordered = "#hamburger"; break;
+        case "3" : ordered = "#hamburger"; break;
+        default: ordered = "#outOfStock"; break; } ]]>
+      </script>
+      <goto expr="ordered"/>
+    </filled>
+  </form>
+  <form id="pizza">
+    <block>
+      <!-- Selected pizza -->
+      <log label="Selection: PIZZA" />
+      <prompt>You selected: PIZZA</prompt>
+      <goto next="#menu" />
+    </block>
+  </form>
+  <form id="cupcake">
+    <block>
+      <!-- Selected cupcake -->
+      <log label="Selection: CUPCAKE" />
+      <prompt>You selected: CUPCAKE</prompt>
+      <goto next="#menu" />
+    </block>
+  </form>
+  <form id="hamburger">
+    <block>
+      <!-- Selected hamburger -->
+      <log label="Selection: HAMBURGER" />
+      <prompt>You selected: HAMBURGER</prompt>
+      <goto next="#menu" />
+    </block>
+  </form>
+  <form id="outOfStock">
+    <block>
+      <prompt>This is not a option.</prompt>
+      <goto next="#menu" />
+    </block>
+  </form>
+  <form id="goodbye">
+    <block>
+      <prompt>Goodbye</prompt>
+    </block>
+  </form>
+</vxml>
