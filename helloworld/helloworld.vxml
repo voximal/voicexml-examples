@@ -1,0 +1,16 @@
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-US">
+ <form>
+  <block>
+    <var name="caller" expr="session.connection.remote.uri"/>
+    <var name="called" expr="session.connection.local.uri"/>
+    <var name="id" expr="telephone.id"/>
+    <var name="param" expr="telephone.param"/>
+    <prompt>
+    Welcome.  You are on the Voximal IVR.
+    Your caller number is : <value expr="caller"/>.
+    You are calling the : <value expr="called"/>.
+    Goodbye
+    </prompt>
+  </block>
+ </form>
+</vxml>
