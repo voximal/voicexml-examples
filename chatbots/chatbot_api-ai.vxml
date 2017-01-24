@@ -1,0 +1,36 @@
+<?xml version = "1.0"?>
+<vxml version = "2.1" xmlns="http://www.w3.org/2001/vxml" xml:lang="fr-FR">
+  <property name="inputmodes" value="voice"/>
+  <property name="authorization" value="Bearer cf9897ee224b4e2fa3ec6234ad8ef65c "/>
+  <var name="timezone" expr="'Europe/Paris'"/>
+  <var name="lang" expr="'fr'"/>
+  <script>
+var contexts = [
+  { name: 'weather',  lifespan: 2, } ];
+  </script>
+  <var name="answer" expr="'Bonjour, je suis l\'assistant téléphonique.'" />
+  <var name="sessionId" expr="'1234567890'"/>
+  <var name="query" expr="'Hello à toi!'"/>
+  <form>
+    <field cond="true" type = "text" name = "text">
+      <property name="timeout" value="5s"/>
+      <property name="interdigittimeout" value="1500ms"/>
+      <prompt><value expr="answer"/></prompt>
+      <prompt bargein="false"><audio src="audio/siri_start.wav">Je vous écoute.</audio></prompt>
+      <noinput>
+        <prompt>Désolé, mais je ne vous ai pas entendu. Pouvez vous répéter?</prompt>
+        <prompt bargein="false"><audio src="audio/siri_start.wav"/></prompt>
+      </noinput>
+      <filled>
+        <prompt cond="false"><value expr="text"/></prompt>
+      </filled>
+    </field>
+    <block name="block">
+      <assign name="query" expr="text"/>
+      <prompt cond="false"><value expr="query"/></prompt>
+      <data name="api" src="https://api.api.ai/v1/query?v=20150910" method="post" enctype="application/json" namelist="timezone lang contexts sessionId query" fetchtimeout="15s"/>
+      <assign name="answer" expr="api.result.fulfillment.speech"/>
+      <clear namelist="block text"/>
+    </block>
+  </form>
+ </vxml>
