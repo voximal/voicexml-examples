@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-US">
+  <property name="inputmodes" value="dtmf"/>
+  <property name="interdigittimeout" value="700ms"/>
+  <property name="confidencelevel" value="0.3"/>
+  <menu id="menu">
+    <property name="timeout" value="5s"/>
+    <prompt>Select your language :</prompt>
+    <enumerate>For
+      <value expr="_prompt"/>, press
+      <value expr="_dtmf"/></enumerate>
+    <choice dtmf="1" next="parrot_en.vxml">English</choice>
+    <choice dtmf="2" next="parrot_fr.vxml">French</choice>
+    <choice dtmf="3" next="parrot_es.vxml">Spanish</choice>
+  </menu>
+</vxml>

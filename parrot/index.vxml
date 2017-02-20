@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-US">
+  <form id="main">
+    <block>
+      <goto next="parrot_menu.vxml"/>
+    </block>
+  </form>
+</vxml>

@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
 <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="fr-FR">
   <property name="inputmodes" value="dtmf voice"/>
-  <property name="interdigittimeout" value="1500ms"/>
+  <property name="interdigittimeout" value="900ms"/>
+  <property name="timeout" value="10s"/>
   <property name="confidencelevel" value="0.3"/>
   <form id="main">
     <field name="text" type="text">
-      <prompt bargein="true">Dites moi quelque chose :</prompt>
-      <prompt bargein="true">bla bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla bla</prompt>
+      <prompt bargein="true">Dites moi quelque chose:</prompt>
+      <prompt cond="false" bargein="true">bla bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla bla</prompt>
       <filled>
         <prompt>Vous avez dit:</prompt>
         <prompt><value expr="text"/></prompt>
