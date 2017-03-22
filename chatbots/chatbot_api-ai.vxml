@@ -9,12 +9,14 @@ var contexts = [
   { name: 'weather',  lifespan: 2, } ];
   </script>
   <var name="answer" expr="'Bonjour, je suis l\'assistant téléphonique.'" />
-  <var name="sessionId" expr="'1234567890'"/>
+  <var name="sessionId" expr="session.connection.remote.uri"/>
   <var name="query" expr="'Hello à toi!'"/>
   <form>
     <field cond="true" type = "text" name = "text">
       <property name="timeout" value="5s"/>
-      <property name="interdigittimeout" value="1500ms"/>
+      <property name="completetimeout" value="700ms"/>
+      <property name="interdigittimeout" value="1000ms"/>
+      <property name="sensitivity" value="0.5"/>
       <prompt><value expr="answer"/></prompt>
       <prompt bargein="false"><audio src="audio/siri_start.wav">Je vous écoute.</audio></prompt>
       <noinput>
