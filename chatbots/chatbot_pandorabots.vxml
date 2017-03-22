@@ -1,0 +1,32 @@
+<?xml version = "1.0"?>
+<vxml version = "2.1" xmlns="http://www.w3.org/2001/vxml" xml:lang="fr-FR">
+  <var name="lang" expr="'fr'"/>
+  <var name="app_id" expr="'1409614074892'"/>
+  <var name="botname" expr="'voximal'"/>
+  <var name="user_key" expr="'0442881338ee607172d984ee58415c1a'"/>
+  <var name="answer" expr="'Bonjour, je suis l\'assistant téléphonique.'" />
+  <var name="sessionid" expr="telephone.ani"/>
+  <var name="input" expr="'Hello à toi!'"/>
+  <form>
+    <field cond="true" type = "text" name = "text">
+      <property name="timeout" value="5s"/>
+      <property name="interdigittimeout" value="1500ms"/>
+      <prompt><value expr="answer"/></prompt>
+      <prompt bargein="false"><audio src="audio/siri_start.wav">Je vous écoute.</audio></prompt>
+      <noinput>
+        <prompt>Désolé, mais je ne vous ai pas entendu. Pouvez vous répéter?</prompt>
+        <prompt bargein="false"><audio src="audio/siri_start.wav"/></prompt>
+      </noinput>
+      <filled>
+        <prompt cond="false"><value expr="text"/></prompt>
+      </filled>
+    </field>
+    <block name="block">
+      <assign name="input" expr="text"/>
+      <prompt cond="false"><value expr="input"/></prompt>
+      <data name="api" srcexpr="'https://aiaas.pandorabots.com/talk/'+app_id+'/'+botname+'?user_key='+user_key+'&amp;input='+input" method="post" enctype="application/json" fetchtimeout="15s"/>
+      <assign name="answer" expr="api.responses[0]"/>
+      <clear namelist="block text"/>
+    </block>
+  </form>
+ </vxml>
