@@ -1,6 +1,9 @@
 <?xml version = "1.0"?>
 <vxml version = "2.1" xmlns="http://www.w3.org/2001/vxml" xml:lang="fr-FR">
   <property name="inputmodes" value="voice"/>
+  <property name="interdigittimeout" value="900ms"/>
+  <property name="timeout" value="10s"/>
+  <property name="confidencelevel" value="0.3"/>
   <property name="authorization" value="Bearer cf9897ee224b4e2fa3ec6234ad8ef65c "/>
   <var name="timezone" expr="'Europe/Paris'"/>
   <var name="lang" expr="'fr'"/>
@@ -11,7 +14,7 @@ var contexts = [
   <var name="answer" expr="'Bonjour, je suis l\'assistant téléphonique.'" />
   <var name="sessionId" expr="session.connection.remote.uri"/>
   <var name="query" expr="'Hello à toi!'"/>
-  <form>
+  <form id="main">
     <field cond="true" type = "text" name = "text">
       <property name="timeout" value="5s"/>
       <property name="completetimeout" value="700ms"/>
@@ -32,7 +35,7 @@ var contexts = [
       <prompt cond="false"><value expr="query"/></prompt>
       <data name="api" src="https://api.api.ai/v1/query?v=20150910" method="post" enctype="application/json" namelist="timezone lang contexts sessionId query" fetchtimeout="15s"/>
       <assign name="answer" expr="api.result.fulfillment.speech"/>
-      <clear namelist="block text"/>
+      <goto next="#main"/>
     </block>
   </form>
  </vxml>

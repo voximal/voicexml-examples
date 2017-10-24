@@ -1,0 +1,62 @@
+<?xml version = "1.0"?>
+<vxml version = "2.1" xmlns="http://www.w3.org/2001/vxml" xml:lang="fr-FR">
+  <property name="inputmodes" value="voice dtmf"/>
+  <property name="interdigittimeout" value="3s"/>
+  <property name="timeout" value="10s"/>
+  <property name="confidencelevel" value="0.3"/>
+  <property name="authorization" value="330a818b-25db-448e-ad9d-cedbe5b05054:xYxlljrLeEZ1"/>
+  <var name="timezone" expr="'Europe/Paris'"/>
+  <var name="lang" expr="'fr'"/>
+  <var name="url_to_invoke" expr="''"/>
+  <var name="url_args"/>
+  <var name="url_result" expr="''"/>
+  <script>
+var context = { conversation_id: telephone.id};
+var input = { text: 'calcule 3 + 1'};
+  </script>
+  <var name="answer" expr="'Bonjour, je suis l\'assistant téléphonique.'" />
+  <var name="sessionId" expr="session.connection.remote.uri"/>
+  <var name="query" expr="'Hello à toi!'"/>
+  <form id="main">
+    <field cond="true" type = "text" name = "text">
+      <property name="timeout" value="5s"/>
+      <property name="completetimeout" value="700ms"/>
+      <property name="interdigittimeout" value="3000ms"/>
+      <property name="sensitivity" value="0.5"/>
+      <prompt><value expr="answer"/></prompt>
+      <prompt bargein="false">Je vous écoute.</prompt>
+      <noinput>
+        <prompt>Désolé, mais je ne vous ai pas entendu. Pouvez vous répéter?</prompt>
+        <prompt bargein="false"><audio src="audio/siri_start.wav"/></prompt>
+      </noinput>
+      <filled>
+        <prompt cond="false"><value expr="text"/></prompt>
+      </filled>
+    </field>
+    <block name="block">
+      <assign name="query" expr="text"/>
+      <prompt cond="false"><value expr="query"/></prompt>
+      <log>WATSON : input:<value expr="input"/> context:<value expr="context"/></log>
+      <data name="api" src="https://gateway.watsonplatform.net/conversation/api/v1/workspaces/a6d156f7-f812-4877-b922-9c54ee306025/message?version=2017-05-26" method="post" enctype="application/json" namelist="input context" fetchtimeout="15s"/>
+      <log>WATSON : result:<value expr="api"/></log>
+
+      <if cond="api.intents.length &gt; 0">
+        <assign name="answer" expr="api.intents[0].intent"/>
+      </if>
+
+      <if cond="api.context.hasOwnProperty('request')">
+        <assign name="url_to_invoke" expr="api.context.request.args.url_to_invoke"/>
+      </if>
+
+      <if cond="api.intents.length &gt; 0">
+        <assign name="url_args" expr="api.entities"/>
+      </if>
+
+      <if cond="url_to_invoke != ''">
+        <data name="result" srcexpr="url_to_invoke" method="post" enctype="application/json" namelist="url_args" fetchtimeout="15s"/>
+      </if>
+
+      <goto next="#main"/>
+    </block>
+  </form>
+ </vxml>

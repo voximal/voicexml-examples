@@ -24,7 +24,7 @@
     <block name="block">
       <assign name="input" expr="text"/>
       <prompt cond="false"><value expr="input"/></prompt>
-      <data name="api" srcexpr="'https://aiaas.pandorabots.com/talk/'+app_id+'/'+botname+'?user_key='+user_key+'&amp;input='+input" method="post" enctype="application/json" fetchtimeout="15s"/>
+      <data name="api" srcexpr="'https://aiaas.pandorabots.com/talk/'+app_id+'/'+botname+'?user_key='+user_key+'&amp;input='+input" method="post" fetchtimeout="15s"/>
       <assign name="answer" expr="api.responses[0]"/>
       <clear namelist="block text"/>
     </block>
