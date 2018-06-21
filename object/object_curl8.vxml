@@ -1,0 +1,32 @@
+<?xml version = "1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en">
+	<form>
+    <script><![CDATA[
+         var element = new Object();
+         element.name = "tel";
+         element.value="999777666";
+         var elements =  new Array( element );
+         var element = new Object();
+         element.name = "name";
+         element.value="pepito";
+         elements.push(element);
+         ]]></script>
+	  <object name="message"
+	    classid="extern:curl">
+	    <param name="_src" expr="'http://localhost:80/vxml/json3.php'" />
+	    <param name="_mode" expr="'json'" />
+	    <param name="_method" expr="'get'" />
+	    <param name="arg1" expr="'1'" />
+	    <param name="arg2" expr="'2'" />
+	    <param name="elements" expr="elements" />
+	  </object>
+		<block>
+      <log>Result = <value expr="message.DataStore1.value" />. </log>
+		  <prompt>
+		  Parameter = test.
+			Result = <value expr="message.DataStore1.value" />.
+			</prompt>
+			<exit/>
+		</block>
+	</form>
+</vxml>

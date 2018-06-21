@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<grammar xml:lang="es-ES" version="1.0" root="test">
+  <rule id="test" scope="public">1</rule>
+</grammar>

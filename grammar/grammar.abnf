@@ -1,0 +1,6 @@
+ <grammar type="text/x-grammar-choice-dtmf" mode="dtmf" src="gramaticas/gramatica_dtmf.bnf"/>
+y uso este fichero de gramática: #ABNF 1.0 ISO-8859-1;
+
+1 {1} |
+0 {0}
+puede estar así bien?

@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+ <form>
+  <property name="inputmodes" value="voice"/>
+  <property name="timeout" value="30s"/>
+  <property name="maxnbest" value="3"/>
+  <property name="promptmaxage2" value="0s"/>
+  <property name="promptformat2" value="alaw" />
+  <property name="prompturl2" value="http://titus.i6net.org/tts/verbio/tts.php"/>
+  
+  <field name="text">
+   <grammar mode="voice" type="application/abnf" src="semaine.bnf"/>
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt>
+    Seleccionnar :
+Voy a hablar durante la seleccion :
+El cuento es una narración breve, escrita en prosa, en la que se relata una historia tanto real como ficticia. Además de su brevedad, el cuento tiene otras características estructurales que lo diferencian de la novela, la frontera entre un cuento largo y una novela corta no es fácil de definir. También se caracteriza por tener un reducido número de personajes y escasas descripciones. En lengua castellana, la redacción de cuentos es una especialidad de América, en contraposición a la especialidad española en filología y realismo.
+   </prompt>
+  </field>
+  <filled>
+   <prompt>
+    He reconocido :
+    <value expr="text" />
+   </prompt>
+   <clear namelist="text" />
+  </filled>
+ </form>
+</vxml>

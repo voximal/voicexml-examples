@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+
+ <menu id="menu">
+  <property name="inputmodes" value="voice dtmf"/>
+  <property name="timeout" value="30s"/>
+   <prompt>
+    Hablame :
+   </prompt>
+  <choice dtmf="1" next="#choice1">borja</choice>
+  <choice dtmf="2" next="#choice2">Ivan</choice>
+ </menu>
+   
+ <form id="choice1">
+  <block>
+   <prompt>
+    Opccion 1
+   </prompt>
+  </block>
+  <block>
+   <goto next="#menu"/>
+  </block>
+ </form>
+
+ <form id="choice2">
+  <block>
+   <prompt>
+    Opccion 2
+   </prompt>
+  </block>
+  <block>
+   <goto next="#menu"/>
+  </block>
+ </form>
+
+ <form id="choice3">
+  <block>
+   <prompt>
+    Opccion 3
+   </prompt>
+  </block>
+  <block>
+   <goto next="#menu"/>
+  </block>
+ </form>
+ 
+</vxml>

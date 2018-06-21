@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-UK">
+  <form>
+    <property name="inputmodes" value="dtmf"/>
+    <property name="timeout" value="30s"/>
+    <block>
+      <prompt bargein="false">
+        <break time="5s"/>
+      </prompt>
+    </block>
+    <block>
+      <prompt>I am going to dial 1 2 3 4 5 6 7 8 9 0 :
+        <audio src="dial:1234567890" />
+      </prompt>
+    </block>
+    <field name="value" type="digits?length=10">
+      <catch event="noinput nomatch">
+        <reprompt/>
+      </catch>
+      <prompt>Enter the digits :</prompt>
+      <filled>
+        <prompt>Value is :
+          <value expr="value" />
+        </prompt>
+      </filled>
+    </field>
+    <block>
+      <prompt>Goodbye !</prompt>
+      <exit expr="'OK'"/>
+    </block>
+  </form>
+</vxml>

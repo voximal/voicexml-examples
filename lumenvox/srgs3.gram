@@ -1,0 +1,7 @@
+#ABNF 1.0;
+language en-US;
+mode voice;
+root $command;
+public $command = $action $object;
+$action = "send a mail" | call | "send an email" | contact;
+$object = [to | for] (Ivan | Borja | Javier);

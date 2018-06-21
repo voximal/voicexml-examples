@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<vxml version="2.0">
+	<property name="inputmodes" value="voice dtmf"/>
+	<var name="no_login" expr="0" />
+	<form id="riconoscimento">
+		<property name="incompletetimeout" value="+4.0s"/>
+		<property name="speedvsaccuracy" value="1.0"/>
+		<field name="password"> 
+			<prompt>enter your password. </prompt>
+			<grammar src="grammatiche/gramm_spelling_citta_1.grxml"/>
+			<grammar src="builtin:dtmf/digits?minlength=4;maxlength=14"/>
+			<filled>
+				<prompt>you entred the code  <value expr="password" /> \speed  ?</prompt>
+			</filled>
+		</field>
+		<field name="conferma_password" >
+			<prompt bargein="true">
+				Confirm press 1, or 2 to enter again.
+			</prompt>
+			<grammar src="grammatiche/conf_1.grxml"/>
+			<grammar src="builtin:dtmf/boolean"/>
+			<catch event="nomatch noinput">
+				<goto next="#riconoscimento"/>
+			</catch>
+			<filled>
+				<if cond="conferma_password=='true'">
+					<if cond="password=='123456'" >
+						<prompt>Passord OK</prompt>
+	 					<var name="result" expr="'true'"/>
+						<return namelist="result"/>
+					<else/>
+						<assign name="no_login" expr="no_login+1" />
+						<if cond="no_login!=3" >
+							<prompt>Password Errata </prompt>
+							<goto next="#riconoscimento" />
+						<else/>
+							<prompt>Password failure</prompt>
+							<var name="result" expr="'false'"/>
+							<return namelist="result"/>
+						</if>
+					</if>
+				<else/>
+					<goto next="#riconoscimento"/>
+				</if>
+			</filled>
+		</field>
+	</form>
+</vxml>

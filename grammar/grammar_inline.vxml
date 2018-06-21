@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<vxml version = "2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="de-DE">
+<form>
+
+<property name="timeout" value="10s"/>
+<property name = "confidencelevel"  value="0.2"/>
+<property name = "inputmodes"  value="voice"/>
+<var name="confidence"/>
+<var name="intResult"/>
+
+<field name="digit" >
+
+<prompt bargein="false"> Ihre Nummer, bitte?</prompt>
+
+<grammar xml:lang="de-DE" mode="voice" root="main" tag-format="swi-semantics/1.0">
+
+<meta name="swirec_simple_result_key" content="out"/>
+<meta name="swirec_max_speech_duration" content="7000" />
+<meta name="incompletetimeout" content="500"/>
+<meta name="swirec_compile_parser" content="1"/>
+
+ <rule id="main" scope="public">
+    <one-of>
+      <item>jas<tag>out="yes";</tag></item>
+      <item>korrekt<tag>out="yes";</tag></item>
+      <item>nein<tag>out="yes";</tag></item>
+    </one-of>
+ </rule>
+</grammar>
+        <grammar xml:lang="en-US" root = "TOPLEVEL" mode="dtmf">
+        <rule id="TOPLEVEL" scope="public">
+            <one-of>
+                      <item>1<tag>caca="mama";</tag></item>
+                      <item>3<tag>papa</tag></item>
+            </one-of>
+        </rule>
+        </grammar>
+
+<filled>
+<assign name="intResult" expr="digit"/>
+<prompt xml:lang="de-DE" bargein="false" >Ich habe etwas gehoert!</prompt>
+<prompt xml:lang="de-DE" bargein="false" >Ich hoerte <value expr="intResult"/></prompt>
+<clear/>
+</filled>
+<nomatch>
+	<prompt xml:lang="de-DE" bargein="false">ich habe es nicht verstanden</prompt>
+	<reprompt/>
+</nomatch>
+<noinput>
+	<prompt xml:lang="de-DE" bargein="false">ich habe es nicht gehoert</prompt>
+</noinput>
+</field>
+ </form>
+</vxml>

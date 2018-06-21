@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="it-IT" root="VXML_NUM" version="1.0" mode="voice" tag-format="semantics/1.0">
+	<rule id="VXML_NUM" scope="public">
+		<one-of>
+			<item>
+				<ruleref uri="#INTEGRAL_NUMB"/>
+				<tag> $ = &quot;&quot; + $$</tag>
+			</item>
+			<item>
+				<ruleref uri="#JUST_FRAC"/>
+				<tag> $ = &quot;0.&quot; + $$</tag>
+			</item>
+			<item>
+				<ruleref uri="#INTEGRAL_AND_FRAC"/>
+				<tag> $ = &quot;&quot; + $$</tag>
+			</item>
+		</one-of>
+	</rule>
+	<rule id="INTEGRAL_NUMB" scope="public">
+		<ruleref uri="#fullnumber"/>
+		<tag> $ += $$</tag>
+	</rule>
+	<rule id="JUST_FRAC" scope="public">
+		<item>
+			<one-of>
+				<item>
+               punto 
+            </item>
+				<item>
+               virgola 
+            </item>
+			</one-of>
+		</item>
+		<ruleref uri="#DIGITS"/>
+		<tag> $ += $$</tag>
+	</rule>
+	<rule id="INTEGRAL_AND_FRAC" scope="public">
+		<item>
+			<ruleref uri="#INTEGRAL_NUMB"/>
+			<tag> $ += $$</tag>
+		</item>
+		<item>
+			<ruleref uri="#JUST_FRAC"/>
+			<tag> $ += '.' + $$</tag>
+		</item>
+	</rule>
+	<rule id="fullnumber">
+		<tag> $ = 0</tag>
+		<one-of>
+			<item>
+				<item>
+					<ruleref uri="#thousands"/>
+					<tag> $ += $$</tag>
+				</item>
+			</item>
+			<item>
+				<one-of>
+					<item>
+						<ruleref uri="#hundreds"/>
+						<tag> $ += $$</tag>
+						<item repeat="0-1">
+							<ruleref uri="#G1to100"/>
+							<tag> $ +=$$</tag>
+						</item>
+					</item>
+					<item>
+						<ruleref uri="#G1to100"/>
+						<tag> $ += $$</tag>
+					</item>
+				</one-of>
+			</item>
+			<item>
+				<item>
+					<ruleref uri="#thousands"/>
+					<tag> $ += $$</tag>
+				</item>
+				<one-of>
+					<item>
+						<ruleref uri="#hundreds"/>
+						<tag> $ += $$</tag>
+						<item repeat="0-1">
+							<ruleref uri="#G1to100"/>
+							<tag> $ +=$$</tag>
+						</item>
+					</item>
+					<item>
+						<ruleref uri="#G1to100"/>
+						<tag> $ += $$</tag>
+					</item>
+				</one-of>
+			</item>
+		</one-of>
+	</rule>
+	<rule id="G1to1000">
+		<one-of>
+			<item>
+				<ruleref uri="#hundreds"/>
+				<tag> $=$$</tag>
+				<item repeat="0-1">
+					<ruleref uri="#G1to100"/>
+					<tag> $ += $$</tag>
+				</item>
+			</item>
+			<item>
+				<ruleref uri="#G1to100"/>
+				<tag> $=$$</tag>
+			</item>
+		</one-of>
+	</rule>
+	<rule id="G1to100">
+		<one-of>
+			<item>
+				<ruleref uri="#G20to90"/>
+				<tag> $=$$</tag>
+				<item repeat="0-1">
+					<ruleref uri="#G1to9"/>
+					<tag> $ += $$</tag>
+				</item>
+			</item>
+			<item>
+				<ruleref uri="#G10to19"/>
+				<tag> $=$$</tag>
+			</item>
+			<item>
+				<ruleref uri="#G1to9"/>
+				<tag> $=$$</tag>
+			</item>
+		</one-of>
+	</rule>
+	<rule id="G10to19">
+		<one-of>
+			<item>
+            dieci 
+            <tag> $ = 10</tag>
+			</item>
+			<item>
+            undici 
+            <tag> $ = 11</tag>
+			</item>
+			<item>
+            dodici 
+            <tag> $ = 12</tag>
+			</item>
+			<item>
+            tredici 
+            <tag> $ = 13</tag>
+			</item>
+			<item>
+            quattordici 
+            <tag> $ = 14</tag>
+			</item>
+			<item>
+            quindici 
+            <tag> $ = 15</tag>
+			</item>
+			<item>
+            sedici 
+            <tag> $ = 16</tag>
+			</item>
+			<item>
+            diciasette 
+            <tag> $ = 17</tag>
+			</item>
+			<item>
+            diciotto 
+            <tag> $ = 18</tag>
+			</item>
+			<item>
+            diciannove 
+            <tag> $ = 19</tag>
+			</item>
+		</one-of>
+	</rule>
+	<rule id="G20to90">
+		<one-of>
+			<item>
+            venti 
+            <tag> $ = 20</tag>
+			</item>
+			<item>
+            trenta 
+            <tag> $ = 30</tag>
+			</item>
+			<item>
+            quaranta 
+            <tag> $ = 40</tag>
+			</item>
+			<item>
+            cinquanta 
+            <tag> $ = 50</tag>
+			</item>
+			<item>
+            sessanta 
+            <tag> $ = 60</tag>
+			</item>
+			<item>
+            settanta 
+            <tag> $ = 70</tag>
+			</item>
+			<item>
+            ottanta 
+            <tag> $ = 80</tag>
+			</item>
+			<item>
+            novanta 
+            <tag> $ = 90</tag>
+			</item>
+		</one-of>
+	</rule>
+	<rule id="G1to9">
+		<one-of>
+			<item>
+            uno 
+            <tag> $.value = 1;</tag>
+			</item>
+			<item>
+            due 
+            <tag> $.value = 2;</tag>
+			</item>
+			<item>
+            tre 
+            <tag> $.value = 3;</tag>
+			</item>
+			<item>
+            quattro 
+            <tag> $.value = 4;</tag>
+			</item>
+			<item>
+            cinque 
+            <tag> $.value = 5;</tag>
+			</item>
+			<item>
+            sei 
+            <tag> $.value = 6;</tag>
+			</item>
+			<item>
+            sette 
+            <tag> $.value = 7;</tag>
+			</item>
+			<item>
+            otto 
+            <tag> $.value = 8;</tag>
+			</item>
+			<item>
+            nove 
+            <tag> $.value = 9;</tag>
+			</item>
+			<item>
+            zero 
+            <tag> $.value = 0;</tag>
+			</item>
+		</one-of>
+	</rule>
+	<rule id="hundreds">
+		<one-of>
+			<item>
+            cento 
+            <tag> $=100</tag>
+				
+			</item>
+			<item>
+				<ruleref uri="#G1to100"/>
+				<one-of>
+					<item>cento</item>
+				</one-of>
+				<tag> $ = ($$ * 100)</tag>
+			</item>
+		</one-of>
+	</rule>
+	<rule id="thousands">
+		<one-of>
+			<item>
+            mille 
+            <tag> $=1000</tag>
+			</item>
+			<item>
+				<ruleref uri="#G1to1000"/>
+				<one-of>
+					<item>mila</item>
+				</one-of>
+				<tag> $ = ($$ * 1000)</tag>
+			</item>
+		</one-of>
+	</rule>
+	<rule id="DIGITS">
+		<!-- This allows digit strings of any length using number='1+' 
+   The script concatentates all the digits into the variable V
+  -->
+		<item repeat="1-">
+			<ruleref uri="#DIGIT"/>
+			<tag>$ += $$</tag>
+		</item>
+	</rule>
+	<rule id="DIGIT">
+		<one-of>
+			<item>
+				<ruleref uri="#ZERO"/>
+				<tag>$ = $$</tag>
+			</item>
+			<item>
+        uno <tag>$ ='1'</tag>
+			</item>
+			<item>
+        due <tag>$='2'</tag>
+			</item>
+			<item>
+        tre <tag>$='3'</tag>
+			</item>
+			<item>
+        quattro <tag>$='4'</tag>
+			</item>
+			<item>
+        cinque <tag>$='5'</tag>
+			</item>
+			<item>
+        sei <tag>$='6'</tag>
+			</item>
+			<item>
+        sette <tag>$='7'</tag>
+			</item>
+			<item>
+        otto <tag>$='8'</tag>
+			</item>
+			<item>
+        nove <tag>$='9'</tag>
+			</item>
+		</one-of>
+	</rule>
+	<rule id="ZERO">
+		<one-of>
+			<item>zero<tag>$ = 0</tag>
+			</item>
+		</one-of>
+	</rule>
+</grammar>

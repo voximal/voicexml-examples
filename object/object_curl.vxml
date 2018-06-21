@@ -1,0 +1,20 @@
+<?xml version = "1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en">
+	<form>
+	  <object name="message"
+	    classid="extern:curl">
+	    <param name="_src" expr="'http://localhost/vxml/soap.xml'" />
+	    <param name="_dest3" expr="'/tmp/test_curl'" />
+	    <param name="_mode3" expr="'text'" />
+	  </object>
+		<block>
+		  <prompt>
+		  Parameter = test.
+			Result = <value expr="message.soap_Envelope$soap_Body$dsCardholderBalance_IVR$strCardholderId" />.
+			Result = <value expr="message$.errcode" />.
+			Result = <value expr="message$.mimetype" />.
+			</prompt>
+			<exit/>
+		</block>
+	</form>
+</vxml>

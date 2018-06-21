@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="tr-TR">
+ <property name="prompturl3" value="http://tts6.i6net.org/tts/acapela/tts.php"/>
+ <form>
+  <block>
+   <prompt bargein="false">
+    Genelkurmay Başkanı Orgeneral Yaşar Büyükanıt, sınır ötesi operasyonun fayda getireceği görüşünü yineledi ve ''Kuzey Irak'a girip PKK'yı bitiririz, diyemezsiniz ama darbe vurursunuz'' dedi.
+   </prompt>
+  </block>
+ </form>
+</vxml>

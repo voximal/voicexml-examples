@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml"> 
+  <form id="form">
+   <var name="sentence" expr="'**1#2364'"/>
+   <block>
+  <script> <![CDATA[
+sentence = sentence.replace( '*' , 'X' );;
+sentence = sentence.replace( '#' , 'N' );;
+sentence = sentence.toLowerCase();
+    ]]> </script>
+    <prompt> 
+     Result is :  
+     <value expr="sentence"/>
+    </prompt> 
+   </block>
+  </form> 
+</vxml>
+

@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" >
+  <form>
+    <object name="request" classid="extern:curl" data="http://www.altiria.net/api/http">
+      <param name="_method" expr="'post'" />
+      <param name="cmd" expr="'sendsms'" />
+      <param name="domainId" expr="'test'" />
+      <param name="login" expr="'i6net'" />
+      <param name="passwd" expr="'fifcnrxr2'" />
+      <param name="dest" expr="'33677379042'" />
+      <param name="senderId" expr="'33677379042'" />
+      <param name="msg" expr="'test'" />
+    </object>
+    <block>Result
+      <value expr="request$.errcode" />.</block>
+    <object name="save" classid="save">
+      <param name="var" expr="request$.text"/>
+      <param name="dest" expr="'/tmp/sms.txt'"/>
+    </object>
+  </form>
+</vxml>

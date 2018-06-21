@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-UK">
+ <form>
+  <block>
+   <prompt>
+    <audio src="audio_1_1.WAV"/>
+    Test recording.
+   </prompt>
+  </block>
+  <record dtmfterm="true" maxtime="30s" type="audio/x-wav" name="record" beep="true">
+   <prompt> 
+    Leave your video message after the beep.
+   </prompt>
+  </record> 
+  <block>
+   <prompt>
+    <audio expr="record"/>
+   </prompt>   
+  </block>
+ </form>
+</vxml>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+  <form id="form">
+    <block>
+      <var name="test" expr="'1234'"/>
+      <prompt>Define a new variable. 
+        <value expr="test"/>
+      </prompt>            
+    </block>
+  </form>
+</vxml>

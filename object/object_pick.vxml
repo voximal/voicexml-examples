@@ -1,0 +1,31 @@
+<?xml version = "1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-UK">
+ <form>
+  <block>
+   <prompt>
+    Call the pick object.
+   </prompt>
+  </block>
+  <object name="pick" classid="pick">
+   <param name="src" expr="'/tmp/text.gif'"/>
+  </object>
+  <object name="pick2" classid="pick">
+   <param name="src" expr="'/tmp/text.gif'"/>
+   <param name="ext" expr="'txt'"/>
+  </object>
+  <object name="save" classid="save">
+   <param name="var" expr="pick"/>
+   <param name="dest" expr="'/tmp/loquendo2.wav'"/>
+  </object>
+  <object name="save2" classid="save">
+   <param name="var" expr="pick2"/>
+   <param name="dest" expr="'/tmp/loquendo2.txt'"/>
+  </object>
+  <block>
+   <prompt>
+    Value returned :
+    <audio expr="pick"/>
+   </prompt>
+  </block>
+ </form>
+</vxml>

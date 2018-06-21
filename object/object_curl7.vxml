@@ -1,0 +1,20 @@
+<?xml version = "1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en">
+	<form>
+	  <object name="message"
+	    classid="extern:curl">
+	    <param name="_src" expr="'http://localhost:80/vxml/json2.php'" />
+	    <param name="_method" expr="'get'" />
+	    <param name="arg1" expr="'1'" />
+	    <param name="arg2" expr="'2'" />
+	  </object>
+		<block>
+      <log>Result = <value expr="message.values[0].name" />. </log>
+		  <prompt>
+		  Parameter = test.
+			Result = <value expr="message.values[1].name" />.
+			</prompt>
+			<exit/>
+		</block>
+	</form>
+</vxml>

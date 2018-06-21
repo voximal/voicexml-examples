@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<vxml version = "2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="de-DE">
+  <form>
+    <property name="timeout" value="10s"/>
+    <property name = "confidencelevel" value="0.2"/>
+    <property name = "inputmodes" value="dtmf"/>
+    <property name = "termchar" value=""/>
+    <var name="confidence"/>
+    <var name="intResult"/>
+    <field name="digit" >
+      <prompt bargein="false">Ihre Nummer, bitte?</prompt>
+      <grammar xml:lang="en-US" root = "TOPLEVEL" mode="dtmf">
+        <rule id="TOPLEVEL">
+          <one-of>
+            <item>____#</item>
+            <item>*</item>
+          </one-of>
+        </rule>
+      </grammar>
+      <filled>
+        <assign name="intResult" expr="digit"/>
+				<if cond="digit=='*'">
+				  <goto next="#digit2"/>
+				</if>
+        <clear/>
+      </filled>
+      <nomatch>
+        <prompt xml:lang="de-DE" bargein="false">ich habe es nicht verstanden</prompt>
+        <reprompt/>
+      </nomatch>
+      <noinput>
+        <prompt xml:lang="de-DE" bargein="false">ich habe es nicht gehoert</prompt>
+      </noinput>
+    </field>
+  </form>
+	<form id="digit2">
+    <field name="digit2" >
+      <grammar xml:lang="en-US" root = "TOPLEVEL" mode="dtmf">
+        <rule id="TOPLEVEL">
+          <one-of>
+            <item>9</item>
+          </one-of>
+        </rule>
+      </grammar>
+      <filled>
+        <assign name="intResult" expr="digit2"/>
+        <prompt xml:lang="de-DE" bargein="false" >Ich habe etwas gehoert!</prompt>
+        <prompt xml:lang="de-DE" bargein="false" >Ich hoerte
+          <value expr="intResult"/>
+        </prompt>
+        <clear/>
+      </filled>
+      <nomatch>
+        <prompt xml:lang="de-DE" bargein="false">ich habe es nicht verstanden</prompt>
+        <reprompt/>
+      </nomatch>
+      <noinput>
+        <prompt xml:lang="de-DE" bargein="false">ich habe es nicht gehoert</prompt>
+      </noinput>
+    </field>
+  </form>
+</vxml>

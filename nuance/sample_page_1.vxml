@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml" xml:lang="el-GR" >
+
+	<meta name="GENERATOR" content="Omilia DiaManT" />
+	<property name="documentmaxage" value="0" />
+	<property name="documentmaxstale" value="0" />
+	<property name="grammarmaxage" value="0" />
+	<property name="grammarmaxstale" value="0" />
+	<property name="maxnbest" value="5"/>
+	<property name="confidencelevel" value="0.0"/>
+	<property name="swirec_app_state_tokens" value="DiaManT_log::HolCC::236F010B214F49E434F2BB7D5CE63C21::1."/>
+	<property name="recordutterance" value="true"/>
+
+	<var name="app" expr="'HolCC'"/> 
+	<var name="errorCnt" expr="0"/> 
+
+	<catch event="connection.disconnect.hangup">
+		<submit next="DialogServlet?userHangUp" namelist="app" />
+	</catch>
+	<catch event="error.noresource" cond="errorCnt &lt; 2">
+		<var name="errorType" expr="_event" /> 
+ 		<assign name="errorCnt" expr="errorCnt+1"/> 
+		<submit next="DialogServlet?noResourceError" namelist="app errorType" />
+	</catch>
+	<catch event="error" cond="errorCnt &lt; 2">
+		<var name="errorType" expr="_event" /> 
+ 		<assign name="errorCnt" expr="errorCnt+1"/> 
+		<submit next="DialogServlet?VXMLError" namelist="app errorType" />
+	</catch>
+	<catch event="error" cond="errorCnt &gt;= 2">
+ 		<assign name="errorCnt" expr="errorCnt+1"/> 
+		<exit /> 
+	</catch>
+
+	<form id="mainForm">
+		<property name="incompletetimeout" value="1500ms"/>
+		<property name="maxlength" value="10"/>
+		<property name="interdigittimeout" value="5s"/>
+		<property name="maxspeechtimeout" value="40000ms"/>
+		<property name="swirec_nbest_list_length" value="1"/>
+		<property name="com.genesys.accessasrresultproperties" value="true"/>
+		<property name="timeout" value="4000ms"/>
+		<property name="completetimeout" value="1200ms"/>
+		<property name="swirec_extra_nbest_keys" value="SWI_literal SWI_grammarName SWI_utteranceSNR SWI_meaning SWI_literalTimings SWI_rawScore"/>
+		<property name="swirec_lmweight" value="0.5"/>
+	<noinput>
+		<submit method="post" next="DialogServlet?noInputEventC" namelist="app" />
+ 	</noinput>
+	<nomatch>
+		<submit method="post" next="DialogServlet?noMatchEvent" namelist="app" />
+	</nomatch>
+
+<field name="MainRule">
+<prompt>
+	<audio src="http://192.168.0.110:8088/DiaManT.Prompts/HOL_2/HOL_P_1091.wav">
+Έχετε συνδεθεί με το νέο σύστημα αυτόματης εξυπηρέτησης της Hol.    	</audio>
+	<audio src="http://192.168.0.110:8088/DiaManT.Prompts/HOL_2/HOL_P_169_b.wav">
+Παρακαλώ πείτε μου. Πώς μπορώ να σας βοηθήσω;    	</audio>
+</prompt>
+	<grammar src="http://192.168.101.236:8080/DiaManT.Grammars/HOL/Hol_Slm.gram#SLMGetService" xml:lang="el-GR" />
+	<filled>
+		<var name="nextPage" expr="'1'" /> 
+		<submit next="DialogServlet" method="post" namelist="app nextPage" />
+	</filled>
+ </field>
+ </form>
+</vxml>

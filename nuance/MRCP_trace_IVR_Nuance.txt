@@ -1,0 +1,280 @@
+ο»Ώ# ********* Message from IVR ************************************************************************
+SETUP rtsp://192.168.101.236:4901/media/speechrecognizer RTSP/1.0
+CSeq: 2
+Transport: RTP/AVP;unicast;client_port=9362-9363;source=192.168.0.214
+Content-Type: application/sdp
+Content-Length: 212
+
+v=0
+o=Genesyslab 1392282531 1392282532 IN IP4 192.168.0.214
+s=GenesysLab SIP Call
+c=IN IP4 192.168.0.214
+t=0 0
+m=audio 0 RTP/AVP 0 96
+a=rtpmap:0 pcmu/8000
+a=rtpmap:96 telephone-event/8000
+a=fmtp:96 0-15
+
+# ********* Message from Nunace ------------------------------------------------------------------
+RTSP/1.0 200 OK
+CSeq: 2
+Transport: RTP/AVP;unicast;client_port=9362-9363;server_port=7892-7893;mode=record
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/sdp
+Content-Length: 360
+
+v=0
+o=- 6 6 IN IP4 192.168.101.236
+s=Nuance Open Speech Recognizer for MRCPv1
+c=IN IP4 192.168.101.236
+t=0 0
+a=control:rtsp://ifestos.omilia.com//media/speechrecognizer
+a=recvonly
+a=session-timeout:80000
+m=audio 7892 RTP/AVP 0 96 8 97
+a=rtpmap:0 pcmu/8000
+a=rtpmap:96 telephone-event/8000
+a=rtpmap:8 pcma/8000
+a=rtpmap:97 L16/8000
+a=fmtp:96 0-15
+
+# ********* Message from IVR ************************************************************************
+ANNOUNCE rtsp://192.168.101.236:4901/media/speechrecognizer RTSP/1.0
+CSeq: 3
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 719
+
+SET-PARAMS 3 MRCP/1.0
+dtmf-term-timeout:0
+speed-vs-accuracy:50
+sensitivity-level:50
+recognition-timeout:40000
+n-best-list-length:5
+speech-incomplete-timeout:1500
+confidence-threshold:0
+speech-complete-timeout:1200
+dtmf-interdigit-timeout:5000
+dtmf-term-char:#
+no-input-timeout:4000
+save-waveform:true
+logging-tag:GenesysLab_GVPOwner_Admin_HolCC%5fProxy__61889198-8713-4EA5-8D12-2EB9200F7E9C
+vendor-specific-parameters:swirec_nbest_list_length="1";swirec_lmweight="0.5";swirec_extra_nbest_keys="SWI_literal SWI_grammarName SWI_utteranceSNR SWI_meaning SWI_literalTimings SWI_rawScore";swirec_app_state_tokens="DiaManT_log::HolCC::236F010B214F49E434F2BB7D5CE63C21::1.";maxlength="10";accssasrsltprop="1"
+
+# ********* Message from Nunace ------------------------------------------------------------------
+RTSP/1.0 200 OK
+CSeq: 3
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 120
+
+MRCP/1.0 3 404 COMPLETE
+Vendor-Specific-Parameters: maxlength="10"
+Vendor-Specific-Parameters: accssasrsltprop="1"
+
+# ********* Message from IVR ************************************************************************
+ANNOUNCE rtsp://192.168.101.236:4901/media/speechrecognizer RTSP/1.0
+CSeq: 4
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 266
+
+DEFINE-GRAMMAR 4 MRCP/1.0
+Content-Type: text/uri-list
+Content-Length: 79
+Content-Id: CNGRAMMAREXPRESSION1_grammar30928
+Speech-Language: el-GR
+Cache-Control: max-age=0,max-stale=0
+
+http://192.168.101.236:8080/DiaManT.Grammars/HOL/Hol_Slm.gram#SLMGetService
+
+# ********* Message from Nunace ------------------------------------------------------------------
+RTSP/1.0 200 OK
+CSeq: 4
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 27
+
+MRCP/1.0 4 200 COMPLETE
+
+
+# ********* Message from IVR ************************************************************************
+ANNOUNCE rtsp://192.168.101.236:4901/media/speechrecognizer RTSP/1.0
+CSeq: 5
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 199
+
+RECOGNIZE 5 MRCP/1.0
+Recognizer-Start-Timers:false
+New-Audio-Channel:true
+Content-Type: text/uri-list
+Speech-Language: el-GR
+Content-Length: 47
+
+session:CNGRAMMAREXPRESSION1_grammar30928
+
+
+# ********* Message from Nunace ------------------------------------------------------------------
+RTSP/1.0 200 OK
+CSeq: 5
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 30
+
+MRCP/1.0 5 200 IN-PROGRESS
+
+# ********* Message from IVR ************************************************************************
+ANNOUNCE rtsp://192.168.101.236:4901/media/speechrecognizer RTSP/1.0
+CSeq: 6
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 39
+
+RECOGNITION-START-TIMERS 6 MRCP/1.0
+
+# ********* Message from Nunace ------------------------------------------------------------------
+RTSP/1.0 200 OK
+CSeq: 6
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 27
+
+MRCP/1.0 6 200 COMPLETE
+
+# ********* Message from Nunace ------------------------------------------------------------------
+ANNOUNCE rtsp://192.168.101.236:4900/media/speechrecognizer RTSP/1.0
+CSeq: 5
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 60
+
+START-OF-SPEECH 5 IN-PROGRESS MRCP/1.0
+Proxy-Sync-Id: 0
+
+# ********* Message from Nunace ------------------------------------------------------------------
+ANNOUNCE rtsp://192.168.101.236:4900/media/speechrecognizer RTSP/1.0
+CSeq: 5
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 3316
+
+RECOGNITION-COMPLETE 5 COMPLETE MRCP/1.0
+Waveform-URL: http://ifestos.omilia.com/waveforms-mrcp1/2014/02/13/11/WF_FCPMILKCAAADKBBNAAAAAAAA_GenesysLab_GVPOwner_Admin_HolCC_5fProxy__61889198-8713-4EA5-8D12-2EB9200F7E9C_20140213110851_245977.wav
+Content-Type: application/x-nlsml
+Completion-Cause: 000 success
+Content-Length: 2981
+
+<?xml version='1.0'?><result><interpretation grammar="session:CNGRAMMAREXPRESSION1_grammar30928" confidence="84"><input mode="speech">χρέωση ίντερνετ</input><instance><matchedString confidence="67">undefined|χρέωση ίντερνετ</matchedString><acousticConfidence confidence="67">undefined|0.538246</acousticConfidence><concept confidence="96">undefined|service:BILLING;action:CHARGES;</concept><SWI_literal>χρέωση ίντερνετ</SWI_literal><SWI_grammarName>session:CNGRAMMAREXPRESSION1_grammar30928</SWI_grammarName><SWI_meaning>{acousticConfidence:undefined|0.538246 concept:undefined|service:BILLING;action:CHARGES; matchedString:undefined|χρέωση ίντερνετ}</SWI_meaning><SWI_literalTimings><alignment type="word" unit_msecs="1"><word start="150" end="780" confidence="0.54">χρέωση</word><word start="780" end="1190" confidence="0.96">ίντερνετ</word></alignment></SWI_literalTimings><SWI_rawScore>-1970.564331</SWI_rawScore><SWI_utteranceSNR>30.000000</SWI_utteranceSNR></instance></interpretation><interpretation grammar="session:CNGRAMMAREXPRESSION1_grammar30928" confidence="14"><input mode="speech">χρεώσεις ίντερνετ</input><instance><matchedString confidence="32">undefined|χρεώσεις ίντερνετ</matchedString><acousticConfidence confidence="32">undefined|0.461736</acousticConfidence><concept confidence="74">undefined|service:BILLING;action:CHARGES;</concept><SWI_literal>χρεώσεις ίντερνετ</SWI_literal><SWI_grammarName>session:CNGRAMMAREXPRESSION1_grammar30928</SWI_grammarName><SWI_meaning>{acousticConfidence:undefined|0.461736 concept:undefined|service:BILLING;action:CHARGES; matchedString:undefined|χρεώσεις ίντερνετ}</SWI_meaning><SWI_literalTimings><alignment type="word" unit_msecs="1"><word start="150" end="750" confidence="0.46">χρεώσεις</word><word start="750" end="1190" confidence="0.96">ίντερνετ</word></alignment></SWI_literalTimings><SWI_rawScore>-1970.971191</SWI_rawScore><SWI_utteranceSNR>30.000000</SWI_utteranceSNR></instance></interpretation><interpretation grammar="session:CNGRAMMAREXPRESSION1_grammar30928" confidence="2"><input mode="speech">χρέωση</input><instance><matchedString confidence="1">undefined|χρέωση</matchedString><acousticConfidence confidence="43">undefined|0.538246</acousticConfidence><concept confidence="1">undefined|action:CHARGES;</concept><SWI_literal>χρέωση</SWI_literal><SWI_grammarName>session:CNGRAMMAREXPRESSION1_grammar30928</SWI_grammarName><SWI_meaning>{acousticConfidence:undefined|0.538246 concept:undefined|action:CHARGES; matchedString:undefined|χρέωση}</SWI_meaning><SWI_literalTimings><alignment type="word" unit_msecs="1"><word start="150" end="830" confidence="0.54">χρέωση</word></alignment></SWI_literalTimings><SWI_rawScore>-1974.990479</SWI_rawScore><SWI_utteranceSNR>30.000000</SWI_utteranceSNR></instance></interpretation></result>
+# ********* Message from IVR ************************************************************************
+ANNOUNCE rtsp://192.168.101.236:4901/media/speechrecognizer RTSP/1.0
+CSeq: 7
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 719
+
+SET-PARAMS 7 MRCP/1.0
+dtmf-term-timeout:0
+speed-vs-accuracy:50
+sensitivity-level:50
+recognition-timeout:40000
+n-best-list-length:5
+speech-incomplete-timeout:1500
+confidence-threshold:0
+speech-complete-timeout:1200
+dtmf-interdigit-timeout:5000
+dtmf-term-char:#
+no-input-timeout:4000
+save-waveform:true
+logging-tag:GenesysLab_GVPOwner_Admin_HolCC%5fProxy__61889198-8713-4EA5-8D12-2EB9200F7E9C
+vendor-specific-parameters:swirec_nbest_list_length="1";swirec_lmweight="0.5";swirec_extra_nbest_keys="SWI_literal SWI_grammarName SWI_utteranceSNR SWI_meaning SWI_literalTimings SWI_rawScore";swirec_app_state_tokens="DiaManT_log::HolCC::236F010B214F49E434F2BB7D5CE63C21::2.";maxlength="10";accssasrsltprop="1"
+
+# ********* Message from Nunace ------------------------------------------------------------------
+RTSP/1.0 200 OK
+CSeq: 7
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 120
+
+MRCP/1.0 7 404 COMPLETE
+Vendor-Specific-Parameters: maxlength="10"
+Vendor-Specific-Parameters: accssasrsltprop="1"
+
+# ********* Message from IVR ************************************************************************
+ANNOUNCE rtsp://192.168.101.236:4901/media/speechrecognizer RTSP/1.0
+CSeq: 8
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 279
+
+DEFINE-GRAMMAR 8 MRCP/1.0
+Content-Type: text/uri-list
+Content-Length: 92
+Content-Id: CNGRAMMAREXPRESSION1_grammar30931
+Speech-Language: el-GR
+Cache-Control: max-age=0,max-stale=0
+
+http://192.168.101.236:8080/DiaManT.Grammars/HOL/Survey_Confirmation.gram#Confirm_Survey
+
+# ********* Message from Nunace ------------------------------------------------------------------
+RTSP/1.0 200 OK
+CSeq: 8
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 27
+
+MRCP/1.0 8 200 COMPLETE
+
+# ********* Message from IVR ************************************************************************
+ANNOUNCE rtsp://192.168.101.236:4901/media/speechrecognizer RTSP/1.0
+CSeq: 9
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 199
+
+RECOGNIZE 9 MRCP/1.0
+Recognizer-Start-Timers:false
+New-Audio-Channel:true
+Content-Type: text/uri-list
+Speech-Language: el-GR
+Content-Length: 47
+
+session:CNGRAMMAREXPRESSION1_grammar30931
+
+# ********* Message from Nunace ------------------------------------------------------------------
+RTSP/1.0 200 OK
+CSeq: 9
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 30
+
+MRCP/1.0 9 200 IN-PROGRESS
+
+# ********* Message from IVR ************************************************************************
+ANNOUNCE rtsp://192.168.101.236:4901/media/speechrecognizer RTSP/1.0
+CSeq: 10
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 20
+
+STOP 10 MRCP/1.0
+
+# ********* Message from Nunace ------------------------------------------------------------------
+RTSP/1.0 200 OK
+CSeq: 10
+Session: FCPMILKCAAADKBBNAAAAAAAA
+Content-Type: application/mrcp
+Content-Length: 55
+
+MRCP/1.0 10 200 COMPLETE
+Active-Request-Id-List: 9
+
+# ********* Message from IVR ************************************************************************
+TEARDOWN rtsp://192.168.101.236:4901/media/speechrecognizer RTSP/1.0
+CSeq: 11
+Session: FCPMILKCAAADKBBNAAAAAAAA
+
+****** Nuance *******
+RTSP/1.0 200 OK
+CSeq: 11
+Session: FCPMILKCAAADKBBNAAAAAAAA

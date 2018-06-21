@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-GB">
+ <form>
+  <property name="inputmodes" value="voice"/>
+  <property name="timeout" value="30s"/>
+  <field name="text">
+   <grammar mode="voice" src="digit4.grm"/>
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt>
+    Please enter your 4 digits code :
+   </prompt>
+  </field>
+  <filled>
+   <prompt>
+    Your code is :
+    <value expr="text" />
+   </prompt>
+   <clear namelist="text" />
+  </filled>
+ </form>
+</vxml>

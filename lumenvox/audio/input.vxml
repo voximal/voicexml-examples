@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-GB">
+ <form>
+  <property name="inputmodes" value="voice"/>
+  <property name="timeout" value="10s"/>
+  <field name="text" type="digits">
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt>
+    Please, say a number :
+   </prompt>
+  </field>
+  <filled>
+   <prompt>
+    You said :
+    <value expr="text" />
+   </prompt>
+   <prompt>
+    <break time="500ms" />
+   </prompt>
+   <clear namelist="text" />
+  </filled>
+ </form>
+</vxml>

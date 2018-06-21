@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+ <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+   <form id="demo-transfer">
+     <block>
+       <prompt>
+         Transfer test.
+       </prompt>
+     </block>
+     <transfer name="test" bridge="true" dest="ori:user1=dial3g(03030)" connecttimeout="20s" maxtime="0s">
+     </transfer>
+     <block>
+      <prompt bargein="false">
+        <break time="5s"/>
+      </prompt>     
+       <prompt>
+         End of Transfer test <value expr="test$.value" />.
+       </prompt>
+     </block>
+   </form>
+ </vxml>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="fr-FR">
+  <form>
+    <property name="inputmodes" value="voice"/>  
+    <property name="timeout" value="15s"/>    
+    <field name="pin" type="text">
+      <prompt>Dis moi quelque chose :</prompt>
+      <prompt>tu peux l'interrompre c'est pour tester la fonction BARGEIN :</prompt>
+      <filled>
+        <prompt>J'ai compris :
+          <value expr="pin"/>
+        </prompt>
+        <clear namelist="pin"/>
+      </filled>
+      <nomatch>
+			  <prompt>
+           Désolé, je n'ai pas compris.
+         </prompt>
+        <reprompt/>
+      </nomatch>
+      <noinput>
+			  <prompt>
+           Désolé, je n'ai rien entendu.
+         </prompt>
+        <reprompt/>
+      </noinput>
+    </field>
+  </form>
+</vxml>

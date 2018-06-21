@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+ <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+   <var name="conference" expr="'user1'"/>
+   
+   <form id="welcome" >
+     <block>
+       <prompt xml:lang="en-UK-momo">
+       Welcome. 
+       </prompt>
+     </block>
+     <block>   
+       <goto next="#callagent" />
+     </block>
+   </form>
+
+   <form id="callagent">
+     <block>
+       <prompt>
+         Calling the Agent.
+       </prompt>
+     </block>   
+     <transfer name="test" bridge="true" destexpr="'originate:user2=conference('+conference+'/12o)'" connecttimeout="50s" maxtime="700s"/>     
+     <transfer bridge="true" destexpr="'conference:'+conference+'/21Mo'"/>
+   </form>
+ </vxml>

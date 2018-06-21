@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+  <property name="documentmaxage" value="0"/>
+  <property name="documentmaxstale" value="0"/>
+  <var name="gram" expr="'basic'"/>
+  <form id="Start">
+    <field name="explicit_gram1">
+      <prompt>
+        Grammar test :
+      </prompt>
+      <grammar mode="dtmf" srcexpr="gram+'.jsgf'" type="text/x-grammar-choice-dtmf"/>
+      <filled>
+        <prompt>
+          you chose:
+          <value expr="explicit_gram1"/>
+        </prompt>
+      </filled>
+    </field>
+  </form>
+</vxml>

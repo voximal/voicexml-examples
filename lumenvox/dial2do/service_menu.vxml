@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1" 
+      xmlns="http://www.w3.org/2001/vxml" 
+      xml:lang="en-US"> 
+<property name="fetchtimeout" value="15s"/>
+<property name="timeout" value="15s"/>
+<property name="inputmodes" value="voice dtmf"/>
+
+  
+  
+<!-- global urls -->
+<var name="urls"/>
+
+
+<script>
+  <![CDATA[
+      urls = {
+        'service_end':'http://jono.rococo.local/353862448869/35315262714/vxml/service_end',
+        'service_start':'http://jono.rococo.local/353862448869/35315262714/vxml/service_start',
+        'call_end':'http://jono.rococo.local/353862448869/35315262714/vxml/call_end',
+        'contacts_menu':'http://jono.rococo.local/353862448869/35315262714/vxml/contacts_menu_nbest',
+        'new_message':'http://jono.rococo.local/353862448869/35315262714/vxml/new_message',
+        'update_message':'http://jono.rococo.local/353862448869/35315262714/vxml/update_message',
+        'hide_message':'http://jono.rococo.local/353862448869/35315262714/vxml/hide_message',
+        'confirm_grm':'http://jono.rococo.local/353862448869/35315262714/vxml/grammar/confirm.gram',
+        'services_grm':'http://jono.rococo.local/353862448869/35315262714/vxml/grammar/servicesABNF.gram',
+        'service_menu':'http://jono.rococo.local/353862448869/35315262714/vxml/grammar/service_menuABNF.gram'
+      };
+  ]]>
+
+</script>
+
+
+<!-- global vars -->
+<var name="debug" expr="false"/>
+<var name="service_id" expr="0"/>
+<var name="service_def_id" expr="0"/>
+<var name="caller_id" expr="'353862448869'"/>
+<var name="call_id" expr="''"/>
+<var name="dialed_number" expr="'35315262714'"/>
+<var name="end_status" expr="'SUCCESS'"/>
+<var name="end_cause" expr="'END SERVICE'"/>
+<var name="strMediaExt" expr="('video' == session.connection.callmode)?'.3gp':'.wav'"/>
+<var name="record_prompt"/>
+
+<!-- vxml config variables  -->
+<property name="documentmaxage" value="0"/>
+<property name="audiomaxage" value="0"/>
+<property name="confidencelevel" value="0.1"/>
+<property name="fetchaudiodelay" value="2s"/>
+
+<property name="sensitivity" value="0.3"/>
+
+<property name="speedvsaccuracy" value="0.5"/>
+
+<!-- global event handlers  -->
+
+<catch event="connection.disconnect.hangup">
+  <prompt cond="debug">disconnect event</prompt>
+  <log expr="'***********************'" label="trace:?level=VD_INFO"/>
+  <log expr="'------ CAUGHT OUTER DISC calling exit ------'" label="trace:?level=VD_INFO"/>
+  <log expr="'***********************'" label="trace:?level=VD_INFO"/>
+  <!--<data expr="urls.call_end"/>-->
+  <!--<object name="request" classid="extern:http">-->
+      <!--<param name="src" expr="urls.call_end" />-->
+  <!--</object>-->
+  <exit/>
+</catch>
+
+<catch event="start_over">
+  <prompt>main menu<break strength="medium"/></prompt>
+  
+<assign name="end_cause" expr="'START OVER VOICE'"/>
+
+<submit next="http://jono.rococo.local/353862448869/35315262714/vxml/service_end" namelist="call_id service_id service_def_id end_cause"/>
+</catch>
+
+<catch event="start_over_key">
+  <prompt>main menu<break strength="medium"/></prompt>
+  
+<assign name="end_cause" expr="'START OVER KEY'"/>
+
+<submit next="http://jono.rococo.local/353862448869/35315262714/vxml/service_end" namelist="call_id service_id service_def_id end_cause"/>
+</catch>
+
+<link dtmf="*" event="start_over_key">
+</link>
+
+<link event="start_over">
+  <grammar mode="voice" version="1.0" root="startover">
+    <rule id="startover" scope="public">
+      <one-of>
+        <item>start over</item>
+        <item>main menu</item>
+      </one-of>
+    </rule>
+  </grammar>
+</link>
+
+<catch event="hang_up">
+  <prompt>Thanks for using dial to do. Goodbye.<break strength="medium"/></prompt>
+  <!--<data expr="urls.call_end"/>-->
+  <!--<object name="request" classid="extern:http">-->
+      <!--<param name="src" expr="urls.call_end" />-->
+  <!--</object>-->
+  <disconnect/>
+</catch>
+
+<link event="hang_up">
+  <grammar mode="voice" version="1.0" root="hangup">
+    <rule id="hangup" scope="public">
+      <one-of>
+        <item>hang up</item>
+      </one-of>
+    </rule>
+  </grammar>
+</link>
+
+
+<catch event="connection.disconnect.hangup">
+  <submit expr="urls.call_end"/>
+</catch>
+
+
+  <var name="url"/>
+<var name="tag"/>
+<var name="tmp_url"/>
+<var name="service_def_id"/>
+
+
+
+
+
+
+
+
+                              
+<form id="get_service">
+
+    <!-- End of no user found check-->
+    <field name="service_select">
+        <property name="confidencelevel" value="0.3"/>
+        <property name="inputmodes" value="voice dtmf"/>
+        <prompt>
+            Watt would you like to do.
+        </prompt>
+        <grammar src="servicesABNF.gram"
+                 type="application/lumenvox-abnf"/>
+        <!--<grammar src="http://jono.rococo.local/353862448869/35315262714/vxml/grammar/services_dtmfABNF.gram"-->
+                 <!--type="application/lumenvox-abnf"/>-->
+        <!-- grammar srcexpr="urls.services_grm"/-->
+        <noinput count="1">
+            <prompt>
+                Sorry, I didn't hear you.
+            </prompt>
+            <reprompt/>
+        </noinput>
+      <noinput count="2">
+          <prompt>
+              Sorry, I didn't hear you. For a list of your commands, say: help.
+          </prompt>
+          <reprompt/>
+      </noinput>
+        <nomatch count="1">
+            <prompt>
+                Sorry I didn't understand you.
+            </prompt>
+            <reprompt/>
+        </nomatch>
+      <nomatch count="2">
+          <prompt>
+              Sorry I didn't understand you.  For a list of your commands, say: help.
+          </prompt>
+          <reprompt/>
+      </nomatch>
+        <filled>
+            <if cond="service_select$.confidence &gt; 0.40">
+                <assign name="service_def_id" expr="service_select.id"/>
+                <assign name="tag" expr="service_select.tag"/>
+                <goto nextitem="predummy"/>
+            <else/>
+                <goto nextitem="confirm"/>
+            </if>
+        </filled>
+    </field>
+
+    <field name="confirm" slot="confirm">
+        <property name="confidencelevel" value="0.45"/>
+
+        <prompt>
+            Did you say
+            <value expr="service_select.name"/>
+            ?
+        </prompt>
+        <grammar src="confirmABNF.gram"
+                 type="application/lumenvox-abnf"/>
+        <!--<grammar src="http://jono.rococo.local/353862448869/35315262714/vxml/grammar/confirm_dtmfABNF.gram"-->
+                 <!--type="application/lumenvox-abnf"/>-->
+        <!-- grammar srcexpr="urls.confirm_grm"/-->
+        <filled>
+            <if cond="confirm.ans == 'yes'">
+                <assign name="service_def_id" expr="service_select.id"/>
+                <assign name="url" expr="service_select.url"/>
+                <assign name="tag" expr="service_select.tag"/>
+                <goto nextitem="predummy"/>
+                <else/>
+                <assign name="service_select" expr="undefined"/>
+                <assign name="confirm" expr="undefined"/>
+                <goto nextitem="service_select"/>
+            </if>
+        </filled>
+        <nomatch>
+            <prompt>
+                Sorry I didn't understand you.
+            </prompt>
+            <reprompt/>
+        </nomatch>
+        <noinput>
+            <prompt>
+                Sorry I didn't hear you.
+            </prompt>
+            <reprompt/>
+        </noinput>
+    </field>
+
+
+    <block name="predummy">
+        <if cond="service_select.name == 'messages'">
+            <submit next="http://jono.rococo.local/353862448869/35315262714/vxml/listen"
+                    namelist="call_id"
+                    fetchaudio="/media/busy.wav"/>
+            <elseif cond="service_select.name == 'help'"/>
+            <submit next="http://jono.rococo.local/353862448869/35315262714/vxml/commands"
+                    namelist="call_id"
+                    fetchaudio="/media/busy.wav"/>
+            <elseif cond="service_select.name == 'system_status'"/>
+            <submit next="http://jono.rococo.local/353862448869/35315262714/vxml/status_listen" namelist="call_id"/>
+            <else/>
+            <goto nextitem="dummy"/>
+        </if>
+    </block>
+
+
+    <field name="dummy">
+        <property name="timeout" value="500ms"/>
+
+        <prompt bargein="false">
+            <value expr="service_select.name"/>
+            .
+        </prompt>
+
+        <!-- create a 'garbage' grammar that will NEVER get a match -->
+        <grammar mode="voice" root="dummyrule">
+            <rule id="dummyrule">
+                <one-of>
+                    <item>XXXXX XXXX</item>
+                </one-of>
+            </rule>
+        </grammar>
+        <filled>
+            <prompt>
+                No way this will ever happen.
+            </prompt>
+        </filled>
+
+        <noinput>
+            <assign name="user_token" expr="'f2c5460c-12f3-4cae-95cf-4ac0849b0807'"/>
+            <!--<data expr="urls.service_start" namelist="service_def_id"/>-->
+            <!--<object name="request" classid="extern:http">-->
+                <!--<param name="src" expr="urls.service_start + '?service_def_id=' + service_def_id " />-->
+            <!--</object>-->
+            <submit fetchaudio="/media/busy.wav"
+                    fetchtimeout="60s"
+                    expr="'http://jono.rococo.local/353862448869/35315262714/vxml/replaceME'.replace(/replaceME/,service_select.url)"
+                    method="post" namelist="service_def_id tag"/>
+        </noinput>
+        <nomatch>
+            <assign name="user_token" expr="'f2c5460c-12f3-4cae-95cf-4ac0849b0807'"/>
+            <!--<data expr="urls.service_start" namelist="service_def_id"/>-->
+            <!--<object name="request" classid="extern:http">-->
+                <!--<param name="src" expr="urls.service_start + '?service_def_id=' + service_def_id " />-->
+            <!--</object>-->
+            <submit fetchaudio="/media/busy.wav"
+                    fetchtimeout="60s"
+                    expr="'http://jono.rococo.local/353862448869/35315262714/vxml/replaceME'.replace(/replaceME/,service_select.url)"
+                    method="post" namelist="service_def_id tag"/>
+        </nomatch>
+    </field>
+
+</form>
+
+
+
+    
+</vxml>

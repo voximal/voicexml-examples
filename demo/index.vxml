@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-UK">
+ <property name="urlprompt2" value="blbla.php" />
+ <form>
+  <block>
+   <prompt xml:lang="text">
+Menu
+1> Test 1
+2> Test 2
+3> Test 1
+   </prompt>
+   <prompt>
+    <audio src="image/fleurs2.gif"/>
+    <audio src="audio/jingle.wav"/>
+Menu
+1> Test 1
+2> Test 2
+3> Test 1
+   </prompt>
+  </block>
+  <block>
+   <exit expr="'TOTO'" />
+  </block>
+  <transfer name="services" bridge="true" connecttimeout="30s" dest="tel:SIP/borja" />
+  <transfer name="services2" bridge="true" connecttimeout="30s" dest="tel:SIP/0456008019@62.22.9.118" />
+  <block>
+   <prompt>
+    <audio src="audio/jingle.wav"/>
+   </prompt>
+  </block>
+ </form>
+</vxml>

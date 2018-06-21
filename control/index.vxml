@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+ <form>
+  <property name="control" value="true" />
+  <block>
+   <audio expr="'test.wav|'+9000"/>
+  </block>
+ </form>
+</vxml>

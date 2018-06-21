@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+ <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+<property name="prompturlvideo" value="ttv.php" />
+<property name="promptposition"  value="30" />
+<property name="promptmemory" value="false"/>
+ 
+   <form id="demo-transfer">
+     <block>
+       <prompt>
+       Enter your password. 
+       </prompt>
+     </block>
+     <transfer bridge="true" dest="cli:help">
+      <property name="promptmemory" value="true"/>
+      <prompt>
+       Salut les gas !
+      </prompt>       
+     </transfer>
+     <block>
+       <prompt>
+       Goto. 
+       </prompt>     
+       <goto next="#demo-transfer2" />
+     </block>
+   </form>
+
+   <form id="demo-transfer2">
+     <block>
+       <prompt>
+         End of Transfer test.
+       </prompt>
+       <prompt>
+         <audio src="memory://1" />
+       </prompt>
+       <prompt>
+         <audio src="memory://-1" />
+       </prompt>
+       <prompt>
+         <audio src="memory://1" />
+       </prompt>
+     </block>
+   </form>
+ </vxml>

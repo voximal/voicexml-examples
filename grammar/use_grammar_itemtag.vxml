@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-US">
+  <form id="main">
+    <field name="hear_another">
+      <catch event="noinput">
+        <reprompt/>
+      </catch>
+      <prompt>Hello</prompt>
+      <catch event="nomatch">
+        <clear/>
+      </catch>
+      <grammar expr="'grammar.grxml'"/>
+      <audio src="helloworld.wav"/>
+      <filled>
+        <prompt>You said :
+          <value expr="hear_another"/>
+        </prompt>
+        <log expr="hear_another"/>
+        <if cond="hear_another != 'one'">
+          <clear/>
+        </if>
+      </filled>
+    </field>
+  </form>
+</vxml>

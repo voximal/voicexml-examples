@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+  <form>
+    <property name="inputmodes" value="voice"/>  
+    <property name="timeout" value="15s"/>    
+    <field name="pin" >
+     <grammar src="builtin:grammar/digits"/>    
+      <prompt>Dime un numero :</prompt>
+      <filled>
+        <prompt>Tu dijiste
+          <value expr="pin"/>
+        </prompt>
+        <clear namelist="pin"/>
+      </filled>
+      <nomatch count="1">Lo sentimos, no entendi eso. Intentelo de nuevo.
+        <reprompt/>
+      </nomatch>
+    </field>
+  </form>
+</vxml>

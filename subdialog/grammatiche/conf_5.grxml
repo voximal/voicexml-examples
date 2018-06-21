@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="fr-FR" root="conf" version="1.0" mode="voice" tag-format="semantics/1.0">
+<rule id="conf" scope="public">
+<one-of>
+<item> ok<tag>out=true</tag></item>
+<item> si<tag>out=true</tag></item>
+<item> oui<tag>out=true</tag></item>
+<item> non<tag>out=false</tag></item>
+</one-of>
+</rule>
+</grammar>

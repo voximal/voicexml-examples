@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xml:lang="fr-FR" xmlns="http://www.w3.org/2001/vxml" version="2.0">
+
+	<form id="formid">
+	
+		<!-- events management -->
+		<catch event="connection.disconnect.hangup">			
+			<log>info:+@_Accueil.event=connection.disconnect.hangup</log>			
+		</catch>
+
+		<field name="acceuil">
+			<property name="inputmodes" value="voice"/>
+  			<property name="timeout" value="5s"/>
+					 
+			<!-- grammars add -->
+   		 	<grammar mode="voice" src="jours.grxml" type="application/srgs+xml"/>
+   		 	<!--grammar mode="voice" src="ouinon.grm"/-->
+   		 	
+   		 	<!--grammar xml:lang="fr-FR" root="name">
+        	<rule id="name">
+          		<one-of>
+            		<item>chocolat</item>
+            		<item>vanille</item>
+          		</one-of>
+        	</rule>
+      		</grammar-->
+
+			<!-- prompts add -->
+			<prompt>Bonjour et bienvenue au Service Client. Quelle est la raison de votre appel ?</prompt>
+	
+			<!-- no input management-->
+			<noinput>
+				<log>info:+@_Accueil.noinput</log>				
+				<var name="text"  expr="'noInputEvent'"></var>
+				<submit next="http://192.168.1.31:1880/ivr" namelist="text"/>
+			</noinput>
+		
+			<!-- no match management -->
+			<nomatch>					
+				<log label="traces">IsRvsatNOK =false:false</log> 
+				<log>info:+@_Accueil.nomatch</log>				
+				<var name="text"  expr="'noMatchEvent'"></var>
+				<submit next="http://192.168.1.31:1880/ivr" namelist="text"/>
+				
+			</nomatch>
+		  
+			<filled> 
+				<log>info:+@_Accueil.match</log>							
+				<var name="text"  expr="'recoEvent'"></var>				
+				<submit next="http://192.168.1.31:1880/ivr" namelist="text"/>
+			</filled>
+		</field>
+	</form>
+</vxml>

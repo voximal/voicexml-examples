@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml20/vxml.xsd" xml:lang="en-US">
+  <property name="inputmodes" value="voice"/>
+  <form id="get_from_and_to_cities">
+      <grammar type="application/srgs+xml">
+        <rule id="all" scope="private">
+          <one-of>
+            <item>!Monday
+              <tag>out.from_city = "mon";</tag>
+            </item>
+            <item>!Tuesday
+              <tag>out.from_city = "tues";</tag>
+            </item>
+            <item>!Wednesday
+              <tag>out.from_city = "wed";</tag>
+            </item>
+            <item>!Thursday
+              <tag>out.from_city = "thurs";</tag>
+            </item>
+            <item>!Friday
+              <tag>out.from_city = "fri";</tag>
+            </item>
+            <item>!Saturday
+              <tag>out.from_city = "sat";</tag>
+            </item>
+            <item>!Sunday
+              <tag>out.from_city = "sun";</tag>
+            </item>
+          </one-of>
+        </rule>
+      </grammar>
+      <grammar type="application/srgs+xml">
+        <rule id="all2" scope="private">
+          <one-of>
+            <item>!red
+              <tag>out.to_city = "red";</tag>
+            </item>
+            <item>!blue
+              <tag>out.to_city = "blue";</tag>
+            </item>
+            <item>!yellow
+              <tag>out.to_city = "yellow";</tag>
+            </item>
+          </one-of>
+        </rule>
+      </grammar>
+    <block>Welcome to the Driving Directions By Phone.</block>
+    <initial name="bypass_init">
+      <property name="" value=""/>
+      <prompt>Where do you want to drive from and to?</prompt>
+      <nomatch count="1">Please say something like "from Atlanta Georgia to Toledo Ohio".</nomatch>
+      <nomatch count="2">I'm sorry, I still don't understand. I'll ask you for information one piece at a time.
+        <assign name="bypass_init" expr="true"/>
+        <reprompt/>
+      </nomatch>
+    </initial>
+    <field name="from_city">
+      <grammar type="application/srgs+xml">
+        <rule id="day" scope="private">
+          <one-of>
+            <item>!Monday
+              <tag>out = "mon";</tag>
+            </item>
+            <item>!Tuesday
+              <tag>out = "tues";</tag>
+            </item>
+            <item>!Wednesday
+              <tag>out = "wed";</tag>
+            </item>
+            <item>!Thursday
+              <tag>out = "thurs";</tag>
+            </item>
+            <item>!Friday
+              <tag>out = "fri";</tag>
+            </item>
+            <item>!Saturday
+              <tag>out = "sat";</tag>
+            </item>
+            <item>!Sunday
+              <tag>out = "sun";</tag>
+            </item>
+          </one-of>
+        </rule>
+      </grammar>
+      <prompt>From which city are you leaving?</prompt>
+    </field>
+    <field name="to_city">
+      <grammar type="application/srgs+xml">
+        <rule id="color" scope="private">
+          <one-of>
+            <item>!red
+              <tag>out = "red";</tag>
+            </item>
+            <item>!blue
+              <tag>out = "blue";</tag>
+            </item>
+            <item>!yellow
+              <tag>out = "yellow";</tag>
+            </item>
+          </one-of>
+        </rule>
+      </grammar>
+      <prompt>Which city are you going to?</prompt>
+    </field>
+  </form>
+</vxml>

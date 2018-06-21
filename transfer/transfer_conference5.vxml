@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+ <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+   <var name="conference" expr="'user1'"/>
+   
+   <form id="welcome">
+     <block>
+       <prompt>
+       Welcome. 
+       </prompt>
+     </block>
+     <block>   
+       <goto next="#callagent" />
+     </block>
+   </form>
+
+   <form id="callagent">
+     <block>
+       <prompt>
+         Calling the Agent.
+       </prompt>
+     </block>   
+     <transfer name="leg1" bridge="true" dest="originate:LOCAL/801=Konference(0001)" connecttimeout="20s" maxtime="0s">
+     </transfer>
+     <transfer name="leg2" bridge="true" dest="originate:SIP/user2=Konference(0001)" connecttimeout="20s" maxtime="0s">
+     </transfer>
+     <transfer name="leg3" bridge="true" dest="application:Konference(0001,Mx)" connecttimeout="20s" maxtime="0s">
+     </transfer>
+   </form>
+ </vxml>

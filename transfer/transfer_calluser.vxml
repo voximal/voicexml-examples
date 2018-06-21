@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+ 
+ <property value="5s" name= "termtimeout" />
+ 
+ <var name="phone" expr="''"/>
+ <var name="conference" expr="session.connection.local.uri"/> 
+  
+ <form id="transfer">
+  <transfer name="wait" bridge="true" dest="application:wait(2)"/>
+  <transfer name="transfer" bridge="true" destexpr="'outgoing:H323/192.168.1.1=vxml(@600)'" connecttimeout="5s">
+  </transfer> 
+  <block>
+   <if cond="transfer == 'noanswer'">
+    <disconnect/>
+   </if>
+  </block>
+ </form>  
+  
+</vxml>

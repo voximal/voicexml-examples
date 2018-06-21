@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-UK">
+ <form>
+  <property name="inputmodes" value="voice"/>
+  <property name="timeout" value="30s"/>
+  <field name="text">
+   <option dtmf="1" value="Choice 1">1</option>
+   <option dtmf="2" value="Choice 2">2</option>
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt>
+    Speak to me :
+   </prompt>
+  </field>
+  <filled>
+   <prompt>
+    You say me :
+    <value expr="text" />
+   </prompt>
+   <clear namelist="text" />
+  </filled>
+ </form>
+</vxml>

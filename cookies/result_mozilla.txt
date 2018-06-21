@@ -1,0 +1,25 @@
+GET http://prius.i6net.com/vxml/tests/cookies/setcookies.php HTTP/1.1
+Host: prius.i6net.com
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; fr; rv:1.8.1.14) Gecko/20080404 Firefox/2.0.0.14
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+Accept-Language: fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Proxy-Connection: keep-alive
+Referer: http://prius.i6net.com/vxml/tests/cookies/
+Cookie: __utma=220078529.638093438.1204623206.1204623206.1206606547.2; __utmz=220078529.1204623206.1.1.utmccn=(direct)|utmcsr=(direct)|utmcmd=(none)
+
+HTTP/1.0 200 OK
+Date: Wed, 30 Apr 2008 12:37:33 GMT
+Server: Apache/2.2.3 (Debian) mod_python/3.2.10 Python/2.4.4 PHP/5.2.0-8+etch10 mod_perl/2.0.2 Perl/v5.8.8
+X-Powered-By: PHP/5.2.0-8+etch10
+Set-Cookie: TestCookie=something+from+somewhere
+Set-Cookie: TestCookie=something+from+somewhere; expires=Wed, 30-Apr-2008 13:37:33 GMT
+Set-Cookie: TestCookie=something+from+somewhere; expires=Wed, 30-Apr-2008 13:37:33 GMT; path=/~rasmus/; domain=.example.com; secure
+Content-Length: 278
+Content-Type: text/html; charset=UTF-8
+X-Cache: MISS from proxy-meylan.eservglobal.fr
+Proxy-Connection: keep-alive
+
+<?xml version="1.0" encoding="iso-8859-1" ?> <vxml xml:lang="en-UK" version="2.0" xmlns="http://www.w3.org/2001/vxml">  <form>   <block>    <prompt>    Set the cookies in the HTTP request.    </prompt>    <goto method="post" next="getcookies.php" />   </block>  </form> </vxml> 

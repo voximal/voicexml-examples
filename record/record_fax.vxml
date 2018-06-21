@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+  <form>
+    <record name="message" beep="true" maxtime="600s" type="image/tiff">
+      <prompt>Send your Fax.</prompt>
+      <filled>
+        <submit namelist = "message" method = "post"  enctype="multipart/form-data" expr= "'save.php'"  fetchtimeout="10s"  />
+      </filled>
+    </record>
+  </form>
+</vxml>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<vxml version = "2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="de-DE">
+  <form>
+    <property name="timeout" value="10s"/>
+    <property name = "confidencelevel" value="0.2"/>
+    <property name = "inputmodes" value="voice"/>
+    <var name="confidence"/>
+    <var name="intResult"/>
+    <field name="digit" >
+      <prompt bargein="false">Ihre Nummer, bitte?</prompt>
+      <grammar mode='voice' root='out' xml:lang='de-DE' tag-format="swi-semantics/1.0">
+        <rule id="out" scope="private">
+          <one-of>
+            <item tag="out='CHOICE1'">eins</item>
+            <item tag="root2='CHOICE2'">zwei</item>
+            <item tag="root2='CHOICE3'">drei</item>
+            <item tag="root2='CHOICE4'">vier</item>
+          </one-of>
+        </rule>
+      </grammar>
+      <grammar xml:lang="en-US" root = "TOPLEVEL" mode="dtmf">
+        <rule id="TOPLEVEL" scope="public">
+          <one-of>
+            <item>1
+              <tag>caca="mama";</tag>
+            </item>
+            <item>3
+              <tag>papa</tag>
+            </item>
+          </one-of>
+        </rule>
+      </grammar>
+      <filled>
+        <assign name="intResult" expr="digit"/>
+        <prompt xml:lang="de-DE" bargein="false" >Ich habe etwas gehoert!</prompt>
+        <prompt xml:lang="de-DE" bargein="false" >Ich hoerte
+          <value expr="intResult"/>
+        </prompt>
+        <clear/>
+      </filled>
+      <nomatch>
+        <prompt xml:lang="de-DE" bargein="false">ich habe es nicht verstanden</prompt>
+        <reprompt/>
+      </nomatch>
+      <noinput>
+        <prompt xml:lang="de-DE" bargein="false">ich habe es nicht gehoert</prompt>
+      </noinput>
+    </field>
+  </form>
+</vxml>

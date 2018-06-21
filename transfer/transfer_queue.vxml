@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+ <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+   <form id="demo-transfer">
+     <block>
+       <prompt>
+         Transfer test.
+       </prompt>
+     </block>
+     <transfer name="echo" bridge="true" destexpr="'application:queue(default)'">
+     </transfer>
+     <block>
+       <prompt>
+         Enf of echo test.
+       </prompt>
+     </block>
+   </form>
+ </vxml>

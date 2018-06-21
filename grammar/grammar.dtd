@@ -1,0 +1,72 @@
+<!-- 
+SRGS XML Grammar Form DTD (20031204)
+
+Copyright 1998-2003 W3C (MIT, ERCIM, Keio), All Rights Reserved. 
+
+Permission to use, copy, modify and distribute the SRGS DTD and 
+its accompanying documentation for any purpose and without fee is 
+hereby granted in perpetuity, provided that the above copyright 
+notice and this paragraph appear in all copies.  
+
+The copyright holders make no representation about the suitability 
+of the DTD for any purpose. It is provided "as is" without expressed 
+or implied warranty.
+
+-->
+<!ENTITY % uri "CDATA">
+<!ENTITY % rule-expansion "#PCDATA | token | ruleref
+                              | item | one-of | tag ">
+<!ENTITY % grammar-header "( meta | metadata | lexicon | tag )*">
+<!ENTITY % grammar-body "( rule )*">
+<!ELEMENT ruleref EMPTY>
+<!ATTLIST ruleref
+    uri %uri; #IMPLIED
+    type CDATA #IMPLIED
+    special (NULL | VOID | GARBAGE) #IMPLIED
+>
+<!ELEMENT token (#PCDATA)>
+<!ATTLIST token
+    xml:lang NMTOKEN #IMPLIED
+>
+<!ELEMENT tag (#PCDATA)>
+<!ELEMENT one-of (item)+>
+<!ATTLIST one-of
+    xml:lang NMTOKEN #IMPLIED
+>
+<!ELEMENT item (%rule-expansion;)*>
+<!ATTLIST item
+    repeat NMTOKEN #IMPLIED
+    repeat-prob NMTOKEN #IMPLIED
+    weight NMTOKEN #IMPLIED
+    xml:lang NMTOKEN #IMPLIED
+>
+<!ELEMENT rule (%rule-expansion; | example)*>
+<!ATTLIST rule
+    id ID #REQUIRED
+    scope (private | public) "private"
+>
+<!ELEMENT example (#PCDATA)>
+<!ELEMENT lexicon EMPTY>
+<!ATTLIST lexicon
+    uri %uri; #REQUIRED
+    type CDATA #IMPLIED
+>
+<!ELEMENT meta EMPTY>
+<!ATTLIST meta
+    name NMTOKEN #IMPLIED
+    content CDATA #REQUIRED
+    http-equiv NMTOKEN #IMPLIED
+>
+<!ELEMENT metadata EMPTY>
+<!ELEMENT grammar (%grammar-header;, %grammar-body;)>
+<!ATTLIST grammar
+    tag-format %uri; #IMPLIED
+    xml:base %uri; #IMPLIED
+    version NMTOKEN #REQUIRED
+    xml:lang NMTOKEN #IMPLIED
+    xmlns CDATA #FIXED 'http://www.w3.org/2001/06/grammar'
+    xmlns:xsi CDATA #IMPLIED
+    xsi:schemaLocation CDATA #IMPLIED
+    root IDREF #IMPLIED
+    mode (voice | dtmf) "voice"
+>

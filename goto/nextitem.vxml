@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+  <form id="satisfaction_survey">
+    <link event="exit" dtmf="0" />
+    <catch event="exit">
+      <prompt>You have pressed 0, do you want to exit?</prompt>
+      <goto nextitem="confirmExit"/>
+      <!--Works when it is next not nextitem--></catch>
+    <block>
+      <prompt>Question Preamble</prompt>
+    </block>
+    <!-- Example Question -->
+    <field name="q1" type="boolean?y=1;n=2;" >
+      <prompt>Question 1</prompt>
+    </field>
+    <!-- More questions-->
+    <block>
+      <submit next="register" namelist="q1 "/>
+    </block>
+    <!--Confirm Exit -->
+    <field name="confirmExit" type="boolean?y=1;n=2;">
+      <prompt>In sub 2 !!!  You have pressed 0 do you want to exit?</prompt>
+      <filled>
+        <if cond="confirmExit==&apos;true&apos;">
+          <prompt>Okay, thanks for calling.</prompt>
+          <disconnect/>
+          <elseif cond="confirmExit==&apos;false&apos;"/>
+          <prompt>Good, let’s pick up where we left off.</prompt>
+          <clear namelist="confirmExit"/>
+        </if>
+      </filled>
+    </field>
+  </form>
+</vxml>

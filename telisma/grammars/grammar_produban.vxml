@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="fr-FR">
+ <form id="main">
+  <property name="inputmodes" value="voice"/>
+  <property name="maxspeechtimeout" value="65s"/>
+  <property name="confidencelevel" value="0.2"/>
+
+  <field name="text">
+   <property name="timeout" value="10s"/>
+   <grammar mode="voice" src="codigo.bnf"/>
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt>
+    Entrez votre Identifian :
+   </prompt>
+   <prompt>
+		C'est le moteur qui va reconnaitre.
+   </prompt>
+  </field>
+  <filled>
+   <prompt>
+    Vous avez dit :
+    <value expr="text" />
+   </prompt>
+   <clear namelist="text" />
+  </filled>
+ </form>
+</vxml>

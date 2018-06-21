@@ -1,0 +1,42 @@
+GET /vxml/tests/cookies/setcookies.php HTTP/1.1
+Accept: */*
+Host: vxml.i6net.com
+User-Agent: OpenVXI/3.1
+Referer: http://vxml.i6net.com/vxml/tests/cookies/index.vxml
+
+HTTP/1.1 200 OK
+Date: Wed, 30 Apr 2008 16:06:22 GMT
+Server: Apache/2.2.3 (Debian) mod_python/3.2.10 Python/2.4.4 PHP/5.2.0-8+etch10 mod_perl/2.0.2 Perl/v5.8.8
+X-Powered-By: PHP/5.2.0-8+etch10
+Set-Cookie: TestCookie=something+from+somewhere
+Set-Cookie: TestCookie=something+from+somewhere; expires=Wed, 30-Apr-2008 17:06:22 GMT
+Set-Cookie: TestCookie=something+from+somewhere; expires=Wed, 30-Apr-2008 17:06:22 GMT; path=/~rasmus/; domain=.example.com; secure
+Content-Length: 280
+Content-Type: text/html; charset=UTF-8
+
+<?xml version="1.0" encoding="iso-8859-1" ?> <vxml xml:lang="en-UK" version="2.0" xmlns="http://www.w3.org/2001/vxml">  <form>   <block>    <prompt>    Set the cookies in the HTTP request.    </prompt>    <submit method="post" next="getcookies.php" />   </block>  </form> </vxml> POST /vxml/tests/cookies/getcookies.php HTTP/1.1
+Accept: */*
+Host: vxml.i6net.com
+User-Agent: OpenVXI/3.1
+Referer: http://vxml.i6net.com/vxml/tests/cookies/setcookies.php
+Cookie: $Version=1; TestCookie=something+from+somewhere; $Path=/vxml/tests/cookies; $Domain=vxml.i6net.com
+Expect: 100-continue
+Content-Length: 0
+Content-Type: application/x-www-form-urlencoded
+
+HTTP/1.1 200 OK
+Date: Wed, 30 Apr 2008 16:06:22 GMT
+Server: Apache/2.2.3 (Debian) mod_python/3.2.10 Python/2.4.4 PHP/5.2.0-8+etch10 mod_perl/2.0.2 Perl/v5.8.8
+X-Powered-By: PHP/5.2.0-8+etch10
+Content-Length: 400
+Content-Type: text/html; charset=UTF-8
+X-Pad: avoid browser bug
+
+<?xml version="1.0" encoding="iso-8859-1" ?> <vxml xml:lang="en-UK" version="2.0" xmlns="http://www.w3.org/2001/vxml">  <form>   <block>    <prompt>    Get the cookies.something from somewheresomething from somewhereArray
+(
+    [$Version] => 1
+    [TestCookie] => something from somewhere
+    [$Path] => /vxml/tests/cookies
+    [$Domain] => vxml.i6net.com
+)
+    </prompt>   </block>  </form> </vxml> 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es">
+ <form>
+  <property name="inputmodes" value="voice"/>
+  <property name="timeout" value="30s"/>
+  <field name="text">
+<grammar mode="voice" type="application/isolated" src="vdemo.txt"/>
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt>
+    Di Siguiente
+   </prompt>
+  </field>
+  <filled>
+   <prompt>
+    Me has dicho :
+    <value expr="text" />
+   </prompt>
+   <goto next="grammar_goto.vxml"/>
+  </filled>
+ </form>
+</vxml>

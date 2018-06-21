@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+ <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+   <form id="demo-transfer">
+     <block>
+       <prompt>
+         Transfer test.
+       </prompt>
+     </block>
+     <transfer bridge="true" dest="tel:camera(192.168.1.252)" connecttimeout="20s" maxtime="10s">
+     </transfer>
+     <block>
+       <prompt>
+         End of Transfer test.
+       </prompt>
+     </block>
+   </form>
+ </vxml>

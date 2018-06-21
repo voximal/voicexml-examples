@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<grammar version="1.0" xml:lang="it-IT"   root="root_comuni_terni">
+<rule id="root_comuni_terni" scope="public">
+<one-of>
+<item>Terni</item>
+<item>Orvieto</item>
+<item>Narni</item>
+<item>Amelia</item>
+<item>Montecastrilli</item>
+<item>Acquasparta</item>
+<item>Stroncone</item>
+<item>San Gemini</item>
+<item>Castel Viscardo</item>
+<item>Fabro</item>
+<item>Arrone</item>
+<item>Baschi</item>
+<item>Avigliano Umbro</item>
+<item>San Venanzo</item>
+<item>Castel Giorgio</item>
+<item>Otricoli</item>
+<item>Ferentillo</item>
+<item>Porano</item>
+<item>Attigliano</item>
+<item>Calvi dell Umbria</item>
+<item>Giove</item>
+<item>Allerona</item>
+<item>Guardea</item>
+<item>Montecchio</item>
+<item>Ficulle</item>
+<item>Monteleone d Orvieto</item>
+<item>Lugnano in Teverina</item>
+<item>Alviano</item>
+<item>Montefranco</item>
+<item>Montegabbione</item>
+<item>Penna in Teverina</item>
+<item>Parrano</item>
+<item>Polino</item>
+</one-of></rule>
+</grammar>

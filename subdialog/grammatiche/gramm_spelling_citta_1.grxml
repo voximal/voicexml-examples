@@ -1,0 +1,421 @@
+<?xml version='1.0'?>
+<grammar xml:lang="it-IT" xmlns="http://www.w3.org/2001/06/grammar" version="1.0" mode="voice" tag-format="semantics-ms/1.0" root = "main">
+	<rule id="main" scope="private">
+		<item repeat="1-">
+			<ruleref uri="#digit"/>
+			<tag>$=$$;</tag>
+		</item>
+	</rule>
+	<rule id="digit" scope="private">
+		<one-of>
+			<item>
+				<ruleref uri="#a"/>
+			</item>
+			<item>
+				<ruleref uri="#b"/>
+			</item>
+			<item>
+				<ruleref uri="#c"/>
+			</item>
+			<item>
+				<ruleref uri="#d"/>
+			</item>
+			<item>
+				<ruleref uri="#e"/>
+			</item>
+			<item>
+				<ruleref uri="#f"/>
+			</item>
+			<item>
+				<ruleref uri="#g"/>
+			</item>
+			<item>
+				<ruleref uri="#h"/>
+			</item>
+			<item>
+				<ruleref uri="#i"/>
+			</item>
+			<item>
+				<ruleref uri="#j"/>
+			</item>
+			<item>
+				<ruleref uri="#k"/>
+			</item>
+			<item>
+				<ruleref uri="#l"/>
+			</item>
+			<item>
+				<ruleref uri="#m"/>
+			</item>
+			<item>
+				<ruleref uri="#n"/>
+			</item>
+			<item>
+				<ruleref uri="#o"/>
+			</item>
+			<item>
+				<ruleref uri="#p"/>
+			</item>
+			<item>
+				<ruleref uri="#q"/>
+			</item>
+			<item>
+				<ruleref uri="#r"/>
+			</item>
+			<item>
+				<ruleref uri="#s"/>
+			</item>
+			<item>
+				<ruleref uri="#t"/>
+			</item>
+			<item>
+				<ruleref uri="#u"/>
+			</item>
+			<item>
+				<ruleref uri="#v"/>
+			</item>
+			<item>
+				<ruleref uri="#w"/>
+			</item>
+			<item>
+				<ruleref uri="#x"/>
+			</item>
+			<item>
+				<ruleref uri="#y"/>
+			</item>
+			<item>
+				<ruleref uri="#z"/>
+			</item>
+			<item>
+				<ruleref uri="#spec_char"/>
+			</item>
+			<item>
+				<ruleref uri="#cifre"/>
+			</item>
+		</one-of>
+	</rule>
+
+	<rule id="a" scope="private">
+		<one-of>
+			<item>Agrigento<tag>$.returnvalue="a";</tag></item>
+			<item>Avellino<tag>$.returnvalue="a";</tag></item>
+			<item>Aosta<tag>$.returnvalue="a";</tag></item>
+			<item>Arezzo<tag>$.returnvalue="a";</tag></item>
+			<item>Alessandria<tag>$.returnvalue="a";</tag></item>
+			<item>Asti<tag>$.returnvalue="a";</tag></item>
+			<item>Ancona<tag>$.returnvalue="a";</tag></item>
+			<item>AscoliPiceno<tag>$.returnvalue="a";</tag></item>
+			<item>Alpha<tag>$.returnvalue="a";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="b" scope="private">
+		<one-of>
+			<item>Benevento<tag>$.returnvalue="b";</tag></item>
+			<item>Bologna<tag>$.returnvalue="b";</tag></item>
+			<item>Bergamo<tag>$.returnvalue="b";</tag></item>
+			<item>Brescia<tag>$.returnvalue="b";</tag></item>
+			<item>Bari<tag>$.returnvalue="b";</tag></item>
+			<item>Brindisi<tag>$.returnvalue="b";</tag></item>
+			<item>Bolzano<tag>$.returnvalue="b";</tag></item>
+			<item>Belluno<tag>$.returnvalue="b";</tag></item>
+			<item>Biella<tag>$.returnvalue="b";</tag></item>
+			<item>bancaria<tag>$.returnvalue="b";</tag></item>
+			<item>beta<tag>$.returnvalue="b";</tag></item>
+		</one-of>
+	</rule>
+
+
+	<rule id="c" scope="private">
+		<one-of>
+			<item>Catania<tag>$.returnvalue="c";</tag></item>
+			<item>Caltanissetta<tag>$.returnvalue="c";</tag></item>
+			<item>Caserta<tag>$.returnvalue="c";</tag></item>
+			<item>Chieti<tag>$.returnvalue="c";</tag></item>
+			<item>Catanzaro<tag>$.returnvalue="c";</tag></item>
+			<item>Crotone<tag>$.returnvalue="c";</tag></item>
+			<item>Cosenza<tag>$.returnvalue="c";</tag></item>
+			<item>Como<tag>$.returnvalue="c";</tag></item>
+			<item>Cremona<tag>$.returnvalue="c";</tag></item>
+			<item>Cagliari<tag>$.returnvalue="c";</tag></item>
+			<item>Carbonia-Iglesias<tag>$.returnvalue="c";</tag></item>
+			<item>Cuneo<tag>$.returnvalue="c";</tag></item>
+			<item>Campobasso<tag>$.returnvalue="c";</tag></item>
+			<item>cc<tag>$.returnvalue="c";</tag></item>
+			<item>charlie<tag>$.returnvalue="c";</tag></item>
+		</one-of>
+	</rule>
+
+
+	<rule id="d" scope="private">
+		<one-of>
+			<item>Domodossola<tag>$.returnvalue="d";</tag></item>
+			<item>delta<tag>$.returnvalue="d";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="e" scope="private">
+		<one-of>
+			<item>Enna<tag>$.returnvalue="e";</tag></item>
+			<item>empoli<tag>$.returnvalue="e";</tag></item>
+			<item>enzo<tag>$.returnvalue="e";</tag></item>
+			<item>ennio<tag>$.returnvalue="e";</tag></item>
+			<item>emiliano<tag>$.returnvalue="e";</tag></item>
+			<item>ep<tag>$.returnvalue="e";</tag></item>
+			<item>echo<tag>$.returnvalue="e";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="f" scope="private">
+		<one-of>
+			<item>Ferrara<tag>$.returnvalue="f";</tag></item>
+			<item>Forli<tag>$.returnvalue="f";</tag></item>
+			<item>Frosinone<tag>$.returnvalue="f";</tag></item>
+			<item>Foggia<tag>$.returnvalue="f";</tag></item>
+			<item>Firenze<tag>$.returnvalue="f";</tag></item>
+			<item>fabio<tag>$.returnvalue="f";</tag></item>
+			<item>foxtrot<tag>$.returnvalue="f";</tag></item>
+		</one-of>
+	</rule>
+
+
+	<rule id="g" scope="private">
+		<one-of>
+			<item>Gorizia<tag>$.returnvalue="g";</tag></item>
+			<item>Genova<tag>$.returnvalue="g";</tag></item>
+			<item>Grosseto<tag>$.returnvalue="g";</tag></item>
+			<item>golf<tag>$.returnvalue="g";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="h" scope="private">
+		<one-of>
+			<item>Hotel<tag>$.returnvalue="h";</tag></item>
+			<item>hotel<tag>$.returnvalue="h";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="i" scope="private">
+		<one-of>
+			<item>Imperia<tag>$.returnvalue="i";</tag></item>
+			<item>Isernia<tag>$.returnvalue="i";</tag></item>
+			<item>imola<tag>$.returnvalue="i";</tag></item>
+			<item>india<tag>$.returnvalue="i";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="j" scope="private">
+		<one-of>
+			<item>judo<tag>$.returnvalue="j";</tag></item>
+			<item>juventus<tag>$.returnvalue="j";</tag></item>
+			<item>juliet<tag>$.returnvalue="j";</tag></item>
+			<item>jolly<tag>$.returnvalue="j";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="k" scope="private">
+		<one-of>
+			<item>kilo<tag>$.returnvalue="k";</tag></item>
+			<item>Kilo<tag>$.returnvalue="k";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="l" scope="private">
+		<one-of>
+			<item>L Aquila<tag>$.returnvalue="l";</tag></item>
+			<item>Latina<tag>$.returnvalue="l";</tag></item>
+			<item>Laspezia<tag>$.returnvalue="l";</tag></item>
+			<item>Lecco<tag>$.returnvalue="l";</tag></item>
+			<item>Lodi<tag>$.returnvalue="l";</tag></item>
+			<item>Lecce<tag>$.returnvalue="l";</tag></item>
+			<item>Livorno<tag>$.returnvalue="l";</tag></item>
+			<item>Lucca<tag>$.returnvalue="l";</tag></item>
+			<item>l<tag>$.returnvalue="l";</tag></item>
+			<item>lima<tag>$.returnvalue="l";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="m" scope="private">
+		<one-of>
+			<item>Matera<tag>$.returnvalue="m";</tag></item>
+			<item>Modena<tag>$.returnvalue="m";</tag></item>
+			<item>Mantova<tag>$.returnvalue="m";</tag></item>
+			<item>Milano<tag>$.returnvalue="m";</tag></item>
+			<item>MedioCampidano<tag>$.returnvalue="m";</tag></item>
+			<item>MassaCarrara<tag>$.returnvalue="m";</tag></item>
+			<item>Macerata<tag>$.returnvalue="m";</tag></item>
+			<item>mike<tag>$.returnvalue="m";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="n" scope="private">
+		<one-of>
+			<item>Napoli<tag>$.returnvalue="n";</tag></item>
+			<item>Nuoro<tag>$.returnvalue="n";</tag></item>
+			<item>Novara<tag>$.returnvalue="n";</tag></item>
+			<item>november<tag>$.returnvalue="n";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="o" scope="private">
+		<one-of>
+			<item>Olbia-Tempio<tag>$.returnvalue="o";</tag></item>
+			<item>Oristano<tag>$.returnvalue="o";</tag></item>
+			<item>Ogliastra<tag>$.returnvalue="o";</tag></item>
+			<item>otranto<tag>$.returnvalue="o";</tag></item>
+			<item>oscar<tag>$.returnvalue="o";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="p" scope="private">
+		<one-of>
+			<item>Palermo<tag>$.returnvalue="p";</tag></item>
+			<item>Pescara<tag>$.returnvalue="p";</tag></item>
+			<item>Potenza<tag>$.returnvalue="p";</tag></item>
+			<item>Parma<tag>$.returnvalue="p";</tag></item>
+			<item>Piacenza<tag>$.returnvalue="p";</tag></item>
+			<item>Pordenone<tag>$.returnvalue="p";</tag></item>
+			<item>Pavia<tag>$.returnvalue="p";</tag></item>
+			<item>Pistoia<tag>$.returnvalue="p";</tag></item>
+			<item>Prato<tag>$.returnvalue="p";</tag></item>
+			<item>Pisa<tag>$.returnvalue="p";</tag></item>
+			<item>Perugia<tag>$.returnvalue="p";</tag></item>
+			<item>Padova<tag>$.returnvalue="p";</tag></item>
+			<item>PesaroeUrbino<tag>$.returnvalue="p";</tag></item>
+			<item>papa<tag>$.returnvalue="p";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="q" scope="private">
+		<one-of>
+			<item>quadro<tag>$.returnvalue="q";</tag></item>
+			<item>quebec<tag>$.returnvalue="q";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="r" scope="private">
+		<one-of>
+			<item>Ragusa<tag>$.returnvalue="r";</tag></item>
+			<item>ReggioCatabria<tag>$.returnvalue="r";</tag></item>
+			<item>Ravenna<tag>$.returnvalue="r";</tag></item>
+			<item>ReggioEmilia<tag>$.returnvalue="r";</tag></item>
+			<item>Rieti<tag>$.returnvalue="r";</tag></item>
+			<item>Roma<tag>$.returnvalue="r";</tag></item>
+			<item>Rovigo<tag>$.returnvalue="r";</tag></item>
+			<item>Reale<tag>$.returnvalue="r";</tag></item>
+			<item>Risberseumane<tag>$.returnvalue="r";</tag></item>
+			<item>Rum<tag>$.returnvalue="r";</tag></item>
+			<item>Romeo<tag>$.returnvalue="r";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="s" scope="private">
+		<one-of>
+			<item>Siracusa<tag>$.returnvalue="s";</tag></item>
+			<item>Salerno<tag>$.returnvalue="s";</tag></item>
+			<item>Savona<tag>$.returnvalue="s";</tag></item>
+			<item>Sondrio<tag>$.returnvalue="s";</tag></item>
+			<item>Sassari<tag>$.returnvalue="s";</tag></item>
+			<item>Siena<tag>$.returnvalue="s";</tag></item>
+			<item>sergio<tag>$.returnvalue="s";</tag></item>
+			<item>spettacolo<tag>$.returnvalue="s";</tag></item>
+			<item>sierra<tag>$.returnvalue="s";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="t" scope="private">
+		<one-of>
+			<item>Trapani<tag>$.returnvalue="t";</tag></item>
+			<item>Teramo<tag>$.returnvalue="t";</tag></item>
+			<item>Trieste<tag>$.returnvalue="t";</tag></item>
+			<item>Taranto<tag>$.returnvalue="t";</tag></item>
+			<item>Trento<tag>$.returnvalue="t";</tag></item>
+			<item>Terni<tag>$.returnvalue="t";</tag></item>
+			<item>Treviso<tag>$.returnvalue="t";</tag></item>
+			<item>Torino<tag>$.returnvalue="t";</tag></item>
+			<item>trojani<tag>$.returnvalue="t";</tag></item>
+			<item>tango<tag>$.returnvalue="t";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="u" scope="private">
+		<one-of>
+			<item>Udine<tag>$.returnvalue="u";</tag></item>
+			<item>Uniform<tag>$.returnvalue="u";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="v" scope="private">
+		<one-of>
+			<item>Vibo Valentina<tag>$.returnvalue="v";</tag></item>
+			<item>Viterbo<tag>$.returnvalue="v";</tag></item>
+			<item>Varese<tag>$.returnvalue="v";</tag></item>
+			<item>Venezia<tag>$.returnvalue="v";</tag></item>
+			<item>Verona<tag>$.returnvalue="v";</tag></item>
+			<item>Verbano-Cusio-Ossola<tag>$.returnvalue="v";</tag></item>
+			<item>Vercelli<tag>$.returnvalue="v";</tag></item>
+			<item>verde<tag>$.returnvalue="v";</tag></item>
+			<item>victor<tag>$.returnvalue="v";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="w" scope="private">
+		<one-of>
+			<item>walter<tag>$.returnvalue="w";</tag></item>
+			<item>whiskey<tag>$.returnvalue="w";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="x" scope="private">
+		<one-of>
+			<item>x-ray<tag>$.returnvalue="x";</tag></item>
+			<item>xilophone<tag>$.returnvalue="x";</tag></item>
+			<item>xray<tag>$.returnvalue="x";</tag></item>
+			<item>ics<tag>$.returnvalue="x";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="y" scope="private">
+		<one-of>
+			<item>yogurt<tag>$.returnvalue="y";</tag></item>
+			<item>yankee<tag>$.returnvalue="y";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="z" scope="private">
+		<one-of>
+			<item>Zurigo<tag>$.returnvalue="z";</tag></item>
+			<item>zulu<tag>$.returnvalue="z";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="spec_char" scope="private">
+		<one-of>
+			<item>spazio<tag>$.returnvalue=" ";</tag></item>
+			<item>chiocciola<tag>$.returnvalue="@";</tag></item>
+			<item>et<tag>$.returnvalue="@";</tag></item>
+			<item>punto<tag>$.returnvalue=".";</tag></item>
+			<item>trattino basso<tag>$.returnvalue="_";</tag></item>
+			<item>underscore<tag>$.returnvalue="_";</tag></item>
+			<item>trattino alto<tag>$.returnvalue="-";</tag></item>
+			<item>upperscore<tag>$.returnvalue="-";</tag></item>
+			<item>meno<tag>$.returnvalue="-";</tag></item>
+		</one-of>
+	</rule>
+
+	<rule id="cifre" scope="private">
+		<one-of>
+			<item>1</item>
+			<item>2</item>
+			<item>3</item>
+			<item>4</item>
+			<item>5</item>
+			<item>6</item>
+			<item>7</item>
+			<item>8</item>
+			<item>9</item>
+			<item>0</item>
+		</one-of>
+	</rule>
+
+</grammar>

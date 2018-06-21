@@ -1,0 +1,22 @@
+<?xml version = "1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-UK">
+ <form>
+  <block>
+   <prompt>
+    Call the property object.
+   </prompt>
+  </block>
+  <transfer name="toto" bridge="true" dest="execute:set(VXML_MOMO)=10"/>
+  <object name="get" classid="function:SIP_HEADER(Call-ID)"/>
+  <object name="set0" classid="set:SIPADDHEADER0=X-Genesys-test:123"/>
+  <object name="set1" classid="set:__SIPADDHEADER51=X-Genesys-test2:456"/>
+  <object name="set2" classid="execute:SIPADDHEADER(X-Genesys-test3:789)"/>
+  <block cond="false">
+   <prompt>
+    Value returned :
+    <value expr="get"/>
+   </prompt>
+  </block>
+	<transfer bridge="true" dest="dial:SIP/600@192.168.1.100"/>
+ </form>
+</vxml>

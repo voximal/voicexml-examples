@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/vxml" version="2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.xsd">
+  <script>function GetMovieList() { var movies = new Array(3); movies[0] = new Object(); movies[0].audio = "godfather.wav"; movies[0].tts = "the godfather"; movies[1] = new Object(); movies[1].audio = "high_fidelity.wav"; movies[1].tts = "high fidelity"; movies[2] = new Object(); movies[2].audio = "raiders.wav"; movies[2].tts = "raiders of the lost ark"; return movies; }</script>
+  <form id="pick_movie">
+    <var name="prompts" expr="GetMovieList()"/>
+    <block name="intro">
+      <prompt>For each test 3.</prompt>
+    </block>
+    <block name="movie">
+      <prompt>Say hello.</prompt>
+      <audio src="prelist.wav">Before.</audio>
+      <foreach item="thePrompt" array="prompts">
+        <prompt>
+          <audio expr="thePrompt.audio">
+            <value expr="thePrompt.tts"/>
+          </audio>
+        </prompt>
+        <log>
+          LOG : <value expr="thePrompt.tts"/>
+        </log>
+      </foreach>
+      <audio src="prelist2.wav">After.</audio>
+    </block>
+    <field name="test">
+      <grammar>[(test)]</grammar>
+    </field>
+  </form>
+</vxml>

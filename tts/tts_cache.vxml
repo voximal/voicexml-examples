@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+<form>
+ <property name="prompturl" value="http://prius.i6net.org/tts/verbio/tts.php" />
+ <block>
+ <property name="promptmaxage" value="0s" />
+  <prompt xml:lang="en-UK">
+Without cache.
+  </prompt>
+  <prompt xml:lang="en-UK">
+   <property name="promptmaxage" value="300s" />
+With cache enabled and a maxage property set to 5 minutes.
+  </prompt>
+ </block>
+</form>
+</vxml>

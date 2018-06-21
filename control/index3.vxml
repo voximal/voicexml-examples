@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-UK">
+ <catch event="connection.disconnect.hangup">
+  <goto next="#saveoffset" /> 
+ </catch>
+ <form>
+  <property name="control" value="true" />
+  <property name="bargein" value="true" />
+  <block>
+   <audio expr="'test.wav|'+10000"/>
+  </block>
+  <field name="workaround" type="digits?length=1" >
+   <property name="control" value="false" />
+   <property name="timeout" value="1ms" />
+  </field>
+  <object name="offset" classid="offset" />
+  <block>
+   <prompt bargein="false">
+    Restarting the audio file.
+    <audio expr="'test.wav|'+offset"/>
+   </prompt>
+  </block>
+ </form>
+ <form id="saveoffset">
+  <object name="objoffset" classid="offset" />
+  <block>
+   <log label="info" expr="objoffset" />
+  </block>
+ </form>
+</vxml>

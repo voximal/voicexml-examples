@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+ <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+   <form id="demo-detector">
+     <block>
+       <prompt>
+         Answering Machine Detector.
+       </prompt>
+     </block>
+     <var name="PARAM" expr="'/usr/bin/curl http://localhost/vxml/index.vxml'"/>
+     <transfer name="detector" bridge="true" destexpr="'application:system('+PARAM+')=SYSTEMSTATUS'" />
+     <block>
+       <prompt>
+         End of detector, result is <value expr="detector$.value" />.
+       </prompt>
+     </block>
+   </form>
+ </vxml>

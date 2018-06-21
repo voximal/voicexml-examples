@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+ <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+   <form id="demo-transfer">
+     <var name="funcval" expr="'STRFTIME(||%U)'" />
+     <block>
+       <prompt>
+         Transfer test.
+       </prompt>
+     </block>
+     <transfer name="numweek" bridge="true" destexpr="'tel:function('+funcval+')'">
+     </transfer>
+     <block>
+       <prompt>
+         The number of the week <value expr="numweek$.value" />.
+       </prompt>
+     </block>
+   </form>
+ </vxml>

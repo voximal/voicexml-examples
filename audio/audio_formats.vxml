@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en">
+ <form>
+  <block>
+   <prompt>
+    I am going to play Asterisk formats :
+   </prompt>
+   <prompt>
+    <audio src="linux.h263p"/>
+    <audio src="linux.wav"/>
+   </prompt>
+   <prompt>
+    That's all.
+   </prompt>
+  </block>
+ </form>
+</vxml>

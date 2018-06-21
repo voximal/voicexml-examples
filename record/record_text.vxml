@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+  <form>
+	  <record name="message" beep="false" maxtime="30s" type="text/plain" dtmfterm="true" finalsilence="2000ms">
+      <prompt>
+        Por favor, hablame y voy a repetir todo lo que me digas.
+      </prompt>
+      <prompt>
+        <audio src="beep_start.wav"/>
+      </prompt>
+      <filled>
+      <prompt>
+        <audio src="beep_end.wav"/>
+      </prompt>
+        Has dicho : <value expr="message" />
+				<clear namelist="message"/>
+      </filled>
+    </record>
+  </form>
+</vxml>

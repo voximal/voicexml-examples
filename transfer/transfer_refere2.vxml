@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+ <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+   <form id="demo-transfer">
+     <block>
+       <prompt>
+         Transfer test.
+       </prompt>
+     </block>
+     <transfer name="toto" bridge="true" dest="exec:function(CALLERID(number))=999"/>
+     <transfer bridge="false" dest="dial:0033677379042@demo.i6net.org?User-to-User=00C81031313232333334343535363637373838%3Bencoding%3Dhex" connecttimeout="30s" maxtime="600s" aai="1234">
+     </transfer>
+     <block>
+       <prompt>
+         End of Transfer test.
+       </prompt>
+     </block>
+   </form>
+ </vxml>

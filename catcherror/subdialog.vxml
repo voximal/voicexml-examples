@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+
+ <catch event="error2">
+  <prompt>
+   ERROR from DOC James !!!
+  </prompt>
+  <exit/>
+ </catch>
+ 
+ <form id="ad_check">
+
+
+  <catch event="error">
+   <var name="momo" expr="'momo'"/>  
+   <prompt>
+    ERROR from return James !!!
+   </prompt>
+   <var name="bookend" expr="'false'" />
+   <return namelist="bookend"/>
+  </catch>
+ 
+  <subdialog name="adCheck" src="/ads/ad_check.vpp" namelist="giCustomerId gsCallerId gsSessionId gbInBookend gsAudioType">
+   <filled>
+    <if cond="gbInSubmenu == 'true'">
+     <submit next="/listener/submenu.vpp" namelist="gsIdentifier gsSessionId giCustomerId giIVRSystemId gsCallerId gsDID gsPromptFile giSubmenuId gsCurrentMenu gsAudioType"/>
+     <else />
+     <submit expr="gsMainMenu" namelist="gsIdentifier gsSessionId giCustomerId giIVRSystemId gsCallerId gsDID gsPromptFile gsAudioType"/>
+    </if>
+   </filled>
+  </subdialog>
+
+ </form>
+ 
+</vxml>

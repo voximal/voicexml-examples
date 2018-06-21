@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml"> 
+  <script> <![CDATA[ 
+var sentence = [];
+sentence[0]="The quick brown fox jumped over the lazy dog.";
+sentence[1]="AA";
+sentence[2]="BB";
+
+var oLocations = Array.indexOf(sentence,'AA',1)
+// ** oLocations is [2]
+    ]]> </script> 
+
+  <form id="form"> 
+   <block>
+    <prompt> 
+     Result is :  
+     <value expr="oLocations"/> 
+    </prompt> 
+   </block>
+  </form> 
+</vxml>
+

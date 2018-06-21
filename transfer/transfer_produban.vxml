@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml">
+      <catch event="connection.disconnect.transfer">
+        <prompt>Prueba del blain transfer</prompt>
+      </catch>
+  <form id="demo-transfer">
+    <block>
+      <prompt>Transfer test.</prompt>
+    </block>
+    <transfer type="consultation" dest="tel:user1" connecttimeout="20s" maxtime="10s">
+    </transfer>
+    <block>
+      <prompt>End of Transfer test.</prompt>
+    </block>
+  </form>
+</vxml>

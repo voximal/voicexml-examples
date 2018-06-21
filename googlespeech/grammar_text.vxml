@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+  <form>
+    <property name="inputmodes" value="voice"/>  
+    <property name="timeout" value="15s"/>    
+    <field name="pin" type="text">
+      <prompt>Dime un numero :</prompt>
+      <prompt>Me puedes interrumpir a cualquier momento porques estoy usando un modo que permite escucharte durante el tiempo que te esoy hablando :</prompt>
+      <filled>
+        <prompt>Tu dijiste
+          <value expr="pin"/>
+        </prompt>
+        <clear namelist="pin"/>
+      </filled>
+      <nomatch count="1">
+			  <prompt>
+				  Lo sento, no entendo.
+         </prompt>
+        <reprompt/>
+      </nomatch>
+    </field>
+  </form>
+</vxml>

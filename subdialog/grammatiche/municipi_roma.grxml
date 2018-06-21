@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<grammar  version="1.0"  mode="voice" tag-format="semantics/1.0" xml:lang="it-IT"   root="root_municipi_roma">
+	 <rule id="root_municipi_roma" scope="public">
+	 	<one-of>
+<item>primo<tag>out="I"</tag></item>
+<item>uno<tag>out="I"</tag></item>
+<item>municipio uno<tag>out="I"</tag></item>
+<item>primo municipio<tag>out="I"</tag></item>
+<item>municipio primo<tag>out="I"</tag></item>
+
+<item>Secondo<tag>out="II"</tag></item>
+<item>due<tag>out="II"</tag></item>
+<item>secondo municipio<tag>out="II"</tag></item>
+<item>municipio due<tag>out="II"</tag></item>
+<item>municipio secondo<tag>out="II"</tag></item>
+
+<item>tre<tag>out="III"</tag></item>
+<item>terzo<tag>out="III"</tag></item>
+<item>terzo municipio<tag>out="III"</tag></item>
+<item>municipio tre<tag>out="III"</tag></item>
+<item>municipio terzo<tag>out="III"</tag></item>
+
+<item>cinque<tag>out="V"</tag></item>
+<item>quinto<tag>out="V"</tag></item>
+<item>quinto municipio<tag>out="V"</tag></item>
+<item>municipio cinque<tag>out="V"</tag></item>
+<item>municipio quinto<tag>out="V"</tag></item>
+
+
+<item>quattro<tag>out="IV"</tag></item>
+<item>quarto<tag>out="IV"</tag></item>
+<item>quarto municipio<tag>out="IV"</tag></item>
+<item>municipio quattro<tag>out="IV"</tag></item>
+<item>municipio quarto<tag>out="IV"</tag></item>
+
+
+<item>sei<tag>out="VI"</tag></item>
+<item>sesto<tag>out="VI"</tag></item>
+<item>sesto municipio<tag>out="VI"</tag></item>
+<item>municipio sei<tag>out="VI"</tag></item>
+<item>municipio sesto<tag>out="VI"</tag></item>
+
+<item>sette<tag>out="VII"</tag></item>
+<item>settimo<tag>out="VII"</tag></item>
+<item>settimo municipio<tag>out="VII"</tag></item>
+<item>municipio sette<tag>out="VII"</tag></item>
+<item>municipio settimo<tag>out="VII"</tag></item>
+
+
+<item>otto<tag>out="VIII"</tag></item>
+<item>ottavo<tag>out="VIII"</tag></item>
+<item>ottavo municipio<tag>out="VIII"</tag></item>
+<item>municipio otto<tag>out="VIII"</tag></item>
+<item>municipio ottavo<tag>out="VIII"</tag></item>
+
+
+
+<item>nove<tag>out="IX"</tag></item>
+<item>nono<tag>out="IX"</tag></item>
+<item>nono municipio<tag>out="IX"</tag></item>
+<item>municipio nove<tag>out="IX"</tag></item>
+<item>municipio nono<tag>out="IX"</tag></item>
+
+
+<item>dieci<tag>out="X"</tag></item>
+<item>decimo<tag>out="X"</tag></item>
+<item>decimo municipio<tag>out="X"</tag></item>
+<item>municipio decimo<tag>out="X"</tag></item>
+
+<item>unidici<tag>out="XI"</tag></item>
+<item>undiciesimo<tag>out="XI"</tag></item>
+<item>undicesimo municipio<tag>out="XI"</tag></item>
+<item>municipio undicesimo<tag>out="XI"</tag></item>
+
+<item>dodici<tag>out="XII"</tag></item>
+<item>dodicesimo<tag>out="XII"</tag></item>
+<item>dodicesimo municipio<tag>out="XII"</tag></item>
+<item>municipio dodicesimo<tag>out="XII"</tag></item>
+
+<item>tredici<tag>out="XIII"</tag></item>
+<item>tredicesimo<tag>out="XIII"</tag></item>
+<item>tredicesimo municipio<tag>out="XIII"</tag></item>
+<item>municipio tredicesimo<tag>out="XIII"</tag></item>
+
+<item>quindici<tag>out="XV"</tag></item>
+<item>quindicesimo<tag>out="XV"</tag></item>
+<item>quuindicesimo municipio<tag>out="XV"</tag></item>
+<item>municipio quindicesimo<tag>out="XV"</tag></item>
+
+<item>sedici<tag>out="XVI"</tag></item>
+<item>sedicesimo<tag>out="XVI"</tag></item>
+<item>sedicesimo municipio<tag>out="XVI"</tag></item>
+<item>municipio sedici<tag>out="XVI"</tag></item>
+<item>municipio sedicesimo<tag>out="XVI"</tag></item>
+
+
+<item>diciasette<tag>out="XVII"</tag></item>
+<item>diciassettesimo<tag>out="XVII"</tag></item>
+<item>diciassettesimo municipio<tag>out="XVII"</tag></item>
+<item>municipio diciassette<tag>out="XVII"</tag></item>
+<item>diciassettesimo municipio<tag>out="XVII"</tag></item>
+ 
+<item>diciotto<tag>out="XVIII"</tag></item>
+<item>diciottesimo<tag>out="XVIII"</tag></item>
+<item>diciottesimo municipio<tag>out="XVIII"</tag></item>
+<item>municipio diciotto<tag>out="XVIII"</tag></item>
+<item>diciottesimo municipio<tag>out="XVIII"</tag></item>
+
+
+<item>diciannove<tag>out="XIX"</tag></item>
+<item>diciannovesimo<tag>out="XIX"</tag></item>
+<item>diciannovesimo municipio<tag>out="XIX"</tag></item>
+<item>municipio diciannove<tag>out="XIX"</tag></item>
+<item>diciannovesimo municipio<tag>out="XIX"</tag></item>
+
+
+<item>venti<tag>out="XX"</tag></item>
+<item>ventesimo<tag>out="XX"</tag></item>
+<item>ventesimo municipio<tag>out="XX"</tag></item>
+<item>municipio venti<tag>out="XX"</tag></item>
+<item>municipio ventesimo<tag>out="XX"</tag></item>
+
+
+</one-of></rule> </grammar>

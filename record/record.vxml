@@ -1,0 +1,55 @@
+<?xml version = "1.0"?>
+<!DOCTYPE vxml PUBLIC '' "http://www.w3.org/TR/voicexml20/vxml.dtd">
+<!--
+ * COMPANY   FERMA
+ *
+ * MODULE    SVIVXI
+ *
+ * \author   JYG
+ *
+ * \file     recordunit.vxml
+ *
+ * \brief    Test record
+ *
+ * \version  $Revision: 1.1.1.1 $
+ *
+ * \date     $Date: 2013-05-24 07:44:27 $
+ *
+ * \remarks  
+ *
+ * $Log: record.vxml,v $
+ * Revision 1.1.1.1  2013-05-24 07:44:27  borja.sixto
+ * Archivage des exemples.
+ *
+ *
+ *
+ *-->
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+
+
+<form id="pp">
+  <block>
+    <prompt>
+        <audio src="http://pib-02/vxml/convedia/clips/6015_A5M00177F_alaw.wav"/>
+    </prompt>
+    <goto next="#record"/>
+  </block>
+</form>
+<form id="record">
+    <var name="mail" expr = "'false'" />
+
+    <var name="Nvl" expr="session.telephone.session"/>
+
+    <var name="filename" expr="'recunit_' + Nvl" />
+                                
+    <record maxtime = "40s" finalsilence = "5s" type="video/3gpp" name = "message" beep = "false"></record>
+    <!-- type="audio/x-wav" -->
+    
+    <filled>
+        <submit namelist = "message filename" method = "post"  enctype="multipart/form-data" expr= "'savejyg.php'"  fetchtimeout="10s"  />
+    </filled>
+</form>
+
+
+
+</vxml>

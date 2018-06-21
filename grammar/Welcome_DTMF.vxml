@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<vxml version="2.0" xml:lang="en-us">   
+
+<form id="form1">
+      
+    <block>
+          <prompt bargein="false">
+             Hi! This is the welcome service. DTMF test.
+           </prompt>
+             <goto next="#form2"/>
+      </block>
+</form>
+
+<form id="form2">
+  <property name="termtimeout" value="3s"/>
+      <field name="sequence">
+     	  <grammar src="simple_DTMF.grxml"/>
+	  
+         <prompt bargein="true">
+                     Please, digit a dtmf sequence! 
+         </prompt>
+
+         <filled>
+  	             <prompt>You pressed <value expr="sequence"/>.bye bye! </prompt>            
+         </filled>
+	
+         <noinput> Nothing received. <reprompt/></noinput>	
+         <nomatch> boh?<reprompt/></nomatch>
+      </field>
+</form>
+
+
+</vxml>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+  <form>
+    <record name="message" beep="true" maxtime="600s" finalsilence="5s">
+      <prompt>
+        Record your message after the beep.
+      </prompt>
+      <filled>
+        Your message is : <audio expr="message" />.
+      </filled>
+    </record>
+  </form>
+</vxml>

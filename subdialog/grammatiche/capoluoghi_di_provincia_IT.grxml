@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<grammar version="1.0" xml:lang="it-IT"   root="rootcapoluoghi">
+<rule id="rootcapoluoghi" scope="public">
+<one-of>
+<item>Bolzano</item>
+<item>Bologna</item>
+<item>Biella</item>
+<item>Bergamo</item>
+<item>Benevento</item>
+<item>Belluno</item>
+<item>Barletta Andria Trani</item>
+<item>Bari</item>
+<item>Avellino</item>
+<item>Asti</item>
+<item>Ascoli Piceno</item>
+<item>Arezzo</item>
+<item>Aosta</item>
+<item>Ancona</item>
+<item>Alessandria</item>
+<item>Agrigento</item>
+<item>Brescia</item>
+<item>Brindisi</item>
+<item>Cagliari</item>
+<item>Caltanissetta</item>
+<item>Campobasso</item>
+<item>Carbonia Iglesias</item>
+<item>Caserta</item>
+<item>Catania</item>
+<item>Catanzaro</item>
+<item>Chieti</item>
+<item>Como</item>
+<item>Cosenza</item>
+<item>Cremona</item>
+<item>Crotone</item>
+<item>Cuneo</item>
+<item>Enna</item>
+<item>Fermo</item>
+<item>Ferrara</item>
+<item>Firenze</item>
+<item>Foggia</item>
+<item>Forlì Cesena</item>
+<item>Frosinone</item>
+<item>Genova</item>
+<item>Gorizia</item>
+<item>Grosseto</item>
+<item>Imperia</item>
+<item>Isernia</item>
+<item>La</item>
+<item>Spezia</item>
+<item>L Aquila</item>
+<item>Latina</item>
+<item>Lecce</item>
+<item>Lecco</item>
+<item>Livorno</item>
+<item>Lodi</item>
+<item>Lucca</item>
+<item>Macerata</item>
+<item>Mantova</item>
+<item>Massa Carrara</item>
+<item>Matera</item>
+<item>Medio</item>
+<item>Campidano</item>
+<item>Messina</item>
+<item>Milano</item>
+<item>Modena</item>
+<item>Monza</item>
+<item>e</item>
+<item>della</item>
+<item>Brianza</item>
+<item>Napoli</item>
+<item>Novara</item>
+<item>Nuoro</item>
+<item>Ogliastra</item>
+<item>Olbia Tempio</item>
+<item>Oristano</item>
+<item>Padova</item>
+<item>Palermo</item>
+<item>Parma</item>
+<item>Pavia</item>
+<item>Perugia</item>
+<item>Pesaro e Urbino</item>
+<item>Pescara</item>
+<item>Piacenza</item>
+<item>Pisa</item>
+<item>Pistoia</item>
+<item>Pordenone</item>
+<item>Potenza</item>
+<item>Prato</item>
+<item>Ragusa</item>
+<item>Ravenna</item>
+<item>Reggio</item>
+<item>Calabria</item>
+<item>Reggio</item>
+<item>Emilia</item>
+<item>Rieti</item>
+<item>Rimini</item>
+<item>Roma</item>
+<item>Rovigo</item>
+<item>Salerno</item>
+<item>Sassari</item>
+<item>Savona</item>
+<item>Siena</item>
+<item>Siracusa</item>
+<item>Sondrio</item>
+<item>Taranto</item>
+<item>Teramo</item>
+<item>Terni</item>
+<item>Torino</item>
+<item>Trapani</item>
+<item>Trento</item>
+<item>Treviso</item>
+<item>Trieste</item>
+<item>Udine</item>
+<item>Varese</item>
+<item>Venezia</item>
+<item>Verbano Cusio Ossola</item>
+<item>Vercelli</item>
+<item>Verona</item>
+<item>Vibo</item>
+<item>Valentia</item>
+<item>Vicenza</item>
+<item>Viterbo</item>
+</one-of></rule>
+</grammar>

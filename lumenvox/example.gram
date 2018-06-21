@@ -1,0 +1,8 @@
+#ABNF 1.0 UTF-8;
+language en-US;
+mode voice;
+tag-format &lt;lumenvox/1.0&gt;;
+root $Bool;
+$Yes = yes $GARBAGE|yep|yeah|sure|correct;
+$No = no $GARBAGE|nope;
+$Bool = $Yes {$="true";}|$No {$="false";};

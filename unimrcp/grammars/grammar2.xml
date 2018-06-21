@@ -1,0 +1,18 @@
+<?xml version='1.0'?>
+<grammar xmlns='http://www.w3.org/2001/06/grammar' version='1.0' root='_GRAMROOT_4' tag-format='semantics/1.0' xml:lang='es-ES'>
+  <meta name='swirec_simple_result_key' content='out'/>
+  <rule id='_GRAMROOT_4'>
+    <one-of>
+      <item>Uno<tag>out='uno';</tag>
+      </item>
+      <item>Dos<tag>out='dos';</tag>
+      </item>
+      <item>Tres<tag>out='tres';</tag>
+      </item>
+      <item>Cuatro<tag>out='cuatro';</tag>
+      </item>
+      <item>Cinco<tag>out='cinco';</tag>
+      </item>
+    </one-of>
+  </rule>
+</grammar>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="fr-FR">
+ <form>
+  <property name="inputmodes" value="voice"/>
+  <property name="timeout" value="30s"/>
+  <field name="text">
+<grammar mode="voice" type="application/verbio-text">
+     3400(Proveedores)	Proveedores
+     3500(Administración)	Administración
+     3600(Dirección)	Dirección
+     3700(Borja)	Borja
+</grammar>
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt>
+    Hablame :
+   </prompt>
+  </field>
+  <filled>
+   <prompt>
+    Me has dicho :
+    <value expr="text" />
+   </prompt>
+   <clear namelist="text" />
+  </filled>
+ </form>
+</vxml>

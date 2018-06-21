@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE grammar PUBLIC "-//W3C//DTD GRAMMAR 1.0//EN"
+"http://www.w3.org/TR/speech-grammar/grammar.dtd">
+<grammar version="1.0"
+xmlns="http://www.w3.org/2001/06/grammar"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.w3.org/2001/06/grammar
+http://www.w3.org/TR/speech-grammar/grammar.xsd"
+xml:lang="fr-FR" mode="voice" root="Yesno"
+tag-format="semantics/1.0">
+<rule id="Yesno">
+<one-of>
+<item> <ruleref uri="#Yes"/>
+<tag>out=yes;</tag> </item>
+<item> <ruleref uri="#No"/>
+<tag>out=pop;</tag> </item>
+</one-of>
+</rule>
+<rule id="Yes">
+élémentaire
+<item repeat="0-1">s'il vous plait</item>
+</rule>
+<rule id="No">
+noël
+<item repeat="0-1">merci</item>
+</rule>
+</grammar>

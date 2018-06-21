@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+ <form id="redirect">
+  <var name="called" expr="session.connection.local.uri"/>
+  <block>
+   <submit namelist="called" next="index.php"/>   
+  </block>
+ </form>
+</vxml>

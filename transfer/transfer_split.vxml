@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+ <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+   <var name="conference" expr="'split'"/>
+   
+   <form id="welcome">
+     <block>
+       <prompt>
+       Welcome to Split Video. 
+       </prompt>
+     </block>
+     <block>   
+       <goto next="#callagent" />
+     </block>
+   </form>
+
+   <form id="callagent">
+     <block>
+       <prompt>
+         Calling the other leg.
+       </prompt>
+     </block>   
+     <transfer name="test" bridge="true" destexpr="'originate:SIP/user3=Konference('+conference+',12o)'" connecttimeout="50s" />     
+     <transfer bridge="true" destexpr="'conference:'+conference+',21Mo'"/>
+   </form>
+ </vxml>

@@ -1,0 +1,4 @@
+#ABNF 1.0;
+language es-ES;
+root $animal;
+$animal = perro | toro | conejo | pajaro | serpiente | leon ;

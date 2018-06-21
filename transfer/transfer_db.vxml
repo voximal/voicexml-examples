@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+ <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+   <form id="demo-transfer">
+     <block>
+       <prompt>
+         Transfer test.
+       </prompt>
+     </block>
+     <transfer name="toto1" bridge="true" dest="tel:function(DB(family/key))=value">
+     </transfer>
+     <transfer name="toto2" bridge="true" dest="tel:function(DB(family/key))">
+     </transfer>
+     <block>
+       <prompt>
+         End of Transfer test <value expr="toto2$.value" />.
+       </prompt>
+     </block>
+   </form>
+ </vxml>

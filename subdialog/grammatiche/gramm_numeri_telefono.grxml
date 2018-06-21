@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="it-IT" root="phoneNum" version="1.0" mode="voice" tag-format="semantics/1.0">
+<rule id="phoneNum">
+        <tag>$.value="[TL]";</tag>
+        <item repeat="1-10">
+           <ruleref uri="#numeri"/> 
+           <tag>$.value += $$.value;</tag>
+        </item>
+     </rule>
+	  <rule id="numeri" scope="private">
+ <one-of>
+  <item>uno<tag>$.value = "1";</tag></item>
+  <item>due<tag>$.value = "2";</tag></item>
+  <item>tre<tag>$.value = "3";</tag></item>
+  <item>quattro<tag>$.value = "4";</tag></item>
+  <item>cinque<tag>$.value = "5";</tag></item>
+  <item>sei<tag>$.value = "6";</tag></item>
+  <item>sette<tag>$.value = "7";</tag></item>
+  <item>otto<tag>$.value = "8";</tag></item>
+  <item>nove<tag>$.value = "9";</tag></item>
+  <item>zero<tag>$.value = "0";</tag></item>
+  </one-of>
+</rule>
+</grammar>

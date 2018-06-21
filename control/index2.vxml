@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-UK">
+ <form>
+  <property name="control" value="true" />
+  <property name="bargein" value="true" />
+  <block>
+   <audio expr="'test.wav|'+10000"/>
+  </block>
+  <field name="offset" type="text" />
+  <block>
+   <prompt bargein="false">
+    Restarting the audio file.
+    <audio expr="'test.wav|'+offset"/>
+   </prompt>
+  </block>
+ </form>
+</vxml>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="fr-FR">
+ <form>
+  <property name="inputmodes" value="voice dtmf"/>
+  <property name="maxnbest" value="3"/>
+  <property name="timeout" value="15s"/>
+  <property name="bargein" value="true"/>
+  <field name="text">
+   <grammar src="builtin:dtmf/digits?length=5"/>
+   <grammar src="builtin:grammar/digits"/>
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt xml:lang="text">
+    Say me a number :
+   </prompt>
+   <prompt>
+    Say me a number :
+   </prompt>
+  </field>
+  <filled>
+   <prompt xml:lang="text">
+    You have said :
+    <value expr="text" />
+   </prompt>
+   <prompt>
+    You have said :
+    <value expr="text" />
+   </prompt>
+   <clear namelist="text" />
+  </filled>
+ </form>
+</vxml>

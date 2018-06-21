@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+ <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+   <form id="demo-transfer">
+     <block>
+       <prompt>
+         Google Talk test.
+       </prompt>
+     </block>
+     <transfer bridge="true" dest="exec:jabbersend" aai="asterisk|i6net.com@gtalk.com|Hello !"/>
+     <block>
+       <prompt>
+         End of Google Talk test.
+       </prompt>
+     </block>
+   </form>
+ </vxml>

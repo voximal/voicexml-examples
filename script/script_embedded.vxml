@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.w3.org/2001/vxml 
+   http://www.w3.org/TR/voicexml20/vxml.xsd"> 
+    <script> <![CDATA[ 
+       function factorial(n) 
+       {
+         return (n <= 1)? 1 : n * factorial(n-1);
+       } 
+    ]]> </script> 
+
+  <form id="form"> 
+    <field name="fact" type="number"> 
+      <prompt>
+        Tell me a number and I'll tell you its factorial.
+      </prompt> 
+      <filled> 
+        <prompt> 
+          <value expr="fact"/> factorial is 
+          <value expr="factorial(fact)"/> 
+        </prompt> 
+      </filled> 
+    </field> 
+  </form> 
+</vxml>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/vxml"
+  version="2.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.w3.org/2001/vxml
+  http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.xsd">
+
+  <script>
+function GetMovieList()
+{
+  var movies = new Array(3);
+  movies[0] = new Object();
+  movies[0].audio = "godfather.wav"; movies[0].tts = "the godfather";
+  movies[1] = new Object();
+  movies[1].audio = "high_fidelity.wav"; movies[1].tts = "high fidelity";
+  movies[2] = new Object();
+  movies[2].audio = "raiders.wav"; movies[2].tts = "raiders of the lost ark";
+
+  return movies;
+}
+  </script>
+
+  <form id="pick_movie">
+
+    <!--
+    GetMovieList returns an array of objects
+      with properties audio and tts.
+      The size of the array is undetermined until runtime.
+    -->
+    <var name="prompts" expr="GetMovieList()"/>
+    
+    <block name="intro">
+      <prompt>For each test.</prompt>
+    </block>
+
+    <block name="movie">
+
+      <prompt>Say helo.</prompt>
+
+      <prompt count="2">
+        <audio src="prelist.wav">just say it.</audio>
+        <foreach item="thePrompt" array="prompts">
+          <audio expr="thePrompt.audio"><value expr="thePrompt.tts"/></audio>
+          <break time="1000ms"/>
+        </foreach>
+        <audio src="prelist2.wav">So, just say it.</audio>
+        <audio src="prelist2.wav">So, just say it 2.</audio>
+      </prompt>
+
+            <prompt>Say cucu.</prompt>
+
+      <prompt count="2">
+        <audio src="prelist.wav">just say it.</audio>
+        <foreach item="thePrompt" array="prompts">
+          <audio expr="thePrompt.audio"><value expr="thePrompt.tts"/></audio>
+          <break time="1000ms"/>
+        </foreach>
+        <audio src="prelist2.wav">So, just say it.</audio>
+        <audio src="prelist2.wav">So, just say it 2.</audio>
+      </prompt>
+      
+    </block>
+    <field name="test">
+      <grammar>[(test)]</grammar>
+    </field>
+  </form>
+</vxml>

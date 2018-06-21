@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<vxml version="2.0">
+<property name="inputmodes" value="dtmf"/>
+	<script src="MD5.js"></script>
+	<var name="id_evento" expr="1"/>
+	<var name="pren" expr="'false'"/>
+	<var name="num_fisso" expr="'false'"/>
+	<var name="auth" expr=""/>
+	<var name="chiamante" expr="''"/>
+	<var name="id_data" expr="1"/>
+	<var name="id_utente" expr=""/>
+	<var name="id_cliente" expr="1"/>
+	<var name="ln" expr="1"/>
+	<var name="nposti" expr=""/>
+	<var name="no_login" expr="0"/>
+	<var name="numero_alternativo"/>
+	<var name="numero_inserito" expr="'0952931821'"/>
+	<var name="flag_sms" expr="3"/>
+	<var name="id_prenotazione" expr=""/>
+	<form id="switch">
+		<block>
+			<if cond="num_fisso=='true'">
+				<goto next="#telefono_alternativo"/>
+			</if>
+			<if cond="auth==1">
+				<goto next="#messaggio"/>
+			<else/>
+				<goto next="#riconoscimento"/>
+			</if>
+		</block>
+	</form>
+	<form id="uscita">
+		<block>
+			<submit next="../sites/dev/articolo.php#back_from" method="post" namelist="ln articolo"/>
+		</block>
+	</form>
+	<form id="messaggio">
+		<block >
+			<prompt></prompt>
+			<goto next="#uscita"/>
+			<if cond="pren=='true'">
+				<submit next="prenota.vxml" method="post" namelist="id_evento chiamante id_data ln "/>
+			</if>
+		</block>
+		<field name="azione">
+			<grammar type="application/srgs+xml" root="azione_post_dtmf2" version="1.0"  mode="dtmf" tag-format="semantics/1.0">
+				<rule id="azione_post_dtmf" scope="public">
+					<one-of>
+						<item>1<tag>out=1</tag></item>
+						<item>2<tag>out=2</tag></item>
+					</one-of>
+				</rule>
+			</grammar>	
+			<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="it-IT" root="azione_post_voice" version="1.0" mode="voice" tag-format="semantics/1.0">
+				<rule id="azione_post_voice" scope="public">
+					<one-of>
+						<item>subito<tag>out=1</tag></item>
+						<item>dopo<tag>out=2</tag></item>
+					</one-of>
+				</rule>
+			</grammar>
+			<catch event="nomatch noinput">
+				<goto next="#messaggio"/>
+			</catch>
+			<filled>
+				<if cond="azione==1">
+					<submit next="../user_pages/user_page.php#richiesta" method="post" namelist="id_cliente id_utente ln"/>
+				</if>
+				<if cond="azione==2">
+					<prompt> Fà attenzione! Per confermare la tua richiesta di prenotazione, dovrai richiamare entro il , ed entrare nella tua area riservata. Grazie per la tua richiesta, arrisentirci! </prompt>
+					<goto next="#uscita"/>
+				</if>
+			</filled>
+		</field>
+	</form>
+	<form id="riconoscimento">
+		<subdialog name="login" src="login.vxml"/>
+		<block>
+			<var name="result" expr="login.result" />
+			<if cond="result=='true'" >
+				<assign name="auth" expr="1"/>
+				<submit next="insert_pren.vxml" fetchtimeout="5s" method="post" namelist="id_data id_utente nposti chiamante ln auth numero_inserito"/>
+			<else/>
+				<prompt>Autenticazione non riuscita  Se non conosci le credenziali, prova con un altro numero telefonico. </prompt>
+				<submit next="prenota.vxml" method="post" namelist="id_evento chiamante id_data ln"/>
+			</if>
+		</block>
+	</form>	
+	<form id="telefono_alternativo">
+		<field name="risposta_telefono_alt" type="digits">
+			<prompt bargein="false"> Pronuncia ora, un numero per volta, il numero telefonico al quale inviare il messaggio. </prompt>
+			<noinput>Non ho capito.<reprompt/></noinput>	
+			<nomatch>Non ho sentito.<reprompt/></nomatch>
+			<filled>
+				<prompt>hai detto: : <value expr="risposta_telefono_alt"/>?</prompt>
+			</filled>
+		</field>
+		<field name="conferma_telefono">
+			<prompt bargein="true">per confermare, Premi 1, o pronuncia: confermo. Altrimenti premi 2, o pronuncia: no. </prompt>
+			<grammar src="grammatiche/conf_1.grxml"/>
+			<grammar src="builtin:dtmf/boolean"/>
+			<catch event="nomatch noinput">
+				<goto next="#telefono_alternativo"/>
+			</catch>
+			<filled>
+				<if cond="conferma_telefono=='true'">
+					<assign name="numero_alternativo" expr="risposta_telefono_alt"/>
+					<submit next="insert_pren.vxml" fetchtimeout="5s" method="post" namelist="id_data id_utente id_prenotazione ln  auth numero_alternativo"/>
+				<else/>
+					<goto next="#telefono_alternativo"/>
+				</if>
+			</filled>
+		</field>
+	</form>
+</vxml>

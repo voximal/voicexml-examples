@@ -1,0 +1,23 @@
+<?xml version = "1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-UK">
+ <form>
+  <block>
+   <prompt>
+    Call the echo object.
+   </prompt>
+  </block>
+  <object name="echo" classid="com.speechworks.echo" data="test">
+   <param name="param1" expr="'value1'"/>
+   <param name="param2" expr="2"/>
+  </object>
+  <block>
+   <prompt>
+    Value returned :
+    <value expr="echo.attributes.session"/>
+    <value expr="echo.attributes.base"/>
+    <value expr="echo.parameters.param1"/>
+    <value expr="echo.parameters.param2"/>
+   </prompt>
+  </block>
+ </form>
+</vxml>

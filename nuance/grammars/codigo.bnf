@@ -1,0 +1,28 @@
+#ABNF 1.0;
+language fr-FR;
+
+mode voice;
+
+root $root;
+
+$SIL =  "euh" | "e"  | "a" ;
+
+$LETTER = $LN | $LX;
+
+$LN =	("ène" | "éne" | "éneu" {N});
+$LX =	("ix" | "ikse" {X});
+
+$NUMBER = ($zero | $one | $two | $three | $four | $five | $six | $seven | $eigth | $nine);
+
+$zero = ("zéro" {0} | "O" {0} | "Nulle" {0} | "vide" {0});
+$one = ("un" {1} | "une" {1});
+$two = ("deux" {2});
+$three = "trois" {3};
+$four = "quatre" {4};
+$five =  "cinq" {5};
+$six = "sis" {6};
+$seven= "sète" {7};
+$eigth = "huite" {8};
+$nine = "neuf" {9} | "neuve" {9};
+	
+$root =  ($LN | $LX) ($zero | $one | $two | $three | $four | $five | $six | $seven | $eigth | $nine) <6>;

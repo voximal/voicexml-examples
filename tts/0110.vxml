@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+  <form>
+    <block>
+      <prompt>You are hearing a T T S</prompt>
+    </block>
+  </form>
+</vxml>

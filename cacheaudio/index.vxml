@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+  <form>
+    <property name="audiomaxage" value="121" />
+    <property name="audiomaxstale" value="26" />
+    <block>
+      <prompt>
+        <audio src="test.wav" fetchhint="safe" maxage="120" maxstale="25" />
+      </prompt>
+    </block>
+  </form>
+</vxml>

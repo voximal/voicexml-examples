@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+	<var name="pruebaGrm" expr="'gram'"/>
+	<script>
+		<![CDATA[ function getGramPath() { var resultado = "gram/boolean.bnf"; return resultado; } ]]>
+	</script>
+	<form id="F1">
+		<field name="momo" type="boolean">
+			<prompt>Bienvenido a la prueba de for ich.</prompt>
+			<script>var arrayGames = ["duke nukem forever", "half life 2", "doom 3", "shadow warrior 2"];</script>
+			<prompt >Estos son los juegos de la temporada 2.
+				<break/>
+			</prompt>
+			<foreach item="games" array="arrayGames">
+				<reprompt/>
+			</foreach>
+			<prompt>Fin.</prompt>
+		</field>
+		<nomatch>
+			<prompt>Funciona el evento</prompt>
+		</nomatch>
+	</form>
+</vxml>

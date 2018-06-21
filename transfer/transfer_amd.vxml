@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+ <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+   <form id="demo-detector">
+     <block>
+       <prompt>
+         Answering Machine Detector.
+       </prompt>
+     </block>
+     <transfer name="detector" bridge="true" dest="application:amd()=AMDSTATUS" />
+     <block>
+       <prompt>
+         End of detector, result is <value expr="detector$.value" />.
+       </prompt>
+     </block>
+   </form>
+ </vxml>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+ <link eventexpr="'goodbye'">
+  <grammar src="builtin:amd"/> 
+ </link>
+ <catch event="goodbye" >
+  <prompt>Thank you for trying this script, goodbye.</prompt>
+  <exit/>
+ </catch>
+ <form>
+  <field name="hello" type="digits">
+   <prompt>Say hello</prompt>
+   <noinput>Say something</noinput>
+   <filled>
+    <prompt>Hello, world!</prompt>
+   </filled>
+  </field>
+ </form>
+</vxml>

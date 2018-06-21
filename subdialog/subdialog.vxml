@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1">
+<property name="inputmodes" value="dtmf"/>
+<form id="F1">
+<var name="confirm_prompt" />
+<var name="response" />
+
+
+<field name="field_confirm" type="boolean">
+<prompt>
+<value expr="confirm_prompt" />
+</prompt>
+
+<filled>
+<if cond="field_confirm == true">
+<assign name="response" expr="'yes'" />
+<else />
+<assign name="response" expr="'no'" />
+</if>
+
+<return namelist="response" />
+</filled>
+</field>
+</form>
+</vxml>

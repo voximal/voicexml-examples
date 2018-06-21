@@ -1,0 +1,39 @@
+<?xml version = "1.0" encoding="iso-8859-1"?>
+<vxml version = "2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+ <property name="fetchtimeout" value="60s" />
+ <form>
+  <var name="phone" expr="session.connection.remote.uri"/>
+  <field name="access">
+   <prompt>
+    <audio src="audio/aud04.wav">Para grabar tu mensaje, pulsa 1.</audio>
+   </prompt>
+   <option dtmf="1" value="1" /> 
+  </field>
+  <record dtmfterm="true" maxtime="30s" type="video/quicktime" name="message" beep="true">
+   <prompt> 
+    <audio src="audio/aud05.wav">
+     Tienes 4 minutos, cuando termines de hablar pulsa cualquier tecla para escucharte.
+     Empieza a hablar después de la señal: 
+    </audio>
+   </prompt>
+  </record>
+  <field type = "boolean" name = "confirm">
+   <prompt>
+    <audio expr="message"/>
+   </prompt>
+   <filled>
+    <if cond = "confirm == 'true'">
+     <submit namelist="phone message" method="post" enctype="multipart/form-data" next="send.php" />
+    </if>
+    <if cond = "confirm == true">
+     <submit namelist="phone message" method="post" enctype="multipart/form-data" next="send.php" />
+    </if>
+    <clear namelist="message confirm"/>
+   </filled>
+   <prompt>
+    <audio src="audio/aud06.wav">Para confirmar la grabación, pulsa 1.</audio>
+    <audio src="audio/aud07.wav">Para volver a grabar, pulsa 2.</audio>
+   </prompt>
+  </field>
+ </form>
+</vxml>

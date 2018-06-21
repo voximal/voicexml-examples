@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml" xml:lang="fr-FR">
+  <form id="F1">
+    <!-- ***************************************************************** -->
+    <!-- for purposes of simplicity, we will use the built-in boolean type -->
+    <!-- note that no grammar construct is needed -->
+    <!-- ***************************************************************** -->
+    <!-- <property name="inputmodes" value="voice"/> <property name="timeout" value="15s"/> <property name="sensitivity" value="0.5"/> <property name="confidencelevel" value="0.5"/> <property name="maxnbest" value="1"/> <property name="speedvsaccuracy" value="0.6"/> <property name="completetimeout" value="0.8s"/> <property name="incompletetimeout" value="3s"/> <property name="maxspeechtimeout" value="30s"/>-->
+    <property name="timeout" value="15s"/>
+    <property name="interdigittimeout" value="3s"/>
+    <property name="sensitivity" value="0.5"/>
+    <property name="speedvsaccuracy" value="0.5"/>
+    <property name="maxspeechtimeout" value="20s"/>
+    <property name="completetimeout" value="0.25s"/>
+    <property name="incompletetimeout" value="2s"/>
+    <property name="bargein" value="true"/>
+    <property name="confidencelevel" value="0.5"/>
+    <field name="F_1">
+      <!-- <grammar mode="voice" src="builtin:dtmf/digits"/> -->
+      <!-- <grammar xml:lang="es-ES" root="r2" xmlns="http://www.w3.org/2001/06/grammar"> -->
+      <!-- <grammar mode="voice" root="r2" version="1.0" xml:lang="es-ES" xmlns="http://www.w3.org/2001/06/grammar" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/06/grammar http://www.w3.org/TR/speech-grammar/grammar.xsd"> -->
+      <grammar type="application/srgs+xml" root="r2" version="1.0">
+        <rule id="r2">
+          <one-of>
+            <item>Moreno</item>
+            <item>Mureno</item>
+            <item>Morino</item>
+            <item>Morena</item>
+            <item>Mareno</item>
+            <item>Mareni</item>
+            <item>Marenu</item>
+          </one-of>
+        </rule>
+      </grammar>
+      <prompt>Dites moi quelque chose ?</prompt>
+      <nomatch>
+        <prompt>J'ai rien compris.</prompt>
+      </nomatch>
+      <noinput>
+        <prompt>Tu n'as rien dit.</prompt>
+      </noinput>
+      <filled>
+        <prompt>Tu as dit
+          <value expr="F_1"/>
+        </prompt>
+      </filled>
+    </field>
+  </form>
+</vxml>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="pl">
+  <form id="pruebas">
+    <block>
+      <prompt>Script to test the SayNumber feature.</prompt>
+    </block>
+    <field name="number" type="number">
+      <prompt>Enter the number:</prompt>
+      <filled>
+        <prompt>Your entered the number:</prompt>
+        <prompt>
+          <audio expr="'application:SayNumber('+number+')'"/>
+        </prompt>
+        <clear/>
+      </filled>
+    </field>
+  </form>
+</vxml>

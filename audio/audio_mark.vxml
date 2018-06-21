@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml" xml:lang="en">
+ <property name="audiomaxstale2" value="66"/>
+ <form>
+  <block name="momo">
+   <prompt>
+    I am going to play Asterisk Wav file :
+    <mark name="mark1"/>
+   </prompt>
+   <prompt>
+    <audio src="linux.wav" maxstale="30"/>
+    <mark name="mark2"/>
+    <audio src="linux2.wav"/>
+    <mark name="mark3"/>
+   </prompt>
+   <prompt bargein="false">
+    That's all.
+   </prompt>
+  </block>
+ </form>
+</vxml>

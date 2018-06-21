@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml" xml:lang="fr-FR-Laurent">
+ <form>
+  <property name="inputmodes" value="voice"/>
+  <property name="timeout" value="30s"/>
+  <field name="text">
+   <grammar mode="voice" src="jours.grxml"/>
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt>
+    Dit un jour de la semaine :
+   </prompt>
+  </field>
+  <filled>
+   <prompt>
+    Your code is :
+    <value expr="text" />
+   </prompt>
+   <clear namelist="text" />
+  </filled>
+ </form>
+</vxml>

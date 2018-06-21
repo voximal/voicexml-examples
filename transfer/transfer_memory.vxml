@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+  <property name="promptcut" value="false"/>
+  <form id="demo">
+    <property name="memory" value="true"/>
+    <block>
+      <prompt><audio src="hello.wav"> : : : : : : : Hello Borja, I am calling you.</audio></prompt>
+    </block>
+    <block>
+      <goto next="#transfer2"/>
+    </block>
+  </form>
+
+  <form id="transfer">
+    <block>
+      <prompt>Transfer test.</prompt>
+      <audio src="memory:0"/>
+    </block>
+    <transfer bridge="true" dest="tel:SIP/user1" connecttimeout="20s" maxtime="10s">
+      <property name="announcememory" value="true"/>
+      <prompt>This is a Transfer test.</prompt>
+    </transfer>
+    <block>
+      <prompt>End of Transfer test.</prompt>
+      <disconnect/>
+    </block>
+  </form>
+
+  <form id="transfer2">
+    <block>
+      <prompt>Transfer test.</prompt>
+    </block>
+    <transfer bridge="true" dest="tel:SIP/user1" connecttimeout="20s" maxtime="10s">
+      <property name="announcement" value="true"/>
+      <prompt><audio src="hello.wav"> : : : : : : : Hello Borja, I am calling you.</audio></prompt>
+    </transfer>
+    <block>
+      <prompt>End of Transfer test.</prompt>
+      <disconnect/>
+    </block>
+  </form>
+</vxml>

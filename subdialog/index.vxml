@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<vxml xml:lang="it-it" version="2.1">
+<property name="inputmodes" value="dtmf"/>
+<script>
+   <![CDATA[ 
+		function get_remote() {
+			var uri_remote = session.connection.remote.uri;
+			return uri_remote;
+		}
+		function is_user() {
+			var array_utenti = new Array("0000000","0952931821","3928806121","111111111");
+			var uri_remote = get_remote();
+			for( var i=0; i<array_utenti.length; i++ ) {
+				if( array_utenti[i] == uri_remote )
+					return true;
+			}
+			return false;
+		}
+	]]>
+</script>
+<var name="ln" expr="1"  />
+<var name="nome" />
+<var name="tent_nome" expr="0" />
+<var name="tent_cognome" expr="0" />
+<var name="iscrizione" expr="0" />
+<var name="dati_iscrizione"  />
+<var name="nome" />
+<var name="cognome" />
+<var name="numero_telefonico"  />
+<var name="data_inizio" expr="2013-01-13"/>
+<var name="id_data" expr="1" />
+<var name="data_fine" expr="2013-01-13" />
+<var name="ora_inizio" expr="'10:00:00'" />
+<var name="ora_fine" expr="'11:00:00'" />
+<var name="id_evento" expr="1" />
+<var name="max_p" expr="1" />
+<var name="nposti"  />
+<var name="auth" expr="0" />
+<var name="chiamante" expr="'0952931821'"  />
+<var name="id_utente" expr="3" />
+<var name="is_user" expr="true" />
+<form id="switch_maxposti">
+	<block cond="max_p==1">
+		<assign name="nposti"  expr="1"/>
+		<goto next="#switch"/>
+	</block>
+	<block cond="max_p>1">
+		<goto next="#intro"/>
+	</block>
+</form>
+<form id="intro">
+	<field name="numero_posti">
+		<grammar src="builtin:dtmf/number"/>
+		<prompt  bargein="true">
+			Quanti unità vuoi prenotare? 
+		</prompt>
+	</field>
+	<filled>
+		<if cond="numero_posti>max_p">
+			<goto next="#posti_over"/>
+		<else/>
+			<assign name="nposti"  expr="numero_posti"/>
+			<goto next="#switch"/>
+		</if>
+	</filled>
+</form>
+<form id="posti_over">
+	<block >
+		<prompt  bargein="false">
+			 Spiacente! Puoi prenotare al massimo <value expr="max_p" /> unità. 
+		</prompt>
+		<goto next="#intro"/>
+	</block>
+</form>
+<form id="switch">
+	<block cond="is_user">
+		<goto next="#utente_registrato"/>
+	</block>
+	<block cond="!is_user">
+		<goto next="#switch2"/>
+	</block>
+</form>
+<form id="switch2">
+	<field name="switch2">
+		<prompt>
+			Per prenotarti devi essere registrato. Il numero dal quale stai chiamando, non è presente nel nostro sistema. Per  registrarti , premi 1, o pronuncia: continua. Se sei registrato con un altro numero, premi 2, o pronuncia: altro.	
+		</prompt>
+		<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="it-IT" root="switch_voice" version="1.0" mode="voice" tag-format="semantics/1.0">
+			<rule id="switch_voice" scope="public">
+				<one-of>
+					<item>altro<tag>out=2</tag></item>
+					<item>continua<tag>out=1</tag></item>
+				</one-of>
+			</rule>
+		</grammar>
+		<grammar type="application/srgs+xml" root="switch_dtmf" version="1.0"  mode="dtmf" tag-format="semantics/1.0">
+	    	<rule id="switch_dtmf" scope="public">
+				<one-of>
+					<item>2</item>
+					<item>1</item>
+				</one-of>
+			</rule>
+		</grammar>
+		<catch event="nomatch noinput" count="2" >
+			<goto next="#riconoscimento"/>
+		</catch>
+	</field>
+	<filled>
+		<if cond="switch2==2">
+			<goto next="#riconoscimento"/>
+		</if>
+		<if cond="switch2==1">
+			<goto next="#iscrizione"/>
+		</if>
+	</filled>
+</form>
+<form id="riconoscimento">
+	<field name="numero_inserito">
+		<grammar src="builtin:grammar/digits"/>
+		<grammar src="builtin:dtmf/digits"/>
+		<prompt  bargein="false">
+			Pronuncia il numero con il quale sei registrato.
+		</prompt>
+		<filled>
+			<prompt>Il numero che hai inserito è:  <value expr="numero_inserito" />?</prompt> 
+		</filled>
+	</field>
+	<field name="conferma_num" >
+		<prompt  bargein="false">  
+			Se il numero  è corretto, premi 1, o pronuncia: corretto. Altrimenti premi 2 o pronuncia:  no.
+		</prompt> 
+		<grammar src="grammatiche/conf_1.grxml"/>
+		<grammar src="builtin:dtmf/boolean"/>
+		<filled>
+			<if cond="conferma_num=='true'">
+				<submit next="insert_pren.vxml" method="post" namelist="numero_inserito id_data nposti chiamante ln "/>
+			<else/>
+				<goto next="#riconoscimento"/>
+			</if>
+		</filled>
+	</field>
+</form>
+<form id="utente_registrato">
+	<block>
+		<goto next="#submit_dati" />
+	</block>
+</form>
+<form id="submit_dati">
+	<block>
+		<submit next="insert_pren.vxml" fetchtimeout="5s"  method="post" namelist="id_data  iscrizione nome cognome numero_telefonico  id_utente nposti chiamante ln auth "/>
+	</block>
+</form>
+<form id="iscrizione">
+	<block>
+		<prompt bargein="false"></prompt>
+		<goto next="#registrazione"/>
+	</block>
+</form>
+<form id="registrazione">
+	<subdialog name="registrazione" src="registrazione.vxml"/>
+	<block>
+		<assign name="iscrizione" expr="1" />
+		<assign name="dati_iscrizione" expr="registrazione.iscrizione" />
+		<assign name="numero_telefonico" expr="registrazione.iscrizione[2]"/>
+		<assign name="nome" expr="registrazione.iscrizione[1]"/>
+		<assign name="cognome" expr="registrazione.iscrizione[0]"/>
+		<goto next="#submit_dati"/>
+	</block>
+	</form>
+</vxml>

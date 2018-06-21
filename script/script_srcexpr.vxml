@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml">
+  <script srcexpr="'prueba.js'"/>
+  <form id="form">
+    <block name="fact">
+      <prompt>Call to a simple function.</prompt>
+      <prompt>
+        <value expr="devuelveTexto()"/>
+      </prompt>
+    </block>
+  </form>
+</vxml>

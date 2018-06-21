@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/vxml" xmlns:conf="http://www.w3.org/2002/vxml-conformance" xml:lang="fr-FR" version="2.0">
+	
+	<property name="inputmodes" value="voice"/>
+	<var name="message" expr="null"/>
+  
+	
+
+
+	<property name="timeout" value="5000ms"/>
+
+
+  
+	<form id="Question2"> 
+		<record name="Question2" finalsilence="2000ms" type="audio/x-wav" beep="true"> 
+			<property name="timeout" value="10000ms"/> 
+				<prompt> Enregistrez votre message après le bip
+				</prompt>
+			<filled> 
+				<assign name="message" expr="Question2"/> 
+				<log expr="'record filled'" label="RECORD"/>
+				<prompt>
+				  <value expr="Question2$.size" />
+				</prompt>
+			</filled>
+			<noinput>
+				<prompt>je n'ai pas entendu
+				</prompt>
+				<reprompt/>
+			</noinput>
+
+		</record> 
+
+		
+	</form>
+	
+
+
+	</vxml>
+	

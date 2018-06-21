@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ Author:   Vectec Inc.
+ Date:     Friday, Janary 20, 2012
+ fr-FR_Digit5.grxml: VASRE sample grammar matching 5 digits (fr-FR version).
+           This grammar declares the tag format of <semantics/1.0> and contains
+           SI tags to output a semantic result of type string representing the
+           number.
+ Example:  "trois six quatre neuf un" (36491)
+-->
+
+<grammar version="1.0"
+         xmlns="http://www.w3.org/2001/06/grammar"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://www.w3.org/2001/06/grammar"
+         xml:lang="fr-FR" mode="voice" tag-format="semantics/1.0" root="ID">
+
+  <rule id="ID">
+   <example>trois six quatre neuf un</example>
+    <tag>out = "";</tag>
+    <item>
+        <ruleref uri="#Letter"/>
+        <tag>out += rules.latest();</tag>
+    </item>
+    <item repeat="6">
+        <ruleref uri="#Digit"/>
+        <tag>out += rules.latest();</tag>
+    </item>
+  </rule>
+
+  <rule id="Letter">
+    <one-of>
+      <item>n      <tag>out = "N";</tag></item>
+      <item>x      <tag>out = "X";</tag></item>
+    </one-of>
+  </rule>
+
+  <rule id="Digit">
+    <one-of>
+      <item>zéro   <tag>out = "0";</tag></item>
+      <item>un     <tag>out = "1";</tag></item>
+      <item>deux   <tag>out = "2";</tag></item>
+      <item>trois  <tag>out = "3";</tag></item>
+      <item>quatre <tag>out = "4";</tag></item>
+      <item>cinq   <tag>out = "5";</tag></item>
+      <item>six    <tag>out = "6";</tag></item>
+      <item>sept   <tag>out = "7";</tag></item>
+      <item>huit   <tag>out = "8";</tag></item>
+      <item>neuf   <tag>out = "9";</tag></item>
+    </one-of>
+  </rule>
+</grammar>

@@ -1,0 +1,41 @@
+<?xml version = "1.0" ?>
+<vxml version = "2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-UK">
+  <property name="inputmodes" value="dtmf" />
+  <property name="fetchtimeout" value="60s" />
+  <form>
+    <noinput>
+      <reprompt/>
+    </noinput>
+    <nomatch>
+      <prompt>Bad recording.</prompt>
+      <reprompt/>
+    </nomatch>
+    <var name="caller" expr="session.connection.remote.uri"/>
+    <block>
+      <prompt>Welcome to the Karaoke service :</prompt>
+    </block>
+    <field name="access">
+      <property name="timeout" value="10s" />
+      <prompt>To record your message, press 1.</prompt>
+      <option dtmf="1" value="1" />
+    </field>
+    <record dtmfterm="true" maxtime="240s" type="audio/x-wav" name="record" beep="true">
+      <property name="announcement" value="true"/>
+      <prompt>
+        <audio src="clip.wav"/>
+      </prompt>
+    </record>
+    <field type = "boolean" name = "confirm">
+      <property name="timeout" value="10s" />
+      <property name="fetchtimeout" value="30s" />
+      <prompt><audio expr="record"/></prompt>
+      <prompt>To confirm your message, press 1.      To record it again, press 2.</prompt>
+      <filled>
+        <if cond = "confirm == 'true'">
+          <submit namelist="caller record" method="post" enctype="multipart/form-data" next="send.php" />
+        </if>
+        <clear namelist="record confirm"/>
+      </filled>
+    </field>
+  </form>
+</vxml>

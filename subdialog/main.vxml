@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version="2.1">
+  <form id="F1">
+    <subdialog name="SubD_1" src="subdialog.vxml" cond="false">
+      <param name="confirm_prompt" expr="'Since the condition is set to false, this will not be executed'" />
+    </subdialog>
+    <subdialog name="SubD_2" src="subdialog.vxml" expr="'crusty'">
+      <param name="confirm_prompt" expr="'Since the expression is not set to undefined, this will not be executed'" />
+    </subdialog>
+    <subdialog name="SubD_3" src="subdialog.vxml" method="post" cond="true">
+      <param name="confirm_prompt" expr="'this subdialog will be executed, since the condition is true, and the expression is undefined. Say yes or no to execute the subdialog file.'" />
+      <filled>
+        <prompt>Poppa oo mow mow!</prompt>
+      </filled>
+    </subdialog>
+  </form>
+</vxml>

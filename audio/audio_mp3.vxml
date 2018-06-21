@@ -1,0 +1,15 @@
+<?xml version = "1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-UK">
+ <property name="cdrprompt" value="true"/>
+ <form>
+	<object name="audio" classid="extern:curl" data="http://audio-1.myvocal.com/4l888algfk8rmodc3lbt02k7gqn3svmqkahet0jsh4op1kfl9oonsq0.mp3" />
+  <block>
+   <prompt>
+    <audio src="test2.mp3">File not exists.</audio>
+    <audio src="http://audio-1.myvocal.com/4l888algfk8rmodc3lbt02k7gqn3svmqkahet0jsh4op1kfl9oonsq0.mp3 ">File not exists.</audio>
+    <audio src="uri:http://localhost/vxml/examples/audio/5DBD78EB3E6A7BB7CEAB2AA9405EAA50.mp3">File not exists.</audio>
+    <audio src="uri:http://scfire-dtc-aa02.stream.aol.com:80/stream/1065">Stream error.</audio>
+   </prompt>
+  </block>
+ </form>
+</vxml>

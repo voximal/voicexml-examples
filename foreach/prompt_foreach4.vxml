@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/vxml" version="2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.xsd">
+  <script>var Sedra = [ 'a1', 'a2', 'a3' ]; </script>
+  <form id="pick_movie">
+    <var name="prompts" expr="Sedra"/>
+    <block name="intro">
+      <prompt>For each test.</prompt>
+    </block>
+    <block name="movie">
+      <prompt>Say helo.</prompt>
+      <audio src="prelist.wav">just say it if you want.</audio>
+      <prompt>
+        <foreach item="thePrompt" array="Sedra">
+					<prompt bargein = "true" bargeintype = "hotword">
+						<audio src="Main/For.wav" />
+						<audio expr="'Main/' + thePrompt + '.wav'"/>
+						<audio src="Main/Press.wav" />
+						<audio expr="'Numbers/' + (Sedra.indexOf(thePrompt)+1).toString() + '.wav'"/>
+					</prompt>
+          <break time="1000ms"/>
+        </foreach>
+      </prompt>
+      <audio src="prelist2.wav">So, just say it.</audio>
+    </block>
+    <field name="test">
+      <grammar>[(test)]</grammar>
+    </field>
+  </form>
+</vxml>

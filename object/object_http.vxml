@@ -1,0 +1,15 @@
+<?xml version = "1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+  <form>
+    <object name="request" classid="extern:http" data="http://localhost/vxml/index.vxml">
+      <param name="param1" expr="'http://localhost/vxml/index.vxml'" />
+      <param name="dest" expr="'/tmp/test'" />
+    </object>
+    <block>Result
+      <value expr="request$.errcode" />.</block>
+    <object name="save" classid="save">
+      <param name="var" expr="request"/>
+      <param name="dest" expr="'/tmp/loquendo.txt'"/>
+    </object>
+  </form>
+</vxml>

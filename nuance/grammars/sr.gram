@@ -1,0 +1,42 @@
+ <grammar xmlns="http://www.w3.org/2001/06/grammar" version="1.0" xml:lang="en-US" root="sr" tag-format="swi-semantics/1.0">
+ <rule id="sr" scope="public">
+   <one-of>
+     <item>
+       <ruleref uri="#sales"/>
+       <tag>sr='sales'</tag>
+     </item>
+     <item>
+       <ruleref uri="#support"/>
+       <tag>sr='support'</tag>
+     </item>
+     <item>
+       <ruleref uri="#voicemail"/>
+       <tag>sr='voicemail'</tag>
+     </item>
+     <item>
+       <ruleref uri="#fax"/>
+       <tag>sr='fax'</tag>
+     </item>
+   </one-of>
+ </rule>
+ <rule id="sales">
+   <one-of>
+     <item>sales</item>
+   </one-of>
+ </rule>
+ <rule id="support">
+   <one-of>
+     <item>support</item>
+   </one-of>
+ </rule>
+ <rule id="voicemail">
+   <one-of>
+     <item>voicemail</item>
+   </one-of>
+ </rule>
+ <rule id="fax">
+   <one-of>
+     <item>fax</item>
+   </one-of>
+ </rule>
+ </grammar>

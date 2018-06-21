@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+ <form>
+  <property name="inputmodes" value="voice"/>
+  <property name="timeout" value="30s"/>
+  <field name="text">
+   <option dtmf="1" value="uno">Uno</option>
+   <option dtmf="2" value="dos">Dos</option>
+   <option dtmf="3" value="tres">Tres</option>
+   <option dtmf="4" value="cuatro">Cuatro</option>
+   <option dtmf="5" value="cinco">Cinco</option>
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt>
+    Hablame por favor :
+    <audio src="longaudio2.wav"/>
+   </prompt>
+  </field>
+  <filled>
+   <prompt>
+    Me has dicho :
+    <value expr="text" />
+   </prompt>
+   <clear namelist="text" />
+  </filled>
+ </form>
+</vxml>

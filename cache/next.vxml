@@ -1,0 +1,19 @@
+<?xml version="1.0"?> 
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml"> 
+  <form id="main"> 
+    <var name="hours"/> 
+    <var name="minutes"/> 
+    <var name="seconds"/> 
+    <block> 
+      <script> 
+        var d = new Date(); 
+        hours = d.getHours(); 
+        minutes = d.getMinutes(); 
+        seconds = d.getSeconds(); 
+      </script> 
+      <prompt> 
+        <value expr="seconds"/> seconds. 
+      </prompt> 
+    </block> 
+  </form> 
+</vxml>

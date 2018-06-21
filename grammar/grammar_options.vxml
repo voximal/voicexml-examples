@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+ <form>
+  <property name="inputmodes" value="dtmf voice"/>
+  <property name="timeout" value="30s"/>
+  <property name="interdigittimeout" value="1500ms"/>
+  <field name="text">
+   <option dtmf="1" value="uno">!primero</option>
+   <option dtmf="2" value="dos">!segundo</option>
+   <option dtmf="13" value="tres">!tercero</option>
+   <option dtmf="14" value="cuatro">Cuatro</option>
+   <option dtmf="15" value="cinco">Cinco</option>
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt>
+    Hablame :
+    fdsfdsf ds fdsfdsf d sf d f ds f ds f ds f ds f ds fd fdsfdsf
+   </prompt>
+  </field>
+  <filled>
+   <prompt>
+    Me has dicho :
+    <value expr="text" />
+   </prompt>
+   <clear namelist="text" />
+  </filled>
+ </form>
+</vxml>

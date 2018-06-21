@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-US">
+ <form>
+  <property name="inputmodes" value="voice"/>
+  <property name="timeout" value="5s"/>
+	<field name="text" type="boolean">
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt xml:lang="text">
+    Say me a number :
+   </prompt>
+   <prompt>
+    Say me a number :
+   </prompt>
+  </field>
+  <filled>
+   <prompt xml:lang="text">
+    You have said :
+    <value expr="text" />
+   </prompt>
+   <prompt>
+    You have said :
+    <value expr="text" />
+   </prompt>
+   <clear namelist="text" />
+  </filled>
+ </form>
+</vxml>

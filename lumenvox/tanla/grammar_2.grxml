@@ -1,0 +1,1 @@
+<?xml version='1.0'?><grammar xmlns='http://www.w3.org/2001/06/grammar' version='1.0' root='_GRAMROOT_1204' tag-format='semantics/1.0.2006' xml:lang='en' mode='dtmf'><meta name='swirec_simple_result_key' content='MEANING'/><rule id='_GRAMROOT_1204' scope='public'><one-of><item>*<tag>MEANING='-1';</tag></item></one-of></rule></grammar>

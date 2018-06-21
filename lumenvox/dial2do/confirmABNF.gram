@@ -1,0 +1,13 @@
+#ABNF 1.0 UTF-8;
+
+language en-US;
+mode voice;
+tag-format <lumenvox/1.0>;
+
+root $CONFIRM;
+
+public $CONFIRM =
+    yes {ans='yes';} |
+    no {ans = 'no';} |
+    start over {ans = 'start_over';}
+;

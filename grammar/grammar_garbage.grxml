@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar version="1.0" tag-format="semantics/1.0" mode="voice" root="MainRule" xml:lang="en-US">
+  <rule id="MainRule" scope="public">
+    <item repeat="0-1">
+      <ruleref special="GARBAGE"/>
+    </item>
+    <item>from
+      <ruleref uri="#city"/>
+      <tag>out.from = rules.latest();</tag>to
+      <ruleref uri="#city"/>
+      <tag>out.to = rules.latest();</tag>
+    </item>
+    <item repeat="0-1">
+      <ruleref special="GARBAGE"/>
+    </item>
+  </rule>
+  <rule id="city">
+    <one-of>
+      <item>Rome</item>
+      <tag>out = "FCO";</tag>
+      <item>Venice</item>
+      <tag>out = "VCE";</tag>
+      <!-- Many other cities here! --></one-of>
+    </rule>
+  </grammar>

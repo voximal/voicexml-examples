@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="it-IT" root="conf" version="1.0" mode="voice" tag-format="semantics/1.0">
+<rule id="conf" scope="public">
+<one-of>
+<item>ok<tag>out=true</tag></item>
+<item>occhei<tag>out=true</tag></item>
+<item>sì<tag>out=true</tag></item>
+<item>confermo<tag>out=true</tag></item>
+<item>corretto<tag>out=true</tag></item>
+<item>vabene<tag>out=true</tag></item>
+<item>vabbè<tag>out=true</tag></item>
+<item>elenca<tag>out=true</tag></item>
+<item>vai<tag>out=true</tag></item>
+<item>yes<tag>out=true</tag></item>
+<item>no<tag>out=false</tag></item>
+<item>non ascoltare<tag>out=false</tag></item>
+<item>negativo<tag>out=false</tag></item>
+<item>salta<tag>out=false</tag></item>
+<item>prenota<tag>out=true</tag></item>
+</one-of>
+</rule>
+</grammar>

@@ -1,0 +1,29 @@
+/*
+  Vestec Automatic Speech Recognition Engine Version 1.0
+  Copyright (c) 2009 Voice Enabling Systems Technology, Inc. All rights reserved.
+ */
+
+#ABNF 1.0;
+tag-format <semantics/1.0>;
+
+// 4 digit numbers
+// ex) "one five six zero"     --> "1 5 6 0 "
+//     "four three three zero" --> "4 3 3 0 "
+//     "five six eight seven"  --> "5 6 8 7 "
+
+root $Digit4;
+
+$Digit4 = {out="";} $Digit {out+=rules.latest();}<4-4>;
+
+$Digit
+  = zero  {out="0 ";}
+  | one   {out="1 ";} 
+  | two   {out="2 ";}
+  | three {out="3 ";}
+  | four  {out="4 ";}
+  | five  {out="5 ";}
+  | six   {out="6 ";}
+  | seven {out="7 ";}
+  | eight {out="8 ";}
+  | nine  {out="9 ";}
+  ;

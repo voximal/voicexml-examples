@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+  <property name="inpumodes" value="dtmf"/>
+  <form>
+    <var name="numero_selec" expr="''"/>
+    <field name="numero_dtmf">
+      <grammar type="application/x-jsgf" mode="dtmf">1{56}|2{68}</grammar>
+      <prompt>Pulsa un numero</prompt>
+      <noinput>
+        <prompt>No ha dicho nada.</prompt>
+        <reprompt/>
+      </noinput>
+      <nomatch>
+        <prompt>No coincide con ninguna.</prompt>
+        <reprompt/>
+      </nomatch>
+      <filled>
+        <assign name="numero_selec" expr="numero_dtmf"/>
+        <prompt>Has dicho
+          <value expr="numero_selec" />
+        </prompt>
+      </filled>
+    </field>
+  </form>
+</vxml>

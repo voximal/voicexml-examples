@@ -1,0 +1,5 @@
+#ABNF 1.0 ;
+
+root $day = ($GARBAGE* $week_day)+;
+
+$week_day= Lunes {Monday} | Martes {Tuesday} | Miércoles {Wednesday} | Jueves {Thursday} | Viernes {Friday} | Sábado {Saturday};

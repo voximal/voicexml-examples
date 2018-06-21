@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+  <property name="inputmodes" value="dtmf voice"/>
+	<var name="result" expr="'RES_DISCONNECT'"/>
+	<var name="result2" expr="'RES_DISCONNECT2'"/>
+	<var name="result3" expr="'RES_DISCONNECT3'"/>
+	<catch event="telephone.disconnect.hangup">
+		<prompt>Test...</prompt>
+	</catch>
+	<catch event="connection.disconnect.hangup">
+		<goto next="#onceagain3"/>
+	</catch>
+	<catch event="event.disconnectTheCall">
+		<disconnect namelist="result result2 result3"/>
+	</catch>
+	<form id="endTheCall">
+		<block>
+			<prompt>Test... Blabla...</prompt>
+			<goto next="#onceagain3"/>
+			<throw event="event.disconnectTheCall" />
+		</block>
+	</form>
+	<form id="onceagain">
+		<block>
+			<prompt>Test... Blabla...</prompt>
+			<disconnect/>
+		</block>
+	</form>
+	<form id="onceagain2">
+		<block>
+			<prompt>Test... Blabla...</prompt>
+		</block>
+		<record name="momo">
+			<prompt>Test... Record...</prompt>
+		</record>
+	</form>
+	<form id="onceagain3">
+		<block>
+			<prompt>Test... Blabla...</prompt>
+		</block>
+		<field name="text">
+			<option dtmf="1" value="uno">Uno</option>
+			<option dtmf="12" value="dos">Dos</option>
+			<option dtmf="13" value="tres">Tres</option>
+			<option dtmf="14" value="cuatro">Cuatro</option>
+			<option dtmf="15" value="cinco">Cinco</option>
+			<catch event="noinput nomatch">
+				<reprompt/>
+			</catch>
+			<prompt>Hablame : fdsfdsf ds fdsfdsf d sf d f ds f ds f ds f ds f ds fd fdsfdsf</prompt>
+		</field>
+	</form>
+</vxml>

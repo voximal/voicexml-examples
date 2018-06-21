@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-UK">
+  <form>
+    <property name="inputmodes" value="dtmf"/>
+    <property name="timeout" value="30s"/>
+    <field name="value" type="digits?length=10">
+      <catch event="noinput nomatch">
+        <reprompt/>
+      </catch>
+      <prompt>Enter the digits :</prompt>
+      <filled>
+        <prompt>Value is :
+          <value expr="value" />
+          <audio expr="'dial:'+value" />
+        </prompt>
+      </filled>
+    </field>
+    <block>
+      <prompt></prompt>      
+      <prompt bargein="false">
+        <break time="30s"/>
+      </prompt>
+    </block>
+    <transfer bridge="true" dest="tel:monitor(wav,test)" />
+  </form>
+</vxml>

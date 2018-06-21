@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:lang="es-ES;amaya"
+  xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml20/vxml.xsd">
+
+<property name="inputmodes" value="voice"/>
+<property name="confidencelevel" value="0.1"/> 
+ 
+	<form id="doadd">  
+    <transfer bridge="true" dest="application:Noop"  aai="mi traza" />   
+   <field name="user_input" >
+<!--
+<grammar type="application/isolated" xml:lang="es-ES">
+1        uno
+2        dos
+3        David
+4        Pepe
+</grammar>
+-->
+
+<grammar type="application/isolated">
+Lola
+dos
+David Pinedo
+Pepe
+María
+Luís
+</grammar>
+
+
+   <log>Lets go ASR</log> 
+            <prompt timeout="2000ms" bargein="true"> 
+               Di un nombre, por favor <audio src="uri:beepbis.gsm"/>
+            </prompt>
+            <catch event="nomatch noinput maxspeechtimeout">
+                <log>Se produjo un evento de tipo <value expr="_event"/>: <value expr="_message" /></log>
+                <reprompt />
+            </catch>
+            <filled>
+                <log>Dijiste <value expr="user_input" />. Dijo <value expr="application.lastresult$.utterance" />, con confianza <value expr="application.lastresult$.confidence" /> que fue interpretado como <value expr="application.lastresult$.interpretation" />. </log>
+            </filled>
+        </field>
+	</form>
+</vxml>

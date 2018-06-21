@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="start">
+<rule id="start" scope="public">
+	<one-of> 
+		<item>lundi</item>
+		<item>mardi</item>
+		<item>mercredi</item>
+		<item>jeudi</item>
+		<item>vendredi</item>
+		<item>samedi</item>
+		<item>dimanche</item>
+	</one-of>
+</rule> 
+</grammar>

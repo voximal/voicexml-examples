@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+ <var name="result" expr="'RES_DISCONNECT'"/>
+ <var name="result2" expr="'RES_DISCONNECT2'"/>
+ <var name="result3" expr="'RES_DISCONNECT3'"/>
+ <catch event="telephone.disconnect.hangup">
+  <prompt>
+   Test...
+  </prompt>
+ </catch>
+ <catch event="connection.disconnect.hangup">
+    <submit namelist="myExit" next="http://mysite/exit.jsp"/>
+ </catch> 
+ <catch event="event.disconnectTheCall">
+  <disconnect namelist="result result2 result3"/>
+ </catch>
+ <form id="endTheCall">
+  <block>
+   <prompt>
+    Test...
+    Blabla...
+   </prompt>
+   <throw event="event.disconnectTheCall" />
+  </block>
+ </form>
+</vxml>

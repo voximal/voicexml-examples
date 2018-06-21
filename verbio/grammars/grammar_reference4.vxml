@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+ <form>
+  <property name="inputmodes" value="voice"/>
+  <property name="timeout" value="10s"/>
+  <property name="maxnbest" value="3"/>
+
+  <field name="text">
+   <grammar mode="voice" src="multi.bnf"/>
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt>
+    Seleccionnar :
+Voy a hablar durante la seleccion :
+   </prompt>
+  </field>
+  <filled>
+   <prompt>
+    He reconocido :
+    <value expr="text" />
+   </prompt>
+   <clear namelist="text" />
+  </filled>
+ </form>
+</vxml>

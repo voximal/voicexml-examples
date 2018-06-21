@@ -1,0 +1,76 @@
+#ABNF 1.0 UTF-8;
+
+language en-US;
+mode voice;
+tag-format <semantics/1.0.2006>;
+
+root $services;
+
+public $services =
+        
+            
+
+                    
+                      reminder
+                        { name="reminder", id="5", url="reminder"} |
+            
+
+                    
+                      listen to reminders
+                        { name="listen to reminders", id="319", url="reminders"} |
+            
+            
+            
+
+                    
+                      email
+                        { name="email", id="3", url="email/record"} |
+            
+
+                    
+                      listen to email
+                        { name="listen to email", id="40", url="email/listen"} |
+            
+            
+            
+
+                    
+                      lifehacker
+                        { name="lifehacker", id="28", url="news/listen/lifehacker"} |
+            
+            
+            
+
+                    
+                      tech crunch
+                        { name="tech crunch", id="25", url="news/listen/tech_crunch"} |
+            
+            
+            
+
+                    
+                      text
+                        { name="text", id="2", url="text"} |
+            
+            
+            
+
+                    
+                      toodle do
+                        { name="toodle do", id="223", url="task/record/toodledo"} |
+            
+
+                    
+                      listen to toodle do
+                        { name="listen to toodle do", id="224", url="task/listen/toodledo"} |
+            
+            
+            messages
+                { name="messages", url="messages"} |
+            help
+                {name="help", url="commands"} |
+            invite
+                {name="invite", url="invite"} |
+            hang up
+                {name="hangup", url="hangup"}
+;

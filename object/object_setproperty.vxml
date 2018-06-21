@@ -1,0 +1,19 @@
+<?xml version = "1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-UK">
+ <form>
+  <block>
+   <prompt>
+    Call the property object.
+   </prompt>
+  </block>
+  <object name="result" classid="property:toto">
+   <param name="value" expr="'value'"/>
+  </object>
+  <block>
+   <prompt>
+    Value returned :
+    <value expr="result"/>
+   </prompt>
+  </block>
+ </form>
+</vxml>

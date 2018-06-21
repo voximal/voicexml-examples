@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<vxml version="2.1" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+<form>
+
+  <var name="numero_selec" expr="''"/>
+		
+<field name="numero_dtmf">
+   <grammar type="application/srgs+xml" src="digits_dtmf.grxml"/>
+   <!-- <grammar mode="dtmf" root="numero_dtmf" version="1.0">
+		<rule id="digit">
+           <one-of>
+             <item> 0 </item>
+             <item> 1 </item>
+             <item> 2 </item>
+             <item> 3 </item>
+             <item> 4 </item>
+             <item> 5 </item>
+             <item> 6 </item>
+             <item> 7 </item>
+             <item> 8 </item>
+             <item> 9 </item>
+           </one-of>
+         </rule>
+    </grammar> -->
+		<prompt> 
+			Pulsa un numero
+		</prompt>
+   		<noinput>
+			<prompt> 
+				No ha dicho nada.
+			</prompt>	
+			<reprompt/> 	
+		</noinput>
+		
+		<nomatch>
+			<prompt> 
+				No coincide con ninguna. 
+			</prompt>
+			<reprompt/> 	
+		</nomatch>
+		 <filled>
+		    		<assign name="numero_selec" expr="numero_dtmf"/>
+		      		 <prompt> 
+        				Has dicho  
+       					<value expr="numero_selec" />
+     				 </prompt> 
+    	 </filled> 	
+  </field>
+		      
+</form>
+</vxml>

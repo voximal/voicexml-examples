@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-UK">
+
+ <form id="begin">
+  <block>
+
+   <prompt>
+session.connection.local.uri : This variable is a URI which addresses the local interpreter context device. 
+   </prompt>   
+   <prompt>   
+<value expr="session.connection.local.uri"/>
+   </prompt>   
+
+   <prompt>
+session.connection.remote.uri : This variable is a URI which addresses the remote caller device. 
+   </prompt>   
+   <prompt>   
+<value expr="session.connection.remote.uri"/>
+   </prompt>   
+
+   <prompt>
+session.connection.protocol.name : This variable is the name of the connection protocol. The name also represents the subobject name for protocol specific information. For instance, if session.connection.protocol.name is 'q931', session.connection.protocol.q931.uui might specify the user-to-user information property of the connection. 
+   </prompt>   
+   <prompt>   
+<value expr="session.connection.protocol.name"/>
+   </prompt>   
+
+   <prompt>
+session.connection.protocol.version : This variable is the version of the connection protocol. 
+   </prompt>   
+   <prompt>   
+<value expr="session.connection.protocol.version"/>
+   </prompt>   
+
+   <prompt>
+session.connection.redirect : This variable is an array representing the connection redirection paths. The first element is the original called number, the last element is the last redirected number. Each element of the array contains a uri, pi (presentation information), si (screening information), and reason property. The reason property can be either "unknown", "user busy", "no reply", "deflection during alerting", "deflection immediate response", "mobile subscriber not reachable". 
+   </prompt>   
+   <prompt>   
+<!-- value expr="session.connection.redirect"/ -->
+Not supported yet !
+   </prompt>   
+
+   <prompt>
+session.connection.aai : This variable is application-to-application information passed during connection setup. 
+   </prompt>   
+   <prompt>   
+<value expr="session.connection.aai"/>
+   </prompt>   
+
+   <prompt>
+session.connection.originator : This variable directly references either the local or remote property
+   </prompt>   
+   <prompt>   
+<!-- value expr="session.connection.originator"/ -->
+Not supported yet !
+   </prompt>   
+
+  </block>
+ </form>
+
+</vxml>

@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<grammar  root="conf_dtmf" version="1.0" mode="dtmf">
+<rule id="conf_dtmf" scope="public">
+<one-of>
+<item>1<tag>out=true</tag></item>
+<item>2<tag>out=false</tag></item>
+</one-of>
+</rule>
+</grammar>
+

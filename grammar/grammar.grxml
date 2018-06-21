@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding='ISO-8859-1'?>
+<grammar xml:lang="de-DE" version="1.0" root="main" tag-format="swi-semantics/1.0">
+
+<meta name="swirec_simple_result_key" content="MEANING"/>
+<meta name="swirec_max_speech_duration" content="7000" />
+<meta name="incompletetimeout" content="500"/>
+<meta name="swirec_compile_parser" content="1"/>
+
+ <rule id="main" scope="public">
+    <one-of>
+      <item tag="SWI_meaning=true; MEANING=SWI_meaning">jas</item>
+      <item tag="SWI_meaning=true; MEANING=SWI_meaning">korrekt</item>
+      <item tag="SWI_meaning=false; MEANING=SWI_meaning">nein</item>
+    </one-of>
+ </rule>
+</grammar>
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-GB">
+ <form>
+  <block>
+   <prompt>
+    Welcome to the Lumenvox Test Service.
+   </prompt>
+   <goto next="input.vxml" />
+  </block>
+ </form>
+</vxml>

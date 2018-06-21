@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+ <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+<property name="prompturlvideo" value="ttv.php" />
+<property name="promptposition"  value="30" />
+ 
+   <form id="demo-transfer">
+     <block>
+       <prompt>
+       Welcome Master. 
+       </prompt>
+     </block>
+     <transfer bridge="true" dest="conf:i6net|xMX">
+     </transfer>
+     <block>
+       <prompt>
+         End of Transfer test.
+       </prompt>
+     </block>
+   </form>
+ </vxml>

@@ -1,0 +1,20 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" >
+  <form>
+    <object name="request" classid="extern:http" data="http://94.23.83.2:8080/VTGNUI/HttpSms.jsp">
+      <param name="user" expr="'smspor1'" />
+      <param name="password" expr="'passpor1'" />
+      <param name="to" expr="'33677379042'" />
+      <param name="from" expr="'0146127942'" />      
+      <param name="type" expr="'7'" />      
+      <param name="msg" expr="'test !'" />      
+      <param name="wapurl" expr="'http://www.greennetwork2.es'" />      
+    </object>
+    <block>Result
+      <value expr="request$.errcode" />.</block>
+    <object name="save" classid="save">
+      <param name="var" expr="request"/>
+      <param name="dest" expr="'/tmp/loquendo.txt'"/>
+    </object>
+  </form>
+</vxml>

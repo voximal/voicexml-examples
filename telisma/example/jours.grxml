@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE grammar PUBLIC "-//W3C//DTD GRAMMAR 1.0//EN" 
+                  "tasr://teliSpeech/w3c/grammar.dtd">
+
+<grammar version="1.0" 
+         xmlns="http://www.w3.org/2001/06/grammar" 
+         xml:lang="fr" 
+         mode="voice" 
+         root="start">
+
+<rule id="start" scope="public">
+	<one-of> 
+		<item>lundi</item>
+		<item>mardi</item>
+		<item>mercredi</item>
+		<item>jeudi</item>
+		<item>vendredi</item>
+		<item>samedi</item>
+		<item>dimanche</item>
+	</one-of>
+</rule> 
+
+</grammar>

@@ -1,0 +1,8 @@
+<?xml version = "1.0"?>
+<vxml version = "2.0" xmlns="http://www.w3.org/2001/vxml">
+ <form>
+  <block>
+    <goto next="cache_headers_expires.php" maxstale="60000" />
+  </block>
+ </form>
+</vxml>

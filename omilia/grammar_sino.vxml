@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+ <form id="main">
+  <property name="inputmodes" value="voice"/>
+  <property name="maxspeechtimeout" value="165s"/>
+  <property name="2swirec_app_state_tokens" value="DiaManT_log::HolCC::236F010B214F49E434F2BB7D5CE63C21::1."/>
+  <property name="confidencelevel" value="0.2"/>
+
+  <field name="text">
+   <property name="timeout" value="10s"/>
+   <grammar mode="voice" src="uri:OmASR#ES_YESNO_QUESTION"/>
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt>
+    Dime sí o no...
+   </prompt>
+   <prompt>
+		El motor te va reconocer.
+   </prompt>
+  </field>
+  <filled>
+   <prompt>
+    Has dicho :
+    <value expr="text" />
+   </prompt>
+   <clear namelist="text" />
+   <exit/>
+  </filled>
+ </form>
+</vxml>

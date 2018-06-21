@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="fr-FR">
+ <form>
+  <property name="inputmodes" value="voice"/>
+  <property name="timeout" value="30s"/>
+  <field name="name">
+   <option dtmf="1" value="First choice">One</option>
+   <option dtmf="2" value="Second choice">Two</option>
+   <option dtmf="3" value="Third choice">Three</option>
+   <option dtmf="4" value="Fourth">Four</option>
+   <option dtmf="5" value="Last choice">Five</option>
+   <option value="Last choice">Choice</option>
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt>
+    Make your choice for one to five :
+    <audio src="longaudio.wav"/>
+    <audio src="longaudio.wav"/>
+   </prompt>
+  </field>
+  <block name="prompt">
+   <prompt>
+    Your choice is :
+    <value expr="name" />
+   </prompt>
+   <clear namelist="name prompt" />
+	</block>  
+ </form>
+</vxml>

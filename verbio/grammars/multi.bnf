@@ -1,0 +1,13 @@
+#ABNF 1.0 UTF8;
+
+language es-ES;
+mode voice;
+
+root $nombre;
+
+private $nombre =
+    marta moreno |
+    marta morino |
+    marta mureno |
+    marta murino
+;

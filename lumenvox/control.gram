@@ -1,0 +1,13 @@
+#ABNF 1.0;
+language en-US;
+mode voice;
+tag-format <lumenvox/1.0>;
+root $command;
+
+$forward = ((forward | jump) [now]):"#";
+$backward = (backward | rewind):"*";
+$restart = (restart):"0";
+$pause = (pause):"1";
+$stop = (stop | end):"3";
+
+$command = ($forward | $backward | $restart | $pause | $stop) { $ = $$ };

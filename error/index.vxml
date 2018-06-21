@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+
+ <catch event="error">
+  <goto next="#here"/>
+ </catch>
+
+ <form id="begin">
+  <block>
+   <prompt>
+    Hello
+   </prompt>   
+  </block>
+  <field name="number" type="number">
+   <prompt>
+    Hello
+   </prompt>   
+  </field>
+ </form>
+ 
+ <form id="here">
+  <block>
+   Hello
+  </block>
+ </form>
+
+</vxml>

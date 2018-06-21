@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<grammar version="1.0" xml:lang="it-IT"   root="regioni">
+	 <rule id="regioni" scope="public">
+	 	<one-of>
+		        <item>Abruzzo</item>
+    	<item>Basilicata</item>
+    	<item>Calabria</item>
+    	<item>Campania</item>
+        <item>Emilia Romagna</item>
+        <item>Friuli Venezia Giulia</item>
+        <item>Lazio</item>
+        <item>Liguria</item>
+        <item>Lombardia</item>
+        <item>Marche</item>
+        <item>Molise</item>
+        <item>Piemonte</item>
+        <item>Puglia</item>
+        <item>Sardegna</item>
+        <item>Sicilia</item>
+        <item>Toscana</item>
+        <item>Trentino Alto Adige</item>
+        <item>Umbria</item>
+        <item>Valle d Aosta</item>
+        <item>Veneto</item>
+        
+</one-of></rule> </grammar>

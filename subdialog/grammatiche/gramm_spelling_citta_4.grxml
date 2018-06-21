@@ -1,0 +1,38 @@
+#ABNF 1.0 iso-8859-1;
+mode voice;
+language en-GB;
+tag-format <semantics/1.0>;
+root $main;
+public $main = {out=""} ($digit {out += rules.digit})<1->;
+$digit= $a | $b | $c |$d |$e |$f |$g |$h |$i |$j |$k |$l |$m |$n |$o |$p |$q |$r |$s |$t |$u |$v |$w |$x |$y |$z |  $spec_char | $cifre; 
+
+
+$a = alpha { out="a" ; } ;
+$b = beta { out="b" ; } ;
+$c = charlie { out="c" ; } ;
+$d = delta { out="d" ; } ;
+$e = echo { out="e" ; } ;
+$f = foxtrot { out="f" ; } ;
+$g = golf { out="g" ; } ;
+$h = hotel { out="h" ; } ;
+$i = india { out="i" ; } ;
+$j = juliet { out="j" ; } ;
+$k = kilo { out="k" ; } ;
+$l = lima { out="l" ; } ;
+$m = mike { out="m" ; } ;
+$n = november { out="n" ; } ;
+$o = oscar { out="o" ; } ;
+$p = papa { out="p" ; } ;
+$q = quebec { out="q" ; } ;
+$r = romeo { out="r" ; } ;
+$s = sierra { out="s" ; } ;
+$t = tango { out="t" ; } ;
+$u = uniform { out="u" ; } ;
+$v = victor { out="v" ; } ;
+$w = whiskey { out="w" ; } ;
+$x = x ray { out="x" ; } ;
+$y = yankee { out="y" ; } ;
+$z = zulu { out="z" ; } ;
+
+$spec_char =spazio { out= " " ; } | chiocciola { out= "@" ; } | et { out= "@" ; } | punto { out= "." ; } | trattino basso { out= "_" ; } | underscore { out= "_" ; } | trattino alto { out= "-" ; } | upperscore { out= "-" ; } | meno { out= "-" ; };
+$cifre = 1 | 2 | 3 | 4 | 5 |  6| 7| 8| 9| 0;

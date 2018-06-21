@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="es-ES">
+ <form id="main">
+  <property name="inputmodes" value="voice"/>
+  <field name="text">
+   <grammar mode="voice" src="amper.txt"/>
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt>
+    Seleccionnar :
+Voy a hablar durante la seleccion :
+El cuento es una narración breve, escrita en prosa, en la que se relata una historia tanto real como ficticia. Además de su brevedad, el cuento tiene otras características estructurales que lo diferencian de la novela, la frontera entre un cuento largo y una novela corta no es fácil de definir. También se caracteriza por tener un reducido número de personajes y escasas descripciones. En lengua castellana, la redacción de cuentos es una especialidad de América, en contraposición a la especialidad española en filología y realismo.
+   </prompt>
+   <prompt>
+   En la Segunda República había dos tendencias fundamentales: la correspondiente a la Organización Republicana Gallega Autónoma (ORGA) y la contraparte en el Partido Galeguista (PG). El PG surge de la unión de varias tendencias representadas en las figuras de Vicente Risco, Ramón Otero Pedrayo, Ramón Cabanillas, Ramón Suárez Picallo, Alfonso Daniel Rodríguez Castelao, etc. En 1936 el PG, para lograr el estatuto para Galicia, se alió con el Frente Popular, y como resultado de esa alianza sufrió una escisión. Sin embargo, se logró el Estatuto y Castelao se presentó a las Cortes poco antes de la Guerra Civil española.
+   </prompt>
+  </field>
+  <filled>
+   <prompt>
+    He reconocido :
+    <value expr="text" />
+   </prompt>
+   <clear namelist="text" />
+  </filled>
+ </form>
+</vxml>

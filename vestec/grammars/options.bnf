@@ -1,0 +1,7 @@
+#ABNF 1.0 UTF-8;
+
+language fr-FR;
+
+root $GRAMROOT_3;
+
+$GRAMROOT_3="annuler" {annuler};

@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+ <vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+   <form id="demo-transfer">
+     <block>
+       <prompt>
+         Monitor test.
+       </prompt>
+     </block>
+     <transfer bridge="true" dest="exec:monitor" aai="wav,test"/>
+     <block>
+       <prompt>
+I6NET Solutions and Technologies is an European company dedicated to research and development of telecommunications and Internet technology. We are advanced services experts in voice and video interactivity in line with the latest evolution in telephony.
+       </prompt>
+     </block>
+   </form>
+ </vxml>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+  <error>
+    <disconnect/>
+  </error>
+  <catch event="telephone.disconnect.hangup session.disconnect.hangup connection.disconnect.hangup">
+    <assign name="reqts" expr="'1219146835496'"/>
+  </catch>
+  <form id="main">
+    <block>
+      <assign name="reqts" expr="'1219146835496'"/>
+      <prompt>Hello world, how are you , well very well</prompt>
+    </block>
+  </form>
+</vxml>

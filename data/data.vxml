@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/vxml"
+  version="2.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.w3.org/2001/vxml
+  http://www.w3.org/TR/2007/REC-voicexml21-20070619/vxml.xsd">
+  <var name="quote"/>
+  <var name="ticker" expr="'f'"/>
+
+  <form id="get_quote">
+     <block>
+        <data name="quote" srcexpr="'request.xml?ticker=' + ticker"/>
+        <assign name="document.quote" expr="quote.documentElement"/>
+        <goto next="#play_quote"/>
+     </block>
+  </form>
+
+  <form id="play_quote">
+
+     <script><![CDATA[
+     // retrieve the value contained in the node t from the DOM exposed by d
+     function GetData(d, ns, t, nodata)
+     {
+        try {
+           return d.getElementsByTagNameNS(ns, t).item(0).firstChild.data;
+        }
+        catch(e)
+        {
+           // the value could not be retrieved, so return this instead
+           return nodata;
+        }
+     }
+     ]]></script>
+
+     <block>
+        <!-- retrieve the change in the stock's value -->
+        <var name="change" expr="GetData(quote, 'http://www.example.org', 'change', 0)"/>
+        <var name="last" expr="GetData(quote, 'http://www.example.org', 'last', 0)"/>
+        <var name="last_parts" expr="last.split('.')"/>
+
+        <!--play the company name -->
+        <audio expr="ticker + '.wav'"><value expr="GetData(quote, 'http://www.example.org', 'name', 'unknown')"/></audio>
+        <!-- play 'unchanged, 'up', or 'down' based on zero, positive, or negative change -->
+        <if cond="change == 0">
+           <audio src="unchanged_at.wav"/>
+        <else/>
+           <if cond="change &gt; 0">
+              <audio src="up.wav"/>
+           <else/> <!-- negative -->
+              <audio src="down.wav"/>
+           </if>
+           <audio src="by.wav"/>
+           <!-- play change in value as positive number -->
+           <audio expr="Math.abs(change) + '.wav'"><value expr="Math.abs(change)"/></audio>
+           <audio src="to.wav"/>
+        </if>
+        <!-- play the current price per share -->
+        <audio expr="last_parts[0] + '.wav'"><value expr="last_parts[0]"/></audio>
+        <if cond="Number(last_parts[1]) &gt; 0">
+           <audio src="point.wav"/>
+           <audio expr="last_parts[1] + '.wav'"><value expr="last_parts[1]"/></audio>
+        </if>
+     </block>
+  </form>
+</vxml>

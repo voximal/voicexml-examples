@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+<form>
+ <property name="prompturl" value="http://prius.i6net.org/tts/cepstral/tts.php" />
+ <property name="promptmaxage" value="0s" />
+ <block>
+  <prompt xml:lang="es-ES">
+Esto es una prueba.
+  </prompt>
+  <prompt xml:lang="en-UK">
+Where do you want to travel to?
+  </prompt>
+ </block>
+</form>
+</vxml>

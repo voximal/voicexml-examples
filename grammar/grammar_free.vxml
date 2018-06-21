@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<vxml xmlns="http://www.w3.org/2001/vxml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/vxml http://www.w3.org/TR/voicexml20/vxml.xsd" version="2.0">
+  <form id="filled">
+    <property name="inputmodes" value="voice" />
+    <block>testa filled.</block>
+    <field name="name_filled">
+      <prompt>Diga o seu nome</prompt>
+      <grammar src="nomes.gram" type="application/srgs+xml"/>
+      <catch event="nomatch noinput">Desculpe, não percebi o seu nome.</catch>
+      <filled>
+        <prompt>preencheu o campo nome.</prompt>
+        <submit next="test.vxml"/>
+      </filled>
+    </field>
+    <field name="city_filled">
+      <prompt>Diga uma cidade</prompt>
+      <grammar src="http://www.l2f.inesc-id.pt/~dgmr/i6net/cidades.gram" type="application/srgs+xml"/>
+      <catch event="nomatch noinput">Não estou a conseguir captar a cidade que me indicou.</catch>
+      <filled>
+        <prompt>preencheu o campo cidade.</prompt>
+      </filled>
+    </field>
+    <filled mode="all" namelist="name_filled city_filled">
+      <prompt>Parabéns. preencheu todos os campos.</prompt>
+    </filled>
+    <!--<block>
+    <submit next="http://www.l2f.inesc-id.pt/~dgmr/i6net/Menus.vxml"/>
+  </block>--></form>
+</vxml>

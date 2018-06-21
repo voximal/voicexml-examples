@@ -1,0 +1,11 @@
+<?xml version = "1.0"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="en-UK">
+ <form>
+  <block>
+   <prompt>
+    Hello :
+    <audio src="uri:http://192.168.1.102/vxml/examples/audio/Joke_DP_Aje_butter_victim2.mp3">File not exists.</audio>
+   </prompt>
+  </block>
+ </form>
+</vxml>

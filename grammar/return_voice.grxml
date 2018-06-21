@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<grammar version="1.0" xmlns="http://www.w3.org/2001/06/grammar" mode="voice" tag-format="semantics/1.0" xml:lang="en-us" root = "RETURN">
+  <rule id="RETURN">
+    <item repeat="0-1">
+      <ruleref special="GARBAGE"/>
+    </item>
+    <one-of>
+      <item>Repeat
+        <tag>out.chosere="repeat";</tag>
+      </item>
+      <item>again
+        <tag>out.chosere="repeat 2";</tag>
+      </item>
+      <item>back
+        <tag>out.chosere="repeat 3";</tag>
+      </item>
+      <item>menu
+        <tag>out.chosere="menu";</tag>
+      </item>
+      <item>main menu
+        <tag>out.chosere="menu 2";</tag>
+      </item>
+      <item>goodbye
+        <tag>out.chosere="goodbye";</tag>
+      </item>
+      <item>bye
+        <tag>out.chosere="goodbye 2";</tag>
+      </item>
+    </one-of>
+    <item repeat="0-1">
+      <ruleref special="GARBAGE"/>
+    </item>
+  </rule>
+</grammar>

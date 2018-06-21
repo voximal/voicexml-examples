@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<grammar xml:lang="es-ES" version="1.0" mode="voice" root="main" xmlns="http://www.w3.org/2001/06/grammar">
+  <rule id="main" scope="public">
+    <one-of>
+      <item>pedro</item>
+      <item>manuel</item>
+      <item>carla</item>
+    </one-of>
+  </rule>
+</grammar>

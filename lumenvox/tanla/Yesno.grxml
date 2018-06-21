@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<grammar xml:lang="en-US" version="1.0"
+tag-format="swi-semantics/1.0"
+xmlns="http://www.w3.org/2001/06/grammar" root="ROOT">
+
+
+   <rule id="ROOT" scope="public">
+      <one-of>
+         <item> 
+            <ruleref uri="#AffirmativeResponses" />
+            <tag>Response="Yes" </tag>
+         </item>
+         <item> 
+            <ruleref uri="#NegativeResponses" />
+            <tag>Response="No" </tag>
+         </item>
+      </one-of>
+    </rule>
+
+    <rule id="AffirmativeResponses">
+          <ruleref uri="#Yes" />
+          <item repeat="0-1"> i would </item>
+          <item repeat="0-1"> <ruleref uri="#Thanks" /> </item>
+       
+    </rule>
+
+
+    <rule id="Yes">
+       <one-of>
+          <item> yes </item>
+          <item> yep </item>
+          <item> yeah </item>
+          <item> sure </item>
+          <item> okay </item>
+       </one-of>
+    </rule>
+
+    <rule id="NegativeResponses">
+        <ruleref uri="#No" />
+              <item repeat="0-1"> i wouldn't </item>
+              <item repeat="0-1"> <ruleref uri="#Thanks" /> </item>
+       
+    </rule>
+
+
+    <rule id="No">
+       <one-of>
+          <item> no </item>
+          <item> nope </item>
+       </one-of>
+    </rule>
+    <rule id="Thanks">
+        <one-of>
+           <item> thank you </item>
+           <item> thanks </item>
+        </one-of>
+    </rule>
+
+</grammar>
+
+
+          

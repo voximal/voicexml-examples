@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<grammar root="main" version="1.0" xml:lang="es-ES" mode="dtmf">
+
+  <!--<rule id="main" scope="public">
+    <one-of>
+      <item>1</item>
+      <item>2</item>
+      <item>3</item>
+      <item>4</item>
+      <item>5</item>
+      <item>6</item>
+      <item>7</item>
+      <item>8</item>
+      <item>9</item>
+      <item>0</item>
+    </one-of>
+  </rule>-->
+  <rule id="main" scope="public">
+    <one-of>
+      <item>1<tag>out="ultimos";      </tag>
+       </item>
+      <item>2<tag>out="fecha";</tag></item>
+    </one-of>
+  </rule>
+  
+</grammar>
+

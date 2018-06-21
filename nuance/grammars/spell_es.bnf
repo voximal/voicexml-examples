@@ -1,0 +1,39 @@
+#ABNF 1.0 ISO8859-1;
+
+// ---------------------------------------------------------------------------
+root $spell = $GARBAGE* ($LETRA  | $SIL)* $GARBAGE* ;
+// ---------------------------------------------------------------------------
+
+$SIL =  "[SIL]" {} | "[SILd]" {} | "[H]" {};
+
+$LETRA = 
+	"a"  		{A}|	// a
+	"be"  		{B}|	// be
+	"ce"  		{C}|	// ce
+	"de"  		{D}|	// de
+	"e"  		{E}|	// e
+	"efe"  		{F}|	// efe
+	"ge"  		{G}|	// ge
+	"hache"		{H}|	// hache
+	"i"  		{I}|	// i
+	"i latina" 	{I}|	// i latina
+	"jota"  	{J}|	// jota
+	"ca"  		{K}|	// ca
+	"ele"  		{L}|	// ele
+	"eme"  		{M}|	// eme
+	"ene"  		{N}|	// ene
+	"eñe"  		{Ñ}|	// eñe
+	"o"  		{O}|	// o
+	"pe"  		{P}|	// pe
+	"cu"  		{Q}|	// cu
+	"erre"  	{R}|	// erre
+	"ere"  		{R}|	// ere
+	"ese"  		{S}|	// ese
+	"te"  		{T}|	// te
+	"u"  		{U}|	// u
+	"uve"  		{V}|	// uve
+	"uve doble"  	{W}|	// uve doble
+	"doble uve" 	{W}|	// doble uve
+	"equis"  	{X}|	// equis
+	"y griega"  	{Y}|	// y griega
+	"zeta"  	{Z};	// zeta

@@ -1,0 +1,454 @@
+mp4dump version 1.5.0.1
+Dumping s1.3gp meta-information...
+ type ftyp
+  majorBrand = 3gp5
+  minorVersion = 0 (0x00000000)
+  <table entries suppressed>
+ type mdat
+ type mdat
+ type moov
+  type mvhd
+   version = 0 (0x00)
+   flags = 0 (0x000000)
+   creationTime = 3326385097 (0xc6449bc9)
+   modificationTime = 3326426896 (0xc6453f10)
+   timeScale = 1000 (0x000003e8)
+   duration = 121321 (0x0001d9e9)
+   rate = 1.000000
+   volume = 1.000000
+   reserved1 = <70 bytes> 
+   00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 
+   00 00 00 00 00 00 00 00 00 00 00 01 00 00 00 00 
+   00 00 00 00 00 00 00 00 00 00 40 00 00 00 00 00 
+   00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+   00 00 00 00 00 00 
+   nextTrackId = 5 (0x00000005)
+  type trak
+   type tkhd
+    version = 0 (0x00)
+    flags = 1 (0x000001)
+    creationTime = 3326385097 (0xc6449bc9)
+    modificationTime = 3326385097 (0xc6449bc9)
+    trackId = 1 (0x00000001)
+    reserved1 = <4 bytes> 00 00 00 00 
+    duration = 121321 (0x0001d9e9)
+    reserved2 = <12 bytes> 00 00 00 00 00 00 00 00 00 00 00 02 
+    volume = 0.000000
+    reserved3 = <38 bytes> 
+    00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 
+    00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 
+    00 00 40 00 00 00 
+    width = 176.000000
+    height = 144.000000
+   type mdia
+    type mdhd
+     version = 0 (0x00)
+     flags = 0 (0x000000)
+     creationTime = 3326385097 (0xc6449bc9)
+     modificationTime = 3326385097 (0xc6449bc9)
+     timeScale = 90000 (0x00015f90)
+     duration = 10918908 (0x00a69bfc)
+     language = 21956 (0x55c4)
+     reserved = <2 bytes> 00 00 
+    type hdlr
+     version = 0 (0x00)
+     flags = 0 (0x000000)
+     reserved1 = <4 bytes> 00 00 00 00 
+     handlerType = vide
+     reserved2 = <12 bytes> 00 00 00 00 00 00 00 00 00 00 00 00 
+     name = 
+    type minf
+     type vmhd
+      version = 0 (0x00)
+      flags = 1 (0x000001)
+      reserved = <8 bytes> 00 00 00 00 00 00 00 00 
+     type dinf
+      type dref
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       type url 
+        version = 0 (0x00)
+        flags = 1 (0x000001)
+        location = (null)
+     type stbl
+      type stsd
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       type s263
+        reserved1 = <6 bytes> 00 00 00 00 00 00 
+        dataReferenceIndex = 1 (0x0001)
+        reserved2 = <16 bytes> 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+        width = 176 (0x00b0)
+        height = 144 (0x0090)
+        reserved3 = <50 bytes> 
+        00 48 00 00 00 48 00 00 00 00 00 00 00 01 00 00 
+        00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+        00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 18 
+        ff ff 
+        type d263
+         vendor = 1447642185 (0x56494449)
+         decoderVersion = 0 (0x00)
+         h263Level = 10 (0x0a)
+         h263Profile = 0 (0x00)
+         type bitr
+          avgBitrate = 64405 (0x0000fb95)
+          maxBitrate = 96196 (0x000177c4)
+      type stts
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       <table entries suppressed>
+      type stsc
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       <table entries suppressed>
+      type stsz
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       sampleSize = 0 (0x00000000)
+       sampleCount = 909 (0x0000038d)
+       <table entries suppressed>
+      type stco
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       <table entries suppressed>
+      type stss
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 2 (0x00000002)
+       <table entries suppressed>
+   type udta
+    type uuid
+     data = <16 bytes> 00 00 00 10 62 72 74 65 00 00 00 00 00 00 fb 95 
+    type tsel
+     data = <12 bytes> 00 00 00 00 00 00 00 02 62 77 61 73 
+  type trak
+   type tkhd
+    version = 0 (0x00)
+    flags = 1 (0x000001)
+    creationTime = 3326385097 (0xc6449bc9)
+    modificationTime = 3326385097 (0xc6449bc9)
+    trackId = 2 (0x00000002)
+    reserved1 = <4 bytes> 00 00 00 00 
+    duration = 121321 (0x0001d9e9)
+    reserved2 = <12 bytes> 00 00 00 00 00 00 00 00 00 00 00 00 
+    volume = 0.000000
+    reserved3 = <38 bytes> 
+    00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 
+    00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 
+    00 00 40 00 00 00 
+    width = 176.000000
+    height = 144.000000
+   type tref
+    type hint
+     <table entries suppressed>
+   type mdia
+    type mdhd
+     version = 0 (0x00)
+     flags = 0 (0x000000)
+     creationTime = 3326385097 (0xc6449bc9)
+     modificationTime = 3326385097 (0xc6449bc9)
+     timeScale = 90000 (0x00015f90)
+     duration = 10918908 (0x00a69bfc)
+     language = 21956 (0x55c4)
+     reserved = <2 bytes> 00 00 
+    type hdlr
+     version = 0 (0x00)
+     flags = 0 (0x000000)
+     reserved1 = <4 bytes> 00 00 00 00 
+     handlerType = hint
+     reserved2 = <12 bytes> 00 00 00 00 00 00 00 00 00 00 00 00 
+     name = 
+    type minf
+     type hmhd
+      version = 0 (0x00)
+      flags = 0 (0x000000)
+      maxPduSize = 0 (0x0000)
+      avgPduSize = 0 (0x0000)
+      maxBitRate = 0 (0x00000000)
+      avgBitRate = 0 (0x00000000)
+      slidingAvgBitRate = 0 (0x00000000)
+     type dinf
+      type dref
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       type url 
+        version = 0 (0x00)
+        flags = 1 (0x000001)
+        location = (null)
+     type stbl
+      type stsd
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       type rtp 
+        reserved1 = <6 bytes> 00 00 00 00 00 00 
+        dataReferenceIndex = 1 (0x0001)
+        hintTrackVersion = 1 (0x0001)
+        highestCompatibleVersion = 1 (0x0001)
+        maxPacketSize = 1500 (0x000005dc)
+        type tims
+         timeScale = 90000 (0x00015f90)
+      type stts
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       <table entries suppressed>
+      type stsc
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       <table entries suppressed>
+      type stsz
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       sampleSize = 0 (0x00000000)
+       sampleCount = 909 (0x0000038d)
+       <table entries suppressed>
+      type stco
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       <table entries suppressed>
+      type stss
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 2 (0x00000002)
+       <table entries suppressed>
+   type udta
+    type tsel
+     data = <12 bytes> 00 00 00 00 00 00 00 00 62 77 61 73 
+    type hnti
+     type sdp 
+      sdpText = m=video 0 RTP/AVP 97
+b=AS:65
+a=range:npt=0-121.321
+a=rtpmap:97 H263-2000/90000
+a=fmtp:97 profile=0; level=10
+a=framesize:97 176-144
+a=control:trackID=2
+a=mpeg4-esid:1
+
+  type trak
+   type tkhd
+    version = 0 (0x00)
+    flags = 1 (0x000001)
+    creationTime = 3326385097 (0xc6449bc9)
+    modificationTime = 3326385097 (0xc6449bc9)
+    trackId = 3 (0x00000003)
+    reserved1 = <4 bytes> 00 00 00 00 
+    duration = 121280 (0x0001d9c0)
+    reserved2 = <12 bytes> 00 00 00 00 00 00 00 00 00 00 00 01 
+    volume = 1.000000
+    reserved3 = <38 bytes> 
+    00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 
+    00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 
+    00 00 40 00 00 00 
+    width = 0.000000
+    height = 0.000000
+   type mdia
+    type mdhd
+     version = 0 (0x00)
+     flags = 0 (0x000000)
+     creationTime = 3326385097 (0xc6449bc9)
+     modificationTime = 3326385097 (0xc6449bc9)
+     timeScale = 8000 (0x00001f40)
+     duration = 970240 (0x000ece00)
+     language = 21956 (0x55c4)
+     reserved = <2 bytes> 00 00 
+    type hdlr
+     version = 0 (0x00)
+     flags = 0 (0x000000)
+     reserved1 = <4 bytes> 00 00 00 00 
+     handlerType = soun
+     reserved2 = <12 bytes> 00 00 00 00 00 00 00 00 00 00 00 00 
+     name = 
+    type minf
+     type smhd
+      version = 0 (0x00)
+      flags = 0 (0x000000)
+      reserved = <4 bytes> 00 00 00 00 
+     type dinf
+      type dref
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       type url 
+        version = 0 (0x00)
+        flags = 1 (0x000001)
+        location = (null)
+     type stbl
+      type stsd
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       type samr
+        reserved1 = <6 bytes> 00 00 00 00 00 00 
+        dataReferenceIndex = 1 (0x0001)
+        reserved2 = <16 bytes> 00 00 00 00 00 00 00 00 00 01 00 10 00 00 00 00 
+        timeScale = 8000 (0x1f40)
+        reserved3 = <2 bytes> 00 00 
+        type damr
+         vendor = 1447642185 (0x56494449)
+         decoderVersion = 0 (0x00)
+         modeSet = 128 (0x0080)
+         modeChangePeriod = 0 (0x00)
+         framesPerSample = 8 (0x08)
+      type stts
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       <table entries suppressed>
+      type stsc
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       <table entries suppressed>
+      type stsz
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       sampleSize = 0 (0x00000000)
+       sampleCount = 758 (0x000002f6)
+       <table entries suppressed>
+      type stco
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       <table entries suppressed>
+   type udta
+    type uuid
+     data = <16 bytes> 00 00 00 10 62 72 74 65 00 00 00 00 00 00 2f a8 
+    type tsel
+     data = <12 bytes> 00 00 00 00 00 00 00 01 62 77 61 73 
+  type trak
+   type tkhd
+    version = 0 (0x00)
+    flags = 1 (0x000001)
+    creationTime = 3326385097 (0xc6449bc9)
+    modificationTime = 3326385097 (0xc6449bc9)
+    trackId = 4 (0x00000004)
+    reserved1 = <4 bytes> 00 00 00 00 
+    duration = 121280 (0x0001d9c0)
+    reserved2 = <12 bytes> 00 00 00 00 00 00 00 00 00 00 00 00 
+    volume = 0.000000
+    reserved3 = <38 bytes> 
+    00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 
+    00 00 00 01 00 00 00 00 00 00 00 00 00 00 00 00 
+    00 00 40 00 00 00 
+    width = 0.000000
+    height = 0.000000
+   type tref
+    type hint
+     <table entries suppressed>
+   type mdia
+    type mdhd
+     version = 0 (0x00)
+     flags = 0 (0x000000)
+     creationTime = 3326385097 (0xc6449bc9)
+     modificationTime = 3326385097 (0xc6449bc9)
+     timeScale = 8000 (0x00001f40)
+     duration = 970240 (0x000ece00)
+     language = 21956 (0x55c4)
+     reserved = <2 bytes> 00 00 
+    type hdlr
+     version = 0 (0x00)
+     flags = 0 (0x000000)
+     reserved1 = <4 bytes> 00 00 00 00 
+     handlerType = hint
+     reserved2 = <12 bytes> 00 00 00 00 00 00 00 00 00 00 00 00 
+     name = 
+    type minf
+     type hmhd
+      version = 0 (0x00)
+      flags = 0 (0x000000)
+      maxPduSize = 0 (0x0000)
+      avgPduSize = 0 (0x0000)
+      maxBitRate = 0 (0x00000000)
+      avgBitRate = 0 (0x00000000)
+      slidingAvgBitRate = 0 (0x00000000)
+     type dinf
+      type dref
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       type url 
+        version = 0 (0x00)
+        flags = 1 (0x000001)
+        location = (null)
+     type stbl
+      type stsd
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       type rtp 
+        reserved1 = <6 bytes> 00 00 00 00 00 00 
+        dataReferenceIndex = 1 (0x0001)
+        hintTrackVersion = 1 (0x0001)
+        highestCompatibleVersion = 1 (0x0001)
+        maxPacketSize = 1500 (0x000005dc)
+        type tims
+         timeScale = 8000 (0x00001f40)
+      type stts
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       <table entries suppressed>
+      type stsc
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       <table entries suppressed>
+      type stsz
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       sampleSize = 0 (0x00000000)
+       sampleCount = 758 (0x000002f6)
+       <table entries suppressed>
+      type stco
+       version = 0 (0x00)
+       flags = 0 (0x000000)
+       entryCount = 1 (0x00000001)
+       <table entries suppressed>
+   type udta
+    type tsel
+     data = <12 bytes> 00 00 00 00 00 00 00 00 62 77 61 73 
+    type hnti
+     type sdp 
+      sdpText = m=audio 0 RTP/AVP 96
+b=AS:13
+a=range:npt=0-121.280
+a=rtpmap:96 AMR/8000
+a=fmtp:96 octet-align=1
+a=control:trackID=4
+a=mpeg4-esid:3
+
+  type udta
+   type uuid
+    data = <71 bytes> 
+    00 00 00 47 77 76 65 72 00 00 00 00 56 69 64 69 
+    61 74 6f 72 20 58 65 6e 6f 6e 20 45 6e 63 6f 2e 
+    65 72 3a 34 2e 31 2e 31 2e 34 38 37 4e 78 46 46 
+    57 72 69 74 65 72 20 76 65 72 2e 30 30 30 34 30 
+    30 30 32 30 30 31 36 
+   type meta
+    version = 0 (0x00)
+    flags = 0 (0x000000)
+    type hdlr
+     version = 0 (0x00)
+     flags = 0 (0x000000)
+     reserved1 = <4 bytes> 00 00 00 00 
+     handlerType = mdir
+     reserved2 = <12 bytes> 61 70 70 6c 00 00 00 00 00 00 00 00 
+     name = 
+    type ilst
+     type ©day
+      type data
+       version = 0 (0x00)
+       flags = 1 (0x000001)
+       reserved2 = <4 bytes> 00 00 00 00 
+       metadata = <4 bytes> 32 30 30 31 

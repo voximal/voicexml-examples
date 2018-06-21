@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml">
+  <form id="welcome">
+    <block>
+      <prompt>Welcome.</prompt>
+    </block>
+    <block>
+      <goto next="#hangup"/>
+    </block>
+  </form>
+  <form id="hangup">
+    <transfer bridge="true" dest="execute:hangup()"/>
+    <block>
+      <goto next="#call"/>
+    </block>
+  </form>
+  <form id="call">
+    <field name="purge">
+      <property name="timeout" value="5s" />
+      <option value="#" dtmf="#"/>
+      <catch event="nomatch noinput">
+        <assign name="purge" expr="1"/>
+      </catch>
+    </field>
+    <transfer bridge="true" destexpr="'originate:'+session.connection.remote.uri+'=0002'" connecttimeout="20s" maxtime="700s"/>
+  </form>
+</vxml>

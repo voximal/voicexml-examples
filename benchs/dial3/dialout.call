@@ -1,0 +1,7 @@
+channel: SIP/0015026185506
+MaxRetries: 0
+RetryTime: 60
+WaitTime: 30
+Context: default
+Extension: 01
+Priority: 1

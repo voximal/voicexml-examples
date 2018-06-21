@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<vxml xml:lang="it-it" version="2.0">
+<var name="numero_telefonico" />
+<script>
+	<![CDATA[ 
+		var array_utenti = new Array("0000000","0952931821","3928806121","111111111");
+		var array_spelling=new Array();
+		var iscrizione=new Array();
+		
+		function result(id,domanda){
+			array_result.push(domanda,id);				
+		}
+		function result_spelling(word,domanda){
+			array_spelling.push(domanda,word);				
+		}
+		function nome(val){iscrizione.push(val);}
+		function cognome(val){iscrizione.push(val);}
+		function telefono(val){iscrizione.push(val);}
+		function get_remote(){
+			var uri_remote = session.connection.remote.uri;
+			return uri_remote;
+		}
+		function user_exist(num){
+			for( var i=0; i<array_utenti.length; i++ ) {
+				if( array_utenti[i] == num )
+					return true;
+			}
+			return false;
+		}
+		function is_user(){
+			for( var i=0; i<array_utenti.length; i++ ) {
+				if( array_utenti[i] == get_remote() )
+					return true;
+			}
+			return false;	
+		}
+	]]>
+</script>
+<form id="domanda_cognome">
+	<field name="risposta_cognome">
+		<prompt bargein="true">
+			Pronuncia ora, il tuo cognome.
+		</prompt>
+		<grammar src="../grammatiche/gr_cognomi_1.grxml"/>
+		<catch event="nomatch noinput" count="2" >
+			Non ho riconosciuto quello che hai detto,  
+			<goto next="#spellingcognomi"/>
+		</catch>
+		<noinput>Non ho capito.<reprompt/></noinput>
+		<nomatch>Non ho sentito.<reprompt/></nomatch>
+		<filled>
+			<prompt>hai detto: <value expr="risposta_cognome" />?</prompt>
+		</filled>
+	</field>
+	<field name="conferma_cognome" >
+		<prompt bargein="true">
+			per confermare, Premi 1, o pronuncia: confermo. Altrimenti premi 2, o pronuncia: no. 
+		</prompt>
+		<grammar src="../grammatiche/conf_1.grxml"/>
+		<grammar src="builtin:dtmf/boolean"/>
+		<catch event="nomatch noinput">
+			<goto next="#domanda_cognome"/>
+		</catch>
+		<filled>
+			<if cond="conferma_cognome=='true'">
+				<script>cognome(risposta_cognome)</script>
+				<goto next="#domanda_nome"/>
+			<else/>
+				<goto next="#domanda_cognome"/>
+			</if>
+		</filled>
+	</field>
+</form>
+<form id="domanda_nome">
+	<field name="risposta_nome">
+		<prompt  bargein="true">
+			Pronuncia ora, il tuo nome.
+		</prompt>
+		<grammar src="../grammatiche/gr_nomi_1.grxml"/>	
+		<catch event="nomatch noinput" count="2" >
+			Non ho riconosciuto quello che hai detto, 
+			<goto next="#spelling_nomi"/>
+		</catch>
+		<noinput>Non ho capito.<reprompt/></noinput>
+		<nomatch>Non ho sentito.<reprompt/></nomatch>
+		<filled>
+			<prompt>hai detto: <value expr="risposta_nome" />?</prompt>
+		</filled>
+	</field>
+	<field name="conferma_nome" >
+		<prompt bargein="true">
+			per confermare, Premi 1, o pronuncia: confermo. Altrimenti premi 2, o pronuncia: no. 
+		</prompt>
+		<grammar src="../grammatiche/conf_1.grxml"/>
+		<grammar src="builtin:dtmf/boolean"/>
+		<catch event="nomatch noinput">
+			<goto next="#domanda_nome"/>
+		</catch>
+		<filled>
+			<if cond="conferma_nome=='true'">
+				<script>nome(risposta_nome)</script>
+				<goto next="#domanda_telefono"/>
+			<else/>
+				<goto next="#domanda_nome"/>
+			</if>
+		</filled>
+	</field>
+</form>
+<form id="domanda_telefono">
+	<field name="numero_chiamante" >
+		<prompt bargein="true">
+			per registrarti con il numero di telefono, dal quale stai chiamando, Premi 1, o pronuncia: confermo. Per registrarsi con un altro numero, premi 2, o pronuncia: no.  
+		</prompt>
+		<grammar src="../grammatiche/conf_1.grxml"/>
+		<grammar src="builtin:dtmf/boolean"/>
+		<catch event="nomatch noinput">
+			<goto next="#domanda_telefono"/>
+		</catch>
+		<filled>
+			<if cond="numero_chiamante=='true'">
+				<if cond="String(get_remote()).search('[^0-9]')!=-1">
+					<prompt>Mi dispiace ma non posso riconoscere il tuo numero di telefono, dovrai inserirlo tu. </prompt>
+					<goto next="#domanda_telefono_2"/>
+				</if>
+				<if cond="!user_exist(get_remote())">
+					<assign name="numero_telefonico" expr="get_remote()"/>
+					<script>telefono(numero_telefonico)</script>
+					<var name="iscrizione" expr="iscrizione" />
+					<return namelist="iscrizione"/>
+				<else/>
+					<prompt>Esiste già un utente con questo numero. Prova a cambiare. </prompt>
+				</if>
+			<else/>
+				<goto next="#domanda_telefono_2"/>	
+			</if>
+		</filled>
+	</field>
+</form>
+<form id="domanda_telefono_2">
+	<field name="risposta_telefono" type="digits">
+		<prompt  bargein="false">
+			Fà attenzione! Ricorda: userai il numero di telefono anche come password, finchè non deciderai di cambiarla. Pronuncia o digita una cifra per volta, il numero di telefono con il quale vuoi registrarti. 
+		</prompt>
+		<noinput>Non ho capito.<reprompt/></noinput>	
+		<nomatch>Non ho sentito.<reprompt/></nomatch>
+		<filled>
+			<prompt>hai detto:  <value expr="risposta_telefono" />?</prompt>
+		</filled>
+	</field>
+	<field name="conferma_telefono" >
+		<prompt bargein="true">
+			per confermare, Premi 1, o pronuncia: confermo. Altrimenti premi 2, o pronuncia: no. 
+		</prompt>
+		<grammar src="../grammatiche/conf_1.grxml"/>
+		<grammar src="builtin:dtmf/boolean"/>
+		<catch event="nomatch noinput">
+			<goto next="#domanda_telefono"/>
+		</catch>
+		<filled>
+			<if cond="conferma_telefono=='true'">
+				<if cond="!user_exist(risposta_telefono)">
+					<script>telefono(risposta_telefono)</script>
+					<var name="iscrizione" expr="iscrizione" />
+					<return namelist="iscrizione"/>
+				<else/>
+					<prompt>Esiste già un utente con questo numero. Prova a cambiare. </prompt>
+					<goto next="#domanda_telefono" />
+				</if>	
+			<else/>
+				<goto next="#domanda_telefono"/>
+			</if>
+		</filled>
+	</field>
+</form>
+<form id="spelling_nomi">
+	<property name="incompletetimeout" value="+4.0s"/>
+	<property name="confidencelevel" value="0.4"/>
+	<property name="speedvsaccuracy" value="1.0"/>
+	<field name="spellingnomi">
+		<prompt>Utilizza i nomi di città per fare lo spelling della parola. Ad esempio, per dire Rossi, pronuncia: Roma, Otranto, Savona, Savona, Imola. </prompt>
+		<grammar src="../grammatiche/gramm_spelling_citta_1.grxml"/>
+		<filled>
+			<prompt>hai detto: <value expr="spellingnomi" />?</prompt>
+		</filled>
+	</field>
+	<field name="conferma_spellingnomi" >
+		<prompt bargein="true">
+			per confermare, Premi 1, o pronuncia: confermo. Altrimenti premi 2, o pronuncia: no. 
+		</prompt>
+		<grammar src="../grammatiche/conf_1.grxml"/>
+		<grammar src="builtin:dtmf/boolean"/>
+		<catch event="nomatch noinput">
+			<goto next="#spelling_nomi"/>
+		</catch>
+		<filled>
+			<if cond="conferma_spellingnomi=='true'">
+				<script>nome(spellingnomi)</script>
+				<goto next="#domanda_telefono"/>
+			<else/>
+				<goto next="#domanda_nome"/>
+			</if>
+		</filled>
+	</field>
+</form>
+<form id="spellingcognomi">
+	<property name="incompletetimeout" value="+4.0s"/>
+	<property name="speedvsaccuracy" value="1.0"/>
+	<property name="confidencelevel" value="0.4"/>	
+	<field name="spellingcognomi">
+		<prompt>Utilizza i nomi di città per fare lo spelling della parola. Ad esempio, per dire Rossi, pronuncia: Roma, Otranto, Savona, Savona, Imola. </prompt>
+		<grammar src="../grammatiche/gramm_spelling_citta_1.grxml"/>
+		<filled>
+			<prompt>hai detto:  <value expr="spellingcognomi" />?</prompt> 
+		</filled>
+	</field>
+	<field name="conferma_spellingcognomi" >
+		<prompt bargein="true">
+			per confermare, Premi 1, o pronuncia: confermo. Altrimenti premi 2, o pronuncia: no. 
+		</prompt>
+		<grammar src="../grammatiche/conf_1.grxml"/>
+		<grammar src="builtin:dtmf/boolean"/>
+		<catch event="nomatch noinput">
+			<goto next="#spellingcognomi"/>
+		</catch>
+		<filled>
+			<if cond="conferma_spellingcognomi=='true'">
+				<script>cognome(spellingcognomi)</script>
+				<goto next="#domanda_nome"/>
+			<else/>
+				<goto next="#spellingcognomi"/>
+			</if>
+		</filled>
+	</field>
+</form>
+</vxml>

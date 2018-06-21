@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<vxml version="2.0" xmlns="http://www.w3.org/2001/vxml" xml:lang="fr-FR">
+ <form>
+  <property name="inputmodes" value="voice"/>
+  <property name="timeout" value="15s"/>
+  <field name="text">
+   <grammar src="builtin:dtmf/time"/>
+   <grammar src="builtin:grammar/time"/>
+   <catch event="noinput nomatch">
+    <reprompt/>
+   </catch>
+   <prompt>
+    Diga una fecha :
+   </prompt>
+  </field>
+  <filled>
+   <prompt>
+    he reconocido :
+    <value expr="text" />
+   </prompt>
+   <clear namelist="text" />
+  </filled>
+ </form>
+</vxml>

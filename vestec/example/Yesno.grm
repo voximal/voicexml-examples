@@ -1,0 +1,27 @@
+/*
+  Vestec Automatic Speech Recognition Engine Version 1.0
+  Copyright (c) 2009 Voice Enabling Systems Technology, Inc. All rights reserved.
+ */
+
+#ABNF 1.0;
+
+// Author:   Vectec Inc.
+// Date:     Mon Apr 13 2009
+// Yesno1.grm: VASRE sample grammar recognizing yes or no
+
+root $Yesno;
+
+$Yesno = $Yes {TRUE} | $No {FALSE};
+
+$Yes =
+  yes [please | it is]
+  | yup
+  | yeah
+  | okay
+  | sure
+  ;
+
+$No =
+  no [thanks | thank you]
+  | (absolutely | definitely) not
+  ;
