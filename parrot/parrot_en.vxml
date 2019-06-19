@@ -4,6 +4,7 @@
   <property name="interdigittimeout" value="900ms"/>
   <property name="timeout" value="10s"/>
   <property name="confidencelevel" value="0.3"/>
+  <property name="completetimeout" value="5s"/>
   <form id="main">
     <field name="text" type="text">
       <prompt bargein="true">Please, say something:</prompt>
