@@ -5,6 +5,7 @@
   <property name="timeout" value="10s"/>
   <property name="confidencelevel" value="0.3"/>
   <property name="timeout" value="30s"/>
+  <property name="completetimeout" value="5s"/>
   <form id="main">
     <field name="text" type="text">
       <prompt bargein="true">Por favor, dime algo:</prompt>
